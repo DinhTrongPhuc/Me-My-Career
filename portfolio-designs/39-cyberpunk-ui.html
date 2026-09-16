@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phuc - Cyberpunk UI</title>
+    <style>
+      :root {
+        --bg: #090b12;
+        --panel: #121827;
+        --cyan: #00e5ff;
+        --pink: #ff2aa1;
+        --green: #7dff5a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #d9f8ff;
+        font:
+          15px/1.5 Consolas,
+          monospace;
+        background-image:
+          linear-gradient(#ffffff05 1px, transparent 1px),
+          linear-gradient(90deg, #ffffff05 1px, transparent 1px);
+        background-size: 32px 32px;
+      }
+      main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 24px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #00e5ff66;
+        padding-bottom: 15px;
+      }
+      .logo {
+        color: var(--cyan);
+        font-weight: 800;
+      }
+      .nav a {
+        color: #d9f8ff;
+        text-decoration: none;
+        margin-left: 22px;
+      }
+      .tag {
+        color: var(--green);
+        font-size: 0.75rem;
+        letter-spacing: 0.18em;
+      }
+      .hero {
+        padding: 95px 0 70px;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 8vw, 7rem);
+        line-height: 0.9;
+        color: #fff;
+        text-shadow:
+          3px 0 var(--pink),
+          -3px 0 var(--cyan);
+        margin: 18px 0;
+      }
+      .hero p {
+        max-width: 600px;
+        color: #9bb2bd;
+        font-size: 1.05rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--cyan);
+        padding: 22px;
+        position: relative;
+      }
+      .card:before {
+        content: "//";
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        color: var(--pink);
+      }
+      .card h2 {
+        color: var(--cyan);
+        font-size: 1.15rem;
+      }
+      .card p {
+        color: #9bb2bd;
+      }
+      .status {
+        margin-top: 28px;
+        color: var(--green);
+        border-left: 3px solid var(--green);
+        padding-left: 12px;
+      }
+      .cursor {
+        animation: blink 1s steps(2) infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+      @media (max-width: 700px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding: 70px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="nav">
+        <b class="logo">PHUC//NODE</b>
+        <div><a href="#work">[work]</a><a href="#contact">[contact]</a></div>
+      </nav>
+      <header class="hero">
+        <div class="tag">SYSTEM 39 / CYBERPUNK UI</div>
+        <h1>BUILD IN<br />THE NOISE<span class="cursor">_</span></h1>
+        <p>
+          Production-minded backend engineering for systems that need to stay
+          sharp when everything else gets loud.
+        </p>
+        <div class="status">STATUS: ONLINE / API: HEALTHY / MODE: FOCUSED</div>
+      </header>
+      <section id="work" class="grid">
+        <article class="card">
+          <h2>01 / Infrastructure</h2>
+          <p>Services, queues, and deployments that keep a signal alive.</p>
+        </article>
+        <article class="card">
+          <h2>02 / Observability</h2>
+          <p>Metrics and logs that turn unknowns into useful next actions.</p>
+        </article>
+        <article class="card">
+          <h2>03 / Collaboration</h2>
+          <p>Readable code and direct communication across the stack.</p>
+        </article>
+      </section>
+      <footer id="contact" style="padding: 55px 0; color: #9bb2bd">
+        > connect --with phuc.dev
+      </footer>
+    </main>
+  </body>
+</html>

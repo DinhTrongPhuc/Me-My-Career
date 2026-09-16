@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phuc - Vintage Analog Portfolio</title>
+    <style>
+      :root {
+        --cream: #f0dfbf;
+        --ink: #30241e;
+        --teal: #397070;
+        --rose: #b85c5d;
+        --brown: #80543d;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font:
+          16px/1.55 Georgia,
+          serif;
+        background-image: radial-gradient(#7b573322 1px, transparent 1px);
+        background-size: 6px 6px;
+      }
+      main {
+        max-width: 1050px;
+        margin: auto;
+        padding: 25px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 14px;
+      }
+      .logo {
+        font-weight: 900;
+        letter-spacing: 0.18em;
+      }
+      .nav a {
+        color: var(--ink);
+        text-decoration: none;
+        margin-left: 20px;
+        font-size: 0.85rem;
+      }
+      .hero {
+        padding: 100px 0 75px;
+        display: grid;
+        grid-template-columns: 1fr 0.7fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .stamp {
+        display: inline-block;
+        border: 2px solid var(--rose);
+        color: var(--rose);
+        padding: 7px 12px;
+        transform: rotate(-5deg);
+        font: 800 0.72rem system-ui;
+        letter-spacing: 0.12em;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 8vw, 7rem);
+        line-height: 0.84;
+        margin: 20px 0;
+      }
+      .hero p {
+        max-width: 560px;
+        color: #685145;
+      }
+      .photo {
+        height: 330px;
+        background: var(--teal);
+        border: 12px solid #e4ceaa;
+        outline: 2px solid var(--ink);
+        transform: rotate(3deg);
+        display: grid;
+        place-items: center;
+        color: #e4ceaa;
+        font: 900 3rem system-ui;
+        letter-spacing: 0.1em;
+        text-align: center;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .card {
+        border: 2px solid var(--ink);
+        padding: 22px;
+        background: #f7e8cb;
+        box-shadow: 5px 5px var(--ink);
+      }
+      .card h2 {
+        color: var(--teal);
+        margin-top: 0;
+      }
+      .card p {
+        color: #685145;
+      }
+      .foot {
+        padding: 65px 0 12px;
+        font-size: 0.9rem;
+      }
+      @media (max-width: 700px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 75px 0;
+        }
+        .photo {
+          height: 230px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="nav">
+        <b class="logo">PHUC / ANALOG</b>
+        <div><a href="#work">Work</a><a href="#contact">Write</a></div>
+      </nav>
+      <header class="hero">
+        <div>
+          <span class="stamp">EXPOSED / 2026</span>
+          <h1>Good work<br />leaves a trace.</h1>
+          <p>
+            A warm, imperfect portfolio for a backend developer who likes useful
+            systems, human teams, and a little film grain.
+          </p>
+        </div>
+        <div class="photo">PHUC<br />DEV</div>
+      </header>
+      <section id="work" class="grid">
+        <article class="card">
+          <h2>Frame 01</h2>
+          <p>Reliable APIs built one clear decision at a time.</p>
+        </article>
+        <article class="card">
+          <h2>Frame 02</h2>
+          <p>Data models that keep the story coherent.</p>
+        </article>
+        <article class="card">
+          <h2>Frame 03</h2>
+          <p>Teams supported by docs that do not gather dust.</p>
+        </article>
+      </section>
+      <footer class="foot" id="contact">
+        Developed with care / printed in the browser / phuc.dev
+      </footer>
+    </main>
+  </body>
+</html>

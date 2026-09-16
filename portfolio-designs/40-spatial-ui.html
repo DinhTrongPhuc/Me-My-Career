@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phuc - Spatial UI</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: radial-gradient(
+          circle at 50% 0,
+          #54628d,
+          #171b35 45%,
+          #090b18
+        );
+        color: #f7f8ff;
+        font:
+          16px/1.55 system-ui,
+          sans-serif;
+        min-height: 100vh;
+      }
+      main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 24px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-weight: 800;
+      }
+      .nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-left: 20px;
+      }
+      .hero {
+        text-align: center;
+        padding: 95px 0 80px;
+      }
+      .eyebrow {
+        color: #b9c6ff;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 8vw, 7rem);
+        line-height: 0.9;
+        margin: 18px 0;
+      }
+      .hero p {
+        max-width: 610px;
+        margin: auto;
+        color: #c2c7de;
+      }
+      .window {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        perspective: 900px;
+      }
+      .glass {
+        min-height: 220px;
+        padding: 25px;
+        border: 1px solid #fff5;
+        border-radius: 28px;
+        background: #ffffff18;
+        backdrop-filter: blur(22px);
+        box-shadow: 0 22px 50px #0005;
+        transition: transform 0.3s;
+      }
+      .glass:hover {
+        transform: translateZ(28px) rotateX(3deg);
+      }
+      .glass h2 {
+        margin-top: 0;
+      }
+      .orb {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 30% 25%,
+          #fff,
+          #8e9cff 30%,
+          #7055db 65%,
+          #241750
+        );
+        box-shadow: 0 0 35px #8e9cff88;
+        margin-bottom: 22px;
+      }
+      .foot {
+        padding: 55px 0;
+        color: #bfc6e4;
+      }
+      @media (max-width: 700px) {
+        .window {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding: 75px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="nav">
+        <b class="logo">PHUC / SPACE</b>
+        <div><a href="#work">Work</a><a href="#contact">Contact</a></div>
+      </nav>
+      <header class="hero">
+        <div class="eyebrow">Spatial UI / depth and presence</div>
+        <h1>Systems with<br />room to breathe.</h1>
+        <p>
+          A quiet, dimensional portfolio for backend work: layered thinking,
+          clear surfaces, and enough space to see the whole system.
+        </p>
+      </header>
+      <section id="work" class="window">
+        <article class="glass">
+          <div class="orb"></div>
+          <h2>Orbit</h2>
+          <p>Architecture that keeps the important pieces visible.</p>
+        </article>
+        <article class="glass">
+          <div class="orb"></div>
+          <h2>Layer</h2>
+          <p>Boundaries that make complexity easier to navigate.</p>
+        </article>
+        <article class="glass">
+          <div class="orb"></div>
+          <h2>Signal</h2>
+          <p>Feedback designed for attention, not distraction.</p>
+        </article>
+      </section>
+      <div class="foot" id="contact">Build the next useful layer.</div>
+    </main>
+  </body>
+</html>

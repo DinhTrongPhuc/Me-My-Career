@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phuc - Y2K Aesthetic Portfolio</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #c7f9ff;
+        color: #201530;
+        font:
+          16px/1.5 system-ui,
+          sans-serif;
+        overflow-x: hidden;
+      }
+      body:before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(
+          120deg,
+          transparent 35%,
+          #fff8 50%,
+          transparent 65%
+        );
+        transform: translateX(-100%);
+        animation: shine 8s infinite;
+      }
+      @keyframes shine {
+        to {
+          transform: translateX(100%);
+        }
+      }
+      main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 25px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 1.4rem;
+        font-weight: 950;
+        color: #fff;
+        text-shadow:
+          2px 2px #f06,
+          4px 4px #65e;
+      }
+      .nav a {
+        display: inline-block;
+        color: #201530;
+        text-decoration: none;
+        background: #ff69b4;
+        border: 2px solid #201530;
+        border-radius: 99px;
+        padding: 8px 15px;
+        margin-left: 8px;
+        box-shadow: 3px 3px #201530;
+        font-size: 0.8rem;
+        font-weight: 800;
+      }
+      .hero {
+        text-align: center;
+        padding: 100px 0 85px;
+      }
+      .chrome {
+        font-weight: 900;
+        letter-spacing: 0.22em;
+        color: #fff;
+        text-shadow:
+          2px 2px #ff2b9a,
+          4px 4px #7a48ff;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 9vw, 8rem);
+        line-height: 0.85;
+        margin: 16px 0;
+        background: linear-gradient(#fff, #9ba5b8 45%, #fff 55%, #667085);
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-stroke: 2px #201530;
+      }
+      .hero p {
+        max-width: 550px;
+        margin: auto;
+      }
+      .bubble {
+        display: inline-block;
+        margin-top: 25px;
+        background: #ff69b4;
+        border: 3px solid #201530;
+        border-radius: 20px;
+        padding: 13px 22px;
+        color: #201530;
+        font-weight: 900;
+        box-shadow: 5px 5px #201530;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .card {
+        background: #fff8;
+        border: 2px solid #201530;
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: 8px 8px #201530;
+        backdrop-filter: blur(8px);
+        transition: transform 0.25s;
+      }
+      .card:hover {
+        transform: translateY(-8px) rotate(2deg);
+      }
+      .card h2 {
+        margin: 0;
+        color: #7a48ff;
+      }
+      .card p {
+        color: #493d59;
+      }
+      .orbit {
+        width: 70px;
+        height: 70px;
+        border: 3px dashed #f06;
+        border-radius: 50%;
+        margin: 0 auto 16px;
+        animation: spin 5s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      footer {
+        padding: 60px 0 10px;
+        font-weight: 800;
+      }
+      @media (max-width: 700px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .nav a {
+          padding: 7px 10px;
+        }
+        .hero {
+          padding: 75px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="nav">
+        <b class="logo">PHUC_2000</b>
+        <div><a href="#work">WORK</a><a href="#contact">PING ME</a></div>
+      </nav>
+      <header class="hero">
+        <div class="chrome">WELCOME TO THE FUTURE</div>
+        <h1>CODE<br />RELOADED</h1>
+        <p>
+          Backend engineering with chrome polish, bright ideas, and a soft spot
+          for the internet that felt like a new world.
+        </p>
+        <div class="bubble">ENTER PORTFOLIO +</div>
+      </header>
+      <section id="work" class="grid">
+        <article class="card">
+          <div class="orbit"></div>
+          <h2>Build mode</h2>
+          <p>
+            APIs, queues, and data pipelines with a little more shine than
+            expected.
+          </p>
+        </article>
+        <article class="card">
+          <div class="orbit"></div>
+          <h2>Design mode</h2>
+          <p>
+            Interfaces that make technical work feel approachable and alive.
+          </p>
+        </article>
+        <article class="card">
+          <div class="orbit"></div>
+          <h2>Team mode</h2>
+          <p>
+            Clear docs, kind reviews, and systems built for the next person.
+          </p>
+        </article>
+      </section>
+      <footer id="contact">PHUC.DEV / ONLINE / READY TO CONNECT</footer>
+    </main>
+  </body>
+</html>

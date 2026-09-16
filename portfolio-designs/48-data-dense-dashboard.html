@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phuc - Data Dense Dashboard</title>
+    <style>
+      :root {
+        --bg: #f3f6f9;
+        --ink: #172033;
+        --muted: #667085;
+        --blue: #2563eb;
+        --green: #16835b;
+        --red: #c2414d;
+        --line: #dfe5eb;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          13px/1.4 system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fff;
+        border-bottom: 1px solid var(--line);
+        padding: 14px 18px;
+      }
+      .logo {
+        font-weight: 900;
+        font-size: 1.1rem;
+      }
+      .nav a {
+        color: var(--muted);
+        text-decoration: none;
+        margin-left: 20px;
+      }
+      .hero {
+        padding: 48px 0 25px;
+      }
+      .eyebrow {
+        color: var(--blue);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+      .hero h1 {
+        font-size: 2.6rem;
+        margin: 8px 0;
+      }
+      .hero p {
+        color: var(--muted);
+      }
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+      .metric,
+      .panel {
+        background: #fff;
+        border: 1px solid var(--line);
+        padding: 18px;
+      }
+      .metric small {
+        color: var(--muted);
+      }
+      .metric b {
+        font-size: 1.8rem;
+        display: block;
+        margin: 6px 0;
+      }
+      .up {
+        color: var(--green);
+      }
+      .dashboard {
+        display: grid;
+        grid-template-columns: 1.4fr 0.8fr;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .panel h2 {
+        font-size: 1rem;
+        margin-top: 0;
+      }
+      .chart {
+        height: 210px;
+        display: flex;
+        align-items: end;
+        gap: 8px;
+        border-bottom: 1px solid var(--line);
+        padding-top: 20px;
+      }
+      .chart i {
+        flex: 1;
+        background: var(--blue);
+        height: var(--h);
+        border-radius: 3px 3px 0 0;
+      }
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .table th,
+      .table td {
+        text-align: left;
+        padding: 10px 6px;
+        border-bottom: 1px solid var(--line);
+      }
+      .pill {
+        color: var(--green);
+        font-weight: 800;
+      }
+      .foot {
+        padding: 45px 0;
+        color: var(--muted);
+      }
+      @media (max-width: 700px) {
+        .metrics {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .dashboard {
+          grid-template-columns: 1fr;
+        }
+        .hero h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="nav">
+        <b class="logo">PHUC / OPERATIONS</b>
+        <div>
+          <a href="#dashboard">Dashboard</a><a href="#contact">Contact</a>
+        </div>
+      </nav>
+      <header class="hero">
+        <div class="eyebrow">Data-dense dashboard</div>
+        <h1>See the system clearly.</h1>
+        <p>
+          A compact operational view for teams who need the right signal at the
+          right density.
+        </p>
+      </header>
+      <section class="metrics">
+        <div class="metric">
+          <small>Requests</small><b>248k</b><span class="up">+12.4%</span>
+        </div>
+        <div class="metric">
+          <small>Availability</small><b>99.98%</b><span class="up">+0.08%</span>
+        </div>
+        <div class="metric">
+          <small>Latency p95</small><b>184ms</b><span class="up">-9.2%</span>
+        </div>
+        <div class="metric">
+          <small>Open alerts</small><b>07</b
+          ><span style="color: var(--red)">+2 today</span>
+        </div>
+      </section>
+      <section id="dashboard" class="dashboard">
+        <article class="panel">
+          <h2>Traffic / last 7 days</h2>
+          <div class="chart">
+            <i style="--h: 35%"></i><i style="--h: 58%"></i
+            ><i style="--h: 46%"></i><i style="--h: 72%"></i
+            ><i style="--h: 65%"></i><i style="--h: 87%"></i
+            ><i style="--h: 78%"></i>
+          </div>
+        </article>
+        <article class="panel">
+          <h2>Services</h2>
+          <table class="table">
+            <tr>
+              <th>Service</th>
+              <th>Status</th>
+            </tr>
+            <tr>
+              <td>API gateway</td>
+              <td class="pill">Healthy</td>
+            </tr>
+            <tr>
+              <td>Workers</td>
+              <td class="pill">Healthy</td>
+            </tr>
+            <tr>
+              <td>Database</td>
+              <td class="pill">Healthy</td>
+            </tr>
+          </table>
+        </article>
+      </section>
+      <footer class="foot" id="contact">
+        Operational clarity, one metric at a time.
+      </footer>
+    </main>
+  </body>
+</html>

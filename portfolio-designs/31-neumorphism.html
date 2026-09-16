@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phuc - Neumorphism Portfolio</title>
+    <style>
+      :root {
+        --bg: #e7edf4;
+        --ink: #263548;
+        --muted: #718096;
+        --blue: #4f8cff;
+        --shadow: 10px 10px 22px #c5ccd4, -10px -10px 22px #fff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          16px/1.6 system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1080px;
+        margin: auto;
+        padding: 28px 24px 80px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-weight: 800;
+        letter-spacing: 0.12em;
+      }
+      .nav a {
+        color: var(--muted);
+        text-decoration: none;
+        margin-left: 24px;
+        font-size: 0.85rem;
+      }
+      .hero {
+        padding: 100px 0 80px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 70px;
+        align-items: center;
+      }
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--blue);
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 8vw, 6rem);
+        line-height: 0.98;
+        margin: 14px 0 24px;
+      }
+      .hero p {
+        max-width: 560px;
+        color: var(--muted);
+        font-size: 1.1rem;
+      }
+      .orb {
+        width: 270px;
+        height: 270px;
+        border-radius: 50%;
+        box-shadow: var(--shadow);
+        display: grid;
+        place-items: center;
+        margin: auto;
+      }
+      .orb span {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: var(--bg);
+        box-shadow:
+          inset 8px 8px 16px #c5ccd4,
+          inset -8px -8px 16px #fff;
+        display: grid;
+        place-items: center;
+        color: var(--blue);
+        font-weight: 800;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .card,
+      .button {
+        border: 0;
+        border-radius: 20px;
+        background: var(--bg);
+        box-shadow: var(--shadow);
+      }
+      .card {
+        padding: 28px;
+      }
+      .card h2 {
+        margin: 0 0 8px;
+      }
+      .card p {
+        color: var(--muted);
+        margin: 0;
+      }
+      .button {
+        display: inline-block;
+        padding: 13px 22px;
+        color: var(--blue);
+        text-decoration: none;
+        font-weight: 700;
+        margin-top: 20px;
+      }
+      .button:active,
+      .card:active {
+        box-shadow:
+          inset 6px 6px 12px #c5ccd4,
+          inset -6px -6px 12px #fff;
+        transform: translateY(1px);
+      }
+      footer {
+        margin-top: 70px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      @media (max-width: 700px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 70px 0;
+        }
+        .orb {
+          width: 210px;
+          height: 210px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .nav a {
+          margin-left: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="nav">
+        <div class="logo">PHUC.</div>
+        <div><a href="#work">Work</a><a href="#contact">Contact</a></div>
+      </nav>
+      <header class="hero">
+        <div>
+          <div class="eyebrow">Neumorphism / calm systems</div>
+          <h1>Soft surfaces.<br />Solid systems.</h1>
+          <p>
+            Backend developer building dependable APIs, internal tools, and
+            thoughtful digital products with a quiet touch.
+          </p>
+          <a class="button" href="#work">Explore work</a>
+        </div>
+        <div class="orb"><span>BE</span></div>
+      </header>
+      <section id="work" class="grid">
+        <article class="card">
+          <h2>APIs</h2>
+          <p>
+            Clear contracts, resilient services, and observability that keeps
+            teams moving.
+          </p>
+        </article>
+        <article class="card">
+          <h2>Systems</h2>
+          <p>
+            Practical architecture for products that need to grow without losing
+            their shape.
+          </p>
+        </article>
+        <article class="card">
+          <h2>Tools</h2>
+          <p>
+            Small internal utilities that turn repeated work into calm,
+            predictable flow.
+          </p>
+        </article>
+      </section>
+      <footer id="contact">
+        Available for backend engineering and product-minded collaboration.
+      </footer>
+    </main>
+  </body>
+</html>

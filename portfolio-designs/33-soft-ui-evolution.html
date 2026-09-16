@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phuc - Soft UI Evolution</title>
+    <style>
+      :root {
+        --bg: #f4f7fb;
+        --ink: #172033;
+        --muted: #667085;
+        --line: #dfe6ef;
+        --accent: #2574f5;
+        --soft: 0 8px 24px rgba(40, 62, 95, 0.1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: linear-gradient(145deg, #f8fbff, #edf2f8);
+        color: var(--ink);
+        font:
+          16px/1.6 system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1120px;
+        margin: auto;
+        padding: 22px 24px 70px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-weight: 800;
+      }
+      .nav a {
+        color: var(--muted);
+        text-decoration: none;
+        margin-left: 22px;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 0.8fr;
+        gap: 60px;
+        align-items: center;
+        padding: 110px 0 90px;
+      }
+      .eyebrow {
+        color: var(--accent);
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 7vw, 6rem);
+        line-height: 1.02;
+        margin: 12px 0 22px;
+        letter-spacing: -0.05em;
+      }
+      .hero p {
+        color: var(--muted);
+        max-width: 560px;
+        font-size: 1.1rem;
+      }
+      .action {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 12px;
+        padding: 13px 20px;
+        box-shadow: 0 7px 16px #2574f544;
+        margin-top: 16px;
+      }
+      .dashboard {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px;
+        box-shadow: var(--soft);
+        transform: rotate(2deg);
+      }
+      .dashboard header {
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+      .bars {
+        height: 160px;
+        display: flex;
+        align-items: end;
+        gap: 10px;
+        padding-top: 25px;
+      }
+      .bars i {
+        flex: 1;
+        background: linear-gradient(#67a1ff, #2574f5);
+        border-radius: 8px 8px 2px 2px;
+        min-height: 25%;
+        transition: height 0.35s ease;
+      }
+      .bars i:hover {
+        height: 90% !important;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: var(--soft);
+      }
+      .card b {
+        font-size: 2rem;
+      }
+      .card p {
+        color: var(--muted);
+        margin: 3px 0 0;
+      }
+      @media (max-width: 720px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 75px 0;
+        }
+        .dashboard {
+          transform: none;
+        }
+        .cards {
+          grid-template-columns: 1fr;
+        }
+        .nav a {
+          margin-left: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="nav">
+        <div class="logo">PHUC / SOFT UI</div>
+        <div><a href="#work">Work</a><a href="#contact">Contact</a></div>
+      </nav>
+      <header class="hero">
+        <div>
+          <div class="eyebrow">Soft UI evolution</div>
+          <h1>Friendly by default.<br />Clear by design.</h1>
+          <p>
+            A more accessible take on soft interfaces: gentle depth, stronger
+            contrast, visible focus, and controls that feel good without hiding
+            their purpose.
+          </p>
+          <a class="action" href="#work">See the system <span>-></span></a>
+        </div>
+        <div class="dashboard">
+          <header><b>Delivery pulse</b><span>Last 30 days</span></header>
+          <div class="bars">
+            <i style="height: 48%"></i><i style="height: 70%"></i
+            ><i style="height: 54%"></i><i style="height: 82%"></i
+            ><i style="height: 66%"></i><i style="height: 94%"></i>
+          </div>
+        </div>
+      </header>
+      <section id="work" class="cards">
+        <article class="card">
+          <b>4.9x</b>
+          <p>faster feedback loops</p>
+        </article>
+        <article class="card">
+          <b>99.9%</b>
+          <p>service availability</p>
+        </article>
+        <article class="card">
+          <b>24/7</b>
+          <p>useful observability</p>
+        </article>
+      </section>
+      <p id="contact" style="color: var(--muted); margin-top: 55px">
+        Backend engineering for teams that care about the details.
+      </p>
+    </main>
+  </body>
+</html>

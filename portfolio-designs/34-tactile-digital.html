@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phuc - Tactile Digital Portfolio</title>
+    <style>
+      :root {
+        --bg: #f5f1ff;
+        --ink: #24213a;
+        --purple: #7957e8;
+        --pink: #ef76b7;
+        --shadow: 0 16px 30px #b1a9d455;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 20% 0, #fff 0 16%, transparent 42%),
+          var(--bg);
+        color: var(--ink);
+        font:
+          16px/1.55 system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 25px 24px 90px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-weight: 900;
+        letter-spacing: 0.14em;
+      }
+      .nav a {
+        color: var(--ink);
+        text-decoration: none;
+        margin-left: 22px;
+      }
+      .hero {
+        padding: 100px 0 90px;
+        text-align: center;
+      }
+      .eyebrow {
+        color: var(--purple);
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 8vw, 7rem);
+        line-height: 0.95;
+        margin: 18px 0;
+        letter-spacing: -0.07em;
+      }
+      .hero p {
+        max-width: 600px;
+        margin: auto;
+        color: #696580;
+        font-size: 1.1rem;
+      }
+      .press {
+        border: 0;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--purple), var(--pink));
+        color: white;
+        padding: 16px 28px;
+        font-weight: 800;
+        box-shadow:
+          0 10px 0 #5435b7,
+          0 18px 28px #7957e855;
+        cursor: pointer;
+        margin-top: 28px;
+        transition:
+          transform 0.12s,
+          box-shadow 0.12s;
+      }
+      .press:active {
+        transform: translateY(8px) scale(0.97);
+        box-shadow:
+          0 2px 0 #5435b7,
+          0 7px 14px #7957e833;
+      }
+      .tiles {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+      .tile {
+        min-height: 210px;
+        padding: 26px;
+        border-radius: 28px;
+        background: #fff;
+        box-shadow: var(--shadow);
+        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .tile:hover {
+        transform: translateY(-10px) rotate(-1deg);
+      }
+      .tile:nth-child(2) {
+        background: #d9ceff;
+      }
+      .tile:nth-child(3) {
+        background: #ffd3e9;
+      }
+      .tile h2 {
+        font-size: 1.7rem;
+        margin: 0 0 12px;
+      }
+      .tile p {
+        color: #635e78;
+      }
+      .footer {
+        margin-top: 65px;
+        color: #77708d;
+      }
+      @media (max-width: 700px) {
+        .hero {
+          padding: 75px 0;
+        }
+        .tiles {
+          grid-template-columns: 1fr;
+        }
+        .nav a {
+          margin-left: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="nav">
+        <div class="logo">PHUC.</div>
+        <div><a href="#work">Work</a><a href="#contact">Contact</a></div>
+      </nav>
+      <header class="hero">
+        <div class="eyebrow">Tactile digital / deformable UI</div>
+        <h1>Make software<br />feel alive.</h1>
+        <p>
+          Responsive systems with a little physicality: springy controls, clear
+          feedback, and interfaces that reward a confident click.
+        </p>
+        <button
+          class="press"
+          onclick="
+            this.textContent =
+              this.textContent === 'Press me' ? 'Nice.' : 'Press me'
+          "
+        >
+          Press me
+        </button>
+      </header>
+      <section id="work" class="tiles">
+        <article class="tile">
+          <h2>Spring</h2>
+          <p>
+            Motion that settles quickly and communicates state without stealing
+            attention.
+          </p>
+        </article>
+        <article class="tile">
+          <h2>Shape</h2>
+          <p>
+            Friendly surfaces and tactile affordances that keep the interface
+            understandable.
+          </p>
+        </article>
+        <article class="tile">
+          <h2>Signal</h2>
+          <p>
+            Every interaction leaves a visible trace, with reduced-motion
+            alternatives built in.
+          </p>
+        </article>
+      </section>
+      <div class="footer" id="contact">
+        Backend engineering with a human pulse.
+      </div>
+    </main>
+  </body>
+</html>

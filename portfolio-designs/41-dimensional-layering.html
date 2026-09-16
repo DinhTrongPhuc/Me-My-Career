@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phuc - Dimensional Layering</title>
+    <style>
+      :root {
+        --bg: #f1f5f9;
+        --ink: #172033;
+        --blue: #2563eb;
+        --muted: #64748b;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          16px/1.55 system-ui,
+          sans-serif;
+      }
+      main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 24px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+      }
+      .nav a {
+        color: var(--ink);
+        text-decoration: none;
+        margin-left: 22px;
+      }
+      .logo {
+        font-weight: 900;
+      }
+      .hero {
+        padding: 95px 0 75px;
+        display: grid;
+        grid-template-columns: 1fr 0.8fr;
+        gap: 70px;
+        align-items: center;
+      }
+      .eyebrow {
+        color: var(--blue);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 0.72rem;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 7vw, 6rem);
+        line-height: 0.95;
+        margin: 16px 0;
+      }
+      .hero p {
+        color: var(--muted);
+        max-width: 540px;
+        font-size: 1.1rem;
+      }
+      .stack {
+        height: 320px;
+        position: relative;
+      }
+      .layer {
+        position: absolute;
+        width: 240px;
+        height: 170px;
+        border-radius: 18px;
+        border: 1px solid #fff;
+        box-shadow: 0 20px 30px #17203322;
+        padding: 22px;
+      }
+      .layer:nth-child(1) {
+        background: #fff;
+        right: 0;
+        top: 0;
+        transform: rotate(8deg);
+      }
+      .layer:nth-child(2) {
+        background: #c7d7ff;
+        left: 10px;
+        top: 75px;
+        transform: rotate(-6deg);
+      }
+      .layer:nth-child(3) {
+        background: #172033;
+        color: #fff;
+        left: 50px;
+        top: 145px;
+        transform: rotate(3deg);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 25px;
+        box-shadow: 0 8px 20px #17203314;
+      }
+      .card:nth-child(2) {
+        transform: translateY(24px);
+      }
+      .card h2 {
+        margin-top: 0;
+      }
+      .card p {
+        color: var(--muted);
+      }
+      footer {
+        padding: 80px 0 10px;
+        color: var(--muted);
+      }
+      @media (max-width: 700px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 70px 0;
+        }
+        .stack {
+          height: 270px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .card:nth-child(2) {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="nav">
+        <b class="logo">PHUC / LAYERS</b>
+        <div><a href="#work">Work</a><a href="#contact">Contact</a></div>
+      </nav>
+      <header class="hero">
+        <div>
+          <div class="eyebrow">Dimensional layering</div>
+          <h1>Make complexity<br />feel navigable.</h1>
+          <p>
+            Good systems have depth, but never make people feel lost. I design
+            backend foundations with clear layers and dependable handoffs.
+          </p>
+        </div>
+        <div class="stack" aria-hidden="true">
+          <div class="layer">Presentation</div>
+          <div class="layer">Domain</div>
+          <div class="layer">Data</div>
+        </div>
+      </header>
+      <section id="work" class="grid">
+        <article class="card">
+          <h2>Separate</h2>
+          <p>Responsibilities stay legible as a product grows.</p>
+        </article>
+        <article class="card">
+          <h2>Connect</h2>
+          <p>Interfaces make collaboration predictable.</p>
+        </article>
+        <article class="card">
+          <h2>Elevate</h2>
+          <p>Observability gives every layer a voice.</p>
+        </article>
+      </section>
+      <footer id="contact">
+        Architecture with depth, communication with clarity.
+      </footer>
+    </main>
+  </body>
+</html>

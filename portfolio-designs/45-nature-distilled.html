@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phuc - Nature Distilled Portfolio</title>
+    <style>
+      :root {
+        --paper: #f5f0e5;
+        --ink: #312820;
+        --terracotta: #bb694f;
+        --olive: #68734a;
+        --sand: #d9c8a7;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          16px/1.6 Georgia,
+          serif;
+      }
+      main {
+        max-width: 1000px;
+        margin: auto;
+        padding: 28px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #a89779;
+        padding-bottom: 15px;
+      }
+      .logo {
+        font-weight: 700;
+        letter-spacing: 0.13em;
+      }
+      .nav a {
+        color: var(--ink);
+        text-decoration: none;
+        margin-left: 22px;
+        font: 14px system-ui;
+      }
+      .hero {
+        padding: 100px 0 85px;
+        max-width: 760px;
+      }
+      .eyebrow {
+        font: 800 0.7rem system-ui;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--terracotta);
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 7vw, 6.5rem);
+        line-height: 0.9;
+        margin: 17px 0;
+      }
+      .hero p {
+        font-size: 1.15rem;
+        color: #705f4a;
+        max-width: 600px;
+      }
+      .rule {
+        height: 14px;
+        background: var(--terracotta);
+        width: 120px;
+        margin-top: 28px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .card {
+        border-top: 3px solid var(--olive);
+        padding-top: 18px;
+      }
+      .card h2 {
+        font-size: 1.5rem;
+        margin: 0 0 8px;
+      }
+      .card p {
+        color: #705f4a;
+      }
+      .quote {
+        margin: 80px 0 20px;
+        padding: 28px 0;
+        border-top: 1px solid #a89779;
+        border-bottom: 1px solid #a89779;
+        font-size: 1.6rem;
+        max-width: 700px;
+      }
+      .foot {
+        font: 14px system-ui;
+        color: #806f59;
+        padding-top: 35px;
+      }
+      @media (max-width: 700px) {
+        .hero {
+          padding: 75px 0;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .quote {
+          font-size: 1.3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="nav">
+        <b class="logo">PHUC / FIELD NOTES</b>
+        <div><a href="#work">Work</a><a href="#contact">Contact</a></div>
+      </nav>
+      <header class="hero">
+        <div class="eyebrow">Nature distilled / handmade warmth</div>
+        <h1>Quiet tools<br />for real work.</h1>
+        <p>
+          Thoughtful backend engineering for teams who value durable materials:
+          clear interfaces, honest constraints, and systems that age well.
+        </p>
+        <div class="rule"></div>
+      </header>
+      <section id="work" class="grid">
+        <article class="card">
+          <h2>Measured</h2>
+          <p>Decisions made with context, not fashion.</p>
+        </article>
+        <article class="card">
+          <h2>Useful</h2>
+          <p>Tools that respect attention and reduce friction.</p>
+        </article>
+        <article class="card">
+          <h2>Durable</h2>
+          <p>Foundations that remain understandable over time.</p>
+        </article>
+      </section>
+      <blockquote class="quote">
+        "The best work feels inevitable after it is done."
+      </blockquote>
+      <footer class="foot" id="contact">
+        Backend developer / builder of calm systems
+      </footer>
+    </main>
+  </body>
+</html>

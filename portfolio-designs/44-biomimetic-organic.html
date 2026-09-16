@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Phuc - Biomimetic Organic Portfolio</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #001e3c;
+        color: #e7fbff;
+        font:
+          16px/1.55 system-ui,
+          sans-serif;
+        overflow-x: hidden;
+      }
+      main {
+        max-width: 1100px;
+        margin: auto;
+        padding: 24px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+      }
+      .logo {
+        font-weight: 900;
+        color: #00ffbf;
+      }
+      .nav a {
+        color: #d8f6ff;
+        text-decoration: none;
+        margin-left: 20px;
+      }
+      .hero {
+        padding: 105px 0 80px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 65px;
+        align-items: center;
+      }
+      .eyebrow {
+        color: #00ffbf;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 7vw, 6.5rem);
+        line-height: 0.9;
+        margin: 16px 0;
+      }
+      .hero p {
+        color: #9fc2c9;
+        max-width: 540px;
+      }
+      .cell {
+        height: 340px;
+        position: relative;
+      }
+      .cell i {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(1px);
+        animation: breathe 5s ease-in-out infinite;
+      }
+      .cell i:nth-child(1) {
+        width: 190px;
+        height: 190px;
+        background: #ff7262;
+        left: 5%;
+        top: 15%;
+      }
+      .cell i:nth-child(2) {
+        width: 150px;
+        height: 150px;
+        background: #00ffbf;
+        right: 5%;
+        top: 5%;
+        animation-delay: -2s;
+      }
+      .cell i:nth-child(3) {
+        width: 180px;
+        height: 180px;
+        background: #006dff;
+        left: 28%;
+        bottom: 0;
+        animation-delay: -4s;
+      }
+      @keyframes breathe {
+        50% {
+          transform: scale(1.15);
+          filter: blur(14px);
+        }
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .card {
+        border: 1px solid #8de7e466;
+        border-radius: 22px;
+        padding: 24px;
+        background: #ffffff0b;
+      }
+      .card h2 {
+        color: #00ffbf;
+      }
+      .card p {
+        color: #9fc2c9;
+      }
+      .foot {
+        padding: 60px 0;
+        color: #9fc2c9;
+      }
+      @media (max-width: 700px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 75px 0;
+        }
+        .cell {
+          height: 250px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav class="nav">
+        <b class="logo">PHUC / BIO</b>
+        <div><a href="#work">Work</a><a href="#contact">Contact</a></div>
+      </nav>
+      <header class="hero">
+        <div>
+          <div class="eyebrow">Biomimetic / organic 2.0</div>
+          <h1>Systems that<br />learn to breathe.</h1>
+          <p>
+            Generative thinking for backend products: observe, respond, and keep
+            the whole organism healthy.
+          </p>
+        </div>
+        <div class="cell" aria-hidden="true"><i></i><i></i><i></i></div>
+      </header>
+      <section id="work" class="grid">
+        <article class="card">
+          <h2>Pulse</h2>
+          <p>Monitoring that notices change before it becomes a crisis.</p>
+        </article>
+        <article class="card">
+          <h2>Flow</h2>
+          <p>Data moving cleanly through resilient, observable paths.</p>
+        </article>
+        <article class="card">
+          <h2>Growth</h2>
+          <p>Small feedback loops that help a product evolve.</p>
+        </article>
+      </section>
+      <footer class="foot" id="contact">
+        Technology can be precise and alive.
+      </footer>
+    </main>
+  </body>
+</html>
