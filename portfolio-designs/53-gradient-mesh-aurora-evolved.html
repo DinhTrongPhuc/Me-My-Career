@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phuc — Gradient Mesh Aurora</title>
+    <style>
+      :root {
+        --bg1: #0d1020;
+        --bg2: #171b3e;
+        --cyan: #82f7ff;
+        --blue: #67a7ff;
+        --pink: #ff91d9;
+        --violet: #8864ff;
+        --panel: rgba(11, 16, 29, 0.4);
+        --text: #edf6ff;
+        --muted: #c7d5ed;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        font-family: Arial, sans-serif;
+        background:
+          radial-gradient(
+            circle at 15% 20%,
+            rgba(130, 247, 255, 0.35),
+            transparent 20%
+          ),
+          radial-gradient(
+            circle at 80% 25%,
+            rgba(255, 145, 217, 0.26),
+            transparent 24%
+          ),
+          linear-gradient(135deg, var(--bg1), var(--bg2));
+      }
+      .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 28px 20px 60px;
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 18px;
+      }
+      .brand {
+        font-weight: 900;
+        letter-spacing: 0.22em;
+      }
+      .nav {
+        display: flex;
+        gap: 18px;
+        font-size: 0.74rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .nav a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 24px;
+        align-items: center;
+        padding: 48px 0;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(3rem, 7vw, 7rem);
+        line-height: 0.9;
+        letter-spacing: -0.08em;
+      }
+      .eyebrow {
+        color: var(--cyan);
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.72rem;
+        margin-bottom: 16px;
+      }
+      .lead {
+        margin-top: 18px;
+        color: var(--muted);
+        line-height: 1.8;
+        max-width: 600px;
+      }
+      .actions {
+        display: flex;
+        gap: 14px;
+        margin-top: 26px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 14px 20px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-size: 0.74rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      .btn.primary {
+        background: linear-gradient(90deg, var(--cyan), var(--violet));
+        color: #08111f;
+      }
+      .btn.secondary {
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: var(--text);
+      }
+      .glass {
+        background: rgba(13, 23, 45, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(16px);
+        border-radius: 28px;
+        padding: 18px;
+        min-height: 390px;
+        position: relative;
+        overflow: hidden;
+      }
+      .glass::before,
+      .glass::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(20px);
+      }
+      .glass::before {
+        width: 220px;
+        height: 220px;
+        background: rgba(130, 247, 255, 0.26);
+        right: 12px;
+        top: 16px;
+      }
+      .glass::after {
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 145, 217, 0.2);
+        left: 20px;
+        bottom: 24px;
+      }
+      .diag {
+        position: relative;
+        z-index: 1;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 22px;
+        background: rgba(5, 10, 20, 0.32);
+        padding: 18px;
+        height: 100%;
+      }
+      .mini {
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        color: var(--cyan);
+        text-transform: uppercase;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 22px;
+      }
+      .stat {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 16px;
+        padding: 14px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .stat strong {
+        display: block;
+        font-size: 1.6rem;
+        color: var(--pink);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 24px;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 22px;
+        padding: 22px;
+      }
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--cyan);
+      }
+      .card p {
+        margin: 0;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+      @media (max-width: 820px) {
+        .hero,
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <div class="brand">PHUC / SYSTEMS</div>
+        <nav class="nav">
+          <a href="#work">Work</a>
+          <a href="#focus">Focus</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Backend Product Engineer</div>
+          <h1>Build glowing systems.</h1>
+          <p class="lead">
+            I create backend experiences that are fast, resilient, and easy for
+            product teams to trust and extend.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#work">Explore</a>
+            <a class="btn secondary" href="#contact">Connect</a>
+          </div>
+        </div>
+
+        <div class="glass">
+          <div class="diag">
+            <div class="mini">Signal map</div>
+            <div class="stats">
+              <div class="stat">
+                <strong>8.4M</strong><span>Daily requests</span>
+              </div>
+              <div class="stat">
+                <strong>2.1s</strong><span>Avg. flow</span>
+              </div>
+              <div class="stat">
+                <strong>96%</strong><span>Automation</span>
+              </div>
+              <div class="stat"><strong>14</strong><span>Services</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="grid">
+        <article class="card">
+          <h3>Platform</h3>
+          <p>
+            Design robust interfaces between services, infrastructure, and
+            product teams with low friction.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Ops</h3>
+          <p>
+            Build clean monitoring, cost visibility, and incident workflows that
+            reduce response time.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Shipping</h3>
+          <p>
+            Turn complex architecture into reliable product delivery with good
+            habits and strong ownership.
+          </p>
+        </article>
+      </section>
+    </div>
+  </body>
+</html>

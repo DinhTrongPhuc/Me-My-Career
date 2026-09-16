@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phuc — Academia Scholarly Mobile</title>
+    <style>
+      :root {
+        --bg: #f4efe8;
+        --paper: #fffdf9;
+        --ink: #171717;
+        --muted: #4c4c4c;
+        --line: #ccc0b0;
+        --accent: #7c4d2c;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Georgia, serif;
+      }
+      .paper {
+        max-width: 430px;
+        margin: 24px auto;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        padding: 18px 16px 22px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+      }
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 10px;
+      }
+      h1 {
+        margin: 18px 0 10px;
+        font-size: clamp(2.3rem, 8vw, 4rem);
+        line-height: 0.92;
+      }
+      .sub {
+        color: var(--muted);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+      .intro {
+        margin-top: 18px;
+        line-height: 1.8;
+        color: var(--ink);
+      }
+      .stats {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .box {
+        border: 1px solid var(--line);
+        padding: 10px 8px;
+        background: rgba(124, 77, 44, 0.02);
+      }
+      .box strong {
+        display: block;
+        font-size: 1.5rem;
+      }
+      .box span {
+        font-size: 0.7rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .foot {
+        margin-top: 18px;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+        color: var(--accent);
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="paper">
+      <div class="meta"><span>Phuc / notes</span><span>2026</span></div>
+      <h1>Systems <br />with clarity.</h1>
+      <div class="sub">Backend engineering / observability / architecture</div>
+      <p class="intro">
+        I translate product intent into resilient systems, clean interfaces, and
+        measurable operational quality.
+      </p>
+      <div class="stats">
+        <div class="box"><strong>99.98</strong><span>Uptime</span></div>
+        <div class="box"><strong>184</strong><span>Latency</span></div>
+        <div class="box"><strong>14</strong><span>Services</span></div>
+      </div>
+      <div class="foot">Research-driven delivery</div>
+    </div>
+  </body>
+</html>

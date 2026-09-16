@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phuc — Cyberpunk Mobile HUD</title>
+    <style>
+      :root {
+        --bg: #080c14;
+        --panel: rgba(12, 18, 28, 0.9);
+        --cyan: #67f3ff;
+        --pink: #ff47b2;
+        --green: #8bff7f;
+        --muted: #a8bfd8;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          linear-gradient(180deg, #070b13, #0d1320),
+          repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.02),
+            rgba(255, 255, 255, 0.02) 1px,
+            transparent 1px,
+            transparent 4px
+          );
+        color: white;
+        font-family: Consolas, monospace;
+      }
+      .phone {
+        max-width: 420px;
+        margin: 28px auto;
+        padding: 16px;
+        border: 1px solid rgba(103, 243, 255, 0.4);
+        background: rgba(6, 10, 16, 0.95);
+        border-radius: 28px;
+        box-shadow: 0 0 30px rgba(103, 243, 255, 0.18);
+      }
+      .hud {
+        border: 1px solid rgba(103, 243, 255, 0.35);
+        border-radius: 18px;
+        padding: 16px;
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .title {
+        color: var(--cyan);
+        font-weight: 800;
+        margin-top: 18px;
+        font-size: 2rem;
+        line-height: 1;
+      }
+      .sub {
+        color: var(--pink);
+        margin-top: 8px;
+        letter-spacing: 0.1em;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+      }
+      .bars {
+        margin-top: 20px;
+        display: grid;
+        gap: 10px;
+      }
+      .bar {
+        height: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(103, 243, 255, 0.2);
+        overflow: hidden;
+      }
+      .bar > span {
+        display: block;
+        height: 100%;
+        background: linear-gradient(90deg, var(--cyan), var(--pink));
+      }
+      .stats {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .stat {
+        border: 1px solid rgba(103, 243, 255, 0.2);
+        background: rgba(255, 255, 255, 0.02);
+        padding: 10px 8px;
+        text-align: center;
+      }
+      .stat strong {
+        display: block;
+        color: var(--green);
+        font-size: 1.2rem;
+      }
+      .stat span {
+        color: var(--muted);
+        font-size: 0.7rem;
+      }
+      .cta {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 10px 16px;
+        border: 1px solid var(--cyan);
+        color: var(--cyan);
+        text-decoration: none;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="phone">
+      <div class="hud">
+        <div class="top"><span>Phuc//system</span><span>online</span></div>
+        <div class="title">BUILD<br />THE NOISE</div>
+        <div class="sub">backend reliability</div>
+
+        <div class="bars">
+          <div class="bar"><span style="width: 88%"></span></div>
+          <div class="bar"><span style="width: 72%"></span></div>
+          <div class="bar"><span style="width: 96%"></span></div>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><strong>99.98</strong><span>uptime</span></div>
+          <div class="stat"><strong>184</strong><span>latency</span></div>
+          <div class="stat"><strong>24/7</strong><span>ops</span></div>
+        </div>
+
+        <a class="cta" href="#">connect</a>
+      </div>
+    </div>
+  </body>
+</html>

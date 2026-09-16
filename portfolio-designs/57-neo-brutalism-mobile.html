@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phuc — Neo Brutalism Mobile</title>
+    <style>
+      :root {
+        --bg: #f5f3ee;
+        --ink: #0f172a;
+        --yellow: #ffe600;
+        --pink: #ff4d6d;
+        --blue: #2b7fff;
+        --green: #27d17d;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+      .phone {
+        max-width: 420px;
+        margin: 28px auto;
+        background: #f8f8f5;
+        padding: 16px;
+        border: 3px solid var(--ink);
+        box-shadow: 8px 8px 0 var(--ink);
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+      .brand {
+        font-weight: 900;
+        letter-spacing: 0.12em;
+      }
+      .pill {
+        background: var(--yellow);
+        border: 2px solid var(--ink);
+        padding: 6px 8px;
+        font-weight: 800;
+      }
+      .hero {
+        background: var(--pink);
+        border: 3px solid var(--ink);
+        padding: 18px 16px;
+        margin-bottom: 16px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        line-height: 0.9;
+      }
+      .meta {
+        margin-top: 12px;
+        font-weight: 700;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .box {
+        background: var(--blue);
+        border: 3px solid var(--ink);
+        padding: 14px;
+        color: white;
+      }
+      .box.green {
+        background: var(--green);
+        color: var(--ink);
+      }
+      .box.yellow {
+        background: var(--yellow);
+        color: var(--ink);
+      }
+      .box strong {
+        display: block;
+        font-size: 1.5rem;
+      }
+      .list {
+        margin-top: 16px;
+        padding: 0;
+        list-style: none;
+      }
+      .list li {
+        background: white;
+        border: 3px solid var(--ink);
+        padding: 12px;
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="phone">
+      <div class="top">
+        <div class="brand">PHUC</div>
+        <div class="pill">LIVE</div>
+      </div>
+
+      <section class="hero">
+        <h1>Build<br />fast.</h1>
+        <div class="meta">Reliable systems. Honest engineering.</div>
+      </section>
+
+      <div class="stats">
+        <div class="box yellow"><strong>99.98</strong>uptime</div>
+        <div class="box green"><strong>24/7</strong>ops</div>
+        <div class="box"><strong>184ms</strong>latency</div>
+        <div class="box yellow"><strong>14</strong>services</div>
+      </div>
+
+      <ul class="list">
+        <li>APIs</li>
+        <li>Monitoring</li>
+        <li>Automation</li>
+      </ul>
+    </div>
+  </body>
+</html>

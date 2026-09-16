@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phuc — Claymorphism Mobile</title>
+    <style>
+      :root {
+        --bg: #f3ece8;
+        --cream: #fffaf7;
+        --rose: #f7c8c2;
+        --sky: #cfe8ff;
+        --mint: #d6f3d8;
+        --ink: #1a1d35;
+        --muted: #6d7285;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(180deg, #f8f3ef, #efe7e2);
+        color: var(--ink);
+      }
+      .phone {
+        max-width: 420px;
+        margin: 28px auto;
+        padding: 18px 16px 26px;
+        background: rgba(255, 255, 255, 0.22);
+        border-radius: 32px;
+      }
+      .shell {
+        background: rgba(255, 255, 255, 0.34);
+        border-radius: 28px;
+        padding: 16px;
+        box-shadow:
+          inset 4px 4px 12px rgba(255, 255, 255, 0.7),
+          inset -8px -8px 18px rgba(201, 180, 170, 0.18);
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+      .brand {
+        font-weight: 900;
+        letter-spacing: 0.12em;
+      }
+      .badge {
+        background: var(--cream);
+        border-radius: 999px;
+        padding: 6px 10px;
+        box-shadow:
+          6px 6px 12px rgba(0, 0, 0, 0.04),
+          inset 2px 2px 6px rgba(255, 255, 255, 0.8);
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+      .hero {
+        background: linear-gradient(
+          135deg,
+          rgba(247, 200, 194, 0.9),
+          rgba(207, 232, 255, 0.8)
+        );
+        border-radius: 24px;
+        padding: 18px;
+        box-shadow:
+          8px 8px 18px rgba(0, 0, 0, 0.04),
+          inset 2px 2px 8px rgba(255, 255, 255, 0.8);
+      }
+      .eyebrow {
+        color: var(--muted);
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 12px 0;
+        font-size: 2.3rem;
+        line-height: 1;
+        letter-spacing: -0.06em;
+      }
+      .hero p {
+        margin: 0;
+        color: rgba(26, 29, 53, 0.8);
+        line-height: 1.7;
+      }
+      .grid {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .card {
+        border-radius: 20px;
+        padding: 14px 12px;
+        background: rgba(255, 255, 255, 0.28);
+        box-shadow:
+          8px 8px 18px rgba(0, 0, 0, 0.04),
+          inset 2px 2px 8px rgba(255, 255, 255, 0.7);
+      }
+      .card strong {
+        display: block;
+        font-size: 1.5rem;
+      }
+      .card span {
+        color: var(--muted);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .cta {
+        display: inline-block;
+        margin-top: 18px;
+        text-decoration: none;
+        background: linear-gradient(135deg, var(--mint), var(--sky));
+        color: var(--ink);
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-weight: 700;
+        box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.04);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="phone">
+      <div class="shell">
+        <div class="top">
+          <div class="brand">PHUC</div>
+          <div class="badge">LIVE</div>
+        </div>
+
+        <section class="hero">
+          <div class="eyebrow">System design</div>
+          <h1>Ship with calm.</h1>
+          <p>
+            Backend clarity, product resilience, and human-centered systems that
+            scale without friction.
+          </p>
+        </section>
+
+        <div class="grid">
+          <div class="card"><strong>99.98</strong><span>uptime</span></div>
+          <div class="card"><strong>184ms</strong><span>p95</span></div>
+          <div class="card"><strong>14</strong><span>services</span></div>
+          <div class="card"><strong>24/7</strong><span>watch</span></div>
+        </div>
+
+        <a class="cta" href="#">View profile</a>
+      </div>
+    </div>
+  </body>
+</html>

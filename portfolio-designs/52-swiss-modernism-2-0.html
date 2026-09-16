@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phuc — Swiss Modernism 2.0</title>
+    <style>
+      :root {
+        --bg: #f5f2ed;
+        --paper: #fffdf9;
+        --ink: #111111;
+        --muted: #5b5b5b;
+        --line: #d8d1c7;
+        --red: #d92a20;
+        --gold: #c2925b;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+      .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 28px 22px 60px;
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 18px;
+        margin-bottom: 28px;
+      }
+      .brand {
+        font-size: 0.8rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+      .nav {
+        display: flex;
+        gap: 20px;
+        font-size: 0.74rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .nav a {
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 28px;
+        align-items: end;
+      }
+      .eyebrow {
+        color: var(--red);
+        font-size: 0.76rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      h1 {
+        margin: 16px 0 12px;
+        font-size: clamp(2.8rem, 6vw, 6rem);
+        line-height: 0.9;
+        letter-spacing: -0.06em;
+      }
+      .lead {
+        max-width: 560px;
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 1.02rem;
+      }
+      .cta-row {
+        margin-top: 26px;
+        display: flex;
+        gap: 14px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 14px 18px;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+      .btn.primary {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      .btn.secondary {
+        border: 1px solid var(--ink);
+        color: var(--ink);
+      }
+      .panel {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        padding: 22px;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 22px;
+      }
+      .stat {
+        border-top: 1px solid var(--line);
+        padding-top: 10px;
+      }
+      .stat strong {
+        font-size: 1.9rem;
+        display: block;
+      }
+      .stat span {
+        color: var(--muted);
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 42px;
+      }
+      .card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        padding: 20px;
+      }
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      @media (max-width: 800px) {
+        .hero,
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <div class="brand">Phuc / Backend</div>
+        <nav class="nav">
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Systems • Scale • Reliability</div>
+          <h1>Quiet systems. Visible impact.</h1>
+          <p class="lead">
+            I build the invisible infrastructure that lets products ship faster,
+            scale cleaner, and stay dependable under pressure.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#work">See work</a>
+            <a class="btn secondary" href="#contact">Say hello</a>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <div
+            style="
+              font-size: 0.72rem;
+              letter-spacing: 0.18em;
+              text-transform: uppercase;
+              color: var(--red);
+              font-weight: 700;
+            "
+          >
+            Current focus
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <strong>4x</strong>
+              <span>Faster rollout</span>
+            </div>
+            <div class="stat">
+              <strong>99.9</strong>
+              <span>Uptime</span>
+            </div>
+            <div class="stat">
+              <strong>24/7</strong>
+              <span>Support</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="work" class="grid">
+        <article class="card">
+          <h3>Architecture</h3>
+          <p>
+            Designing services and workflows with clear boundaries, fast
+            recovery, and low operational drag.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Automation</h3>
+          <p>
+            Moving teams from repetitive tasks to reliable pipelines and
+            self-healing operational patterns.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Optimization</h3>
+          <p>
+            Turning performance issues into measurable gains without adding
+            complexity to the product surface.
+          </p>
+        </article>
+      </section>
+    </div>
+  </body>
+</html>

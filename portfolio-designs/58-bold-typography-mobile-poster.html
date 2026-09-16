@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phuc — Bold Typography Mobile Poster</title>
+    <style>
+      :root {
+        --bg: #fdf7f1;
+        --ink: #111111;
+        --red: #ff4d34;
+        --blue: #0d62ff;
+        --yellow: #ffd54a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: Arial, sans-serif;
+      }
+      .poster {
+        max-width: 430px;
+        margin: 26px auto;
+        padding: 18px 16px 22px;
+        background: var(--bg);
+        border: 3px solid var(--ink);
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 900;
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .tag {
+        background: var(--yellow);
+        padding: 6px 8px;
+        border: 2px solid var(--ink);
+      }
+      h1 {
+        margin: 22px 0 14px;
+        font-size: clamp(3rem, 12vw, 5rem);
+        line-height: 0.82;
+        letter-spacing: -0.08em;
+        text-transform: uppercase;
+      }
+      h1 .accent {
+        color: var(--red);
+      }
+      .copy {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        max-width: 270px;
+      }
+      .grid {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .box {
+        border: 3px solid var(--ink);
+        padding: 14px;
+        min-height: 95px;
+      }
+      .box.blue {
+        background: var(--blue);
+        color: #fff;
+      }
+      .box.red {
+        background: var(--red);
+        color: #fff;
+      }
+      .box strong {
+        display: block;
+        font-size: 1.8rem;
+        line-height: 1;
+      }
+      .foot {
+        margin-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="poster">
+      <div class="top">
+        <span>Phuc</span>
+        <span class="tag">LIVE</span>
+      </div>
+      <h1>Build <span class="accent">fast</span><br />ship better</h1>
+      <div class="copy">
+        Platform systems, process clarity, and backend reliability for products
+        that need to keep moving.
+      </div>
+      <div class="grid">
+        <div class="box blue"><strong>99.98</strong> Uptime</div>
+        <div class="box red"><strong>184ms</strong> Latency</div>
+        <div class="box"><strong>24/7</strong> Support</div>
+        <div class="box red"><strong>14</strong> Services</div>
+      </div>
+      <div class="foot"><span>Systems</span><span>Focus</span></div>
+    </div>
+  </body>
+</html>
