@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phúc — Backend Developer · Spectrum</title>
+<style>
+  :root{
+    --bg:#FFFFFF; --body:#F5F5F5; --text:#2C2C2C; --muted:#505050; --quiet:#6F6F6F;
+    --accent:#2680EB; --accent-hover:#1273E6; --border:#8E8E8E; --focus:#2680EB;
+    --panel:#FFFFFF; --radius:6px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--body);color:var(--text);font-family:'Adobe Clean',-apple-system,'Segoe UI',Roboto,sans-serif;font-size:14px;line-height:1.6;}
+  ::selection{background:var(--accent);color:#fff;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  :focus{outline:none;}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:2px;}
+
+  .wrap{max-width:980px;margin:0 auto;padding:0 22px;}
+
+  /* top bar */
+  .top{background:var(--bg);border-bottom:1px solid #E1E1E1;position:sticky;top:0;z-index:40;}
+  .top-in{display:flex;align-items:center;gap:26px;height:52px;}
+  .logo{font-weight:700;font-size:15px;letter-spacing:.2px;}
+  .logo span{color:var(--accent);}
+  nav.tabs{display:flex;gap:2px;height:52px;align-items:stretch;}
+  .tab{padding:0 14px;display:flex;align-items:center;border-radius:2px;color:var(--muted);font-weight:600;font-size:14px;border-bottom:2px solid transparent;}
+  .tab:hover{color:var(--text);background:#F5F5F5;}
+  .tab.selected{color:var(--accent);border-bottom-color:var(--accent);}
+  .right{margin-left:auto;display:flex;align-items:center;gap:12px;}
+  .btn{display:inline-block;font-size:14px;font-weight:600;border-radius:var(--radius);padding:9px 18px;border:2px solid transparent;background:transparent;cursor:pointer;}
+  .btn-p{background:var(--accent);color:#fff;}
+  .btn-p:hover{background:var(--accent-hover);}
+  .btn-out{border-color:var(--border);color:var(--text);}
+  .btn-out:hover{background:#FAFAFA;border-color:#707070;}
+  .btn-quiet{color:var(--accent);padding:8px 12px;}
+  .btn-quiet:hover{background:#E5F0FE;text-decoration:none;}
+
+  .hero{background:var(--bg);padding:54px 0 40px;border-bottom:1px solid #E1E1E1;}
+  .hero h1{font-size:clamp(1.8rem,4.4vw,3rem);font-weight:700;letter-spacing:-.5px;line-height:1.15;}
+  .hero h1 em{font-style:normal;color:var(--accent);}
+  .hero .sub{color:var(--muted);font-size:1.02rem;max-width:560px;margin:14px 0 28px;}
+  .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+  .tags{margin-top:22px;display:flex;gap:8px;flex-wrap:wrap;}
+  .tag{background:#F3F3F3;color:var(--text);border-radius:999px;padding:5px 14px;font-size:12px;font-weight:600;}
+  .tag.on{background:var(--accent);color:#fff;}
+
+  main{padding:40px 0 60px;}
+  section{margin-bottom:34px;}
+  .sh{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+  .sh h2{font-size:1.05rem;font-weight:700;}
+  .rule{flex:1;height:1px;background:#D9D9D9;}
+
+  .panel{background:var(--panel);border:1px solid #E1E1E1;border-radius:8px;padding:24px;}
+  .about .lead{font-size:15px;color:#3D3D3D;}
+  .about b{font-weight:700;}
+
+  .wrap2{display:grid;grid-template-columns:1fr 340px;gap:20px;}
+  @media(max-width:820px){.wrap2{grid-template-columns:1fr;}}
+  .sidebar{display:grid;gap:20px;align-content:start;}
+
+  .list2{border-top:1px solid #E1E1E1;}
+  .li{display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid #E1E1E1;}
+  .li .l{color:var(--muted);}
+  .li .v{font-weight:600;text-align:right;}
+
+  .sk-group{margin-bottom:16px;}
+  .sk-group:last-child{margin-bottom:0;}
+  .sk-group h4{font-size:.82rem;text-transform:uppercase;letter-spacing:.5px;color:var(--quiet);margin-bottom:8px;font-weight:700;}
+  .chip{display:inline-block;font-size:13px;font-weight:600;border:1.5px solid #CECECE;border-radius:4px;padding:4px 11px;margin:0 6px 8px 0;color:var(--muted);}
+  .chip.on{border-color:var(--accent);color:var(--accent);background:#EFF5FD;}
+
+  .job{padding:0 0 14px 0;}
+  .job+.job{border-top:1px solid #E1E1E1;padding-top:18px;}
+  .job h3{font-size:1.02rem;}
+  .job .co{color:var(--accent);font-weight:600;}
+  .job .date{color:var(--quiet);font-size:13px;}
+  .job ul{margin-top:10px;padding-left:0;list-style:none;}
+  .job li{color:#3D3D3D;padding-left:18px;position:relative;margin-bottom:6px;}
+  .job li::before{content:'•';color:var(--accent);font-weight:700;position:absolute;left:2px;}
+
+  .proj{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;}
+  .p h3{font-size:1rem;}
+  .p .tech{color:var(--accent);font-size:13px;font-weight:600;margin:2px 0 10px;}
+  .p p{color:var(--muted);}
+
+  .contact .banner{background:#E5F0FE;border:1px solid #BFD9F8;border-radius:8px;padding:18px 22px;}
+  .contact b{font-size:1.02rem;}
+  .contact p{color:var(--muted);margin:4px 0 16px;}
+  .line{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;color:var(--muted);font-size:13px;}
+  footer{border-top:1px solid #E1E1E1;padding:22px 0;text-align:center;color:var(--quiet);font-size:13px;}
+  @media(max-width:760px){.right .btn{display:none;}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1!important;transform:none!important;}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap top-in">
+    <div class="logo">Phúc<span>.</span>dev</div>
+    <nav class="tabs">
+      <a class="tab selected" href="#about">Giới thiệu</a>
+      <a class="tab" href="#skills">Kỹ năng</a>
+      <a class="tab" href="#experience">Kinh nghiệm</a>
+      <a class="tab" href="#projects">Dự án</a>
+    </nav>
+    <div class="right"><a class="btn btn-out" href="mailto:dnhtrongphuc210104@gmail.com">Email</a></div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Đinh Trọng Phúc<br><em>Backend Developer</em></h1>
+    <div class="sub">Giao diện theo Adobe Spectrum — sạch, phẳng, đúng chuẩn. Đó cũng là cách tôi viết code: không rườm rà, đúng quy ước, dễ bảo trì.</div>
+    <div class="row">
+      <a class="btn btn-p" href="#projects">Xem dự án</a>
+      <a class="btn btn-out" href="#contact">Liên hệ</a>
+    </div>
+    <div class="tags">
+      <span class="tag on">Node.js</span><span class="tag on">TypeScript</span><span class="tag">PostgreSQL</span><span class="tag on">Redis</span><span class="tag">Docker</span><span class="tag">Kubernetes</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap wrap2">
+
+    <div>
+      <section id="about">
+        <div class="sh"><h2>Chuyên gia về sự ổn định</h2><span class="rule"></span></div>
+        <div class="panel about">
+          <p class="lead"><b>Operating / Software Engineering — MINDX Technology School</b> (02/2026 → nay): giám sát production systems, xử lý incident, internal tools & automation, phối hợp dev/infra.</p>
+          <p style="margin-top:12px;">Trước đó <b>Unity Developer (2D/3D/VR/AR)</b> tại The Open Network New Generation: phát triển & tối ưu ứng dụng Unity, gameplay systems, release đa nền tảng (Meta Store, SideQuest, Google Play, App Store).</p>
+          <p style="margin-top:12px;">Nền tảng: Cử nhân CNTT — ĐH Mở Hà Nội (2022 → nay).</p>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="sh"><h2>Kinh nghiệm</h2><span class="rule"></span></div>
+        <div class="panel">
+          <div class="job">
+            <h3>Operating / Software Engineering</h3>
+            <div class="co">MINDX TECHNOLOGY SCHOOL</div>
+            <div class="date">02/2026 — Nay</div>
+            <ul>
+              <li>Giám sát & duy trì production systems (uptime, stability, performance).</li>
+              <li>Xử lý incident & lỗi hệ thống kịp thời.</li>
+              <li>Internal tools + automation scripts — giảm thao tác thủ công.</li>
+              <li>Phối hợp dev/infra team, tối ưu quy trình vận hành.</li>
+            </ul>
+          </div>
+          <div class="job">
+            <h3>Unity Developer (2D/3D/VR/AR)</h3>
+            <div class="co">THE OPEN NETWORK NEW GENERATION</div>
+            <div class="date">06/2024 — 04/2025</div>
+            <ul>
+              <li>Phát triển & tối ưu ứng dụng Unity đa nền tảng.</li>
+              <li>Gameplay systems, tính năng & performance tuning.</li>
+              <li>Code review — mã nguồn maintainable & scalable.</li>
+              <li>Release: Meta Store, SideQuest, Google Play, App Store.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="sh"><h2>Dự án tiêu biểu</h2><span class="rule"></span></div>
+        <div class="proj">
+          <div class="panel p"><h3>JoinTogether_SocialNetwork</h3><div class="tech">Node.js (TS) · Express · PostgreSQL · Socket.IO · React</div>
+            <p>Mạng xã hội kết nối người cùng sở thích, tìm hoạt động theo vị trí — đồ án tốt nghiệp.</p>
+            <p style="margin-top:8px;"><a href="https://join-together-social-network.vercel.app/" target="_blank">Xem live →</a></p></div>
+          <div class="panel p"><h3>vn-payment</h3><div class="tech">Node.js · TypeScript · NPM</div>
+            <p>Unified API cho MoMo, VNPay, ZaloPay — đã publish lên NPM.</p>
+            <p style="margin-top:8px;"><a href="https://github.com/DinhTrongPhuc/vn-payment" target="_blank">GitHub →</a></p></div>
+          <div class="panel p"><h3>Solution-Center-for-IT-Helpdesk</h3><div class="tech">React · Tailwind · Node.js · Express · MongoDB</div>
+            <p>Quản lý giải pháp tích hợp AI — RESTful API + Hexagonal Architecture.</p>
+            <p style="margin-top:8px;"><a href="https://github.com/DinhTrongPhuc/Solution-Center-for-IT-Helpdesk" target="_blank">GitHub →</a></p></div>
+        </div>
+      </section>
+    </div>
+
+    <aside class="sidebar">
+      <div class="panel" id="skills">
+        <div class="sh" style="margin-bottom:12px;"><h2>Kỹ năng</h2></div>
+        <div class="sk-group"><h4>Ngôn ngữ</h4><span class="chip on">TypeScript</span><span class="chip on">JavaScript</span><span class="chip">Python</span><span class="chip">SQL</span></div>
+        <div class="sk-group"><h4>Backend</h4><span class="chip on">Node.js</span><span class="chip on">RESTful</span><span class="chip">GraphQL</span><span class="chip">Microservices</span></div>
+        <div class="sk-group"><h4>Database</h4><span class="chip on">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">SQL Server</span><span class="chip on">Redis</span></div>
+        <div class="sk-group"><h4>DevOps & Ops</h4><span class="chip on">Docker</span><span class="chip on">CI/CD</span><span class="chip">Kubernetes</span><span class="chip">Kafka</span><span class="chip on">Monitoring</span><span class="chip">Incident</span></div>
+        <div class="sk-group"><h4>Kiến trúc</h4><span class="chip">OOP</span><span class="chip on">Clean Arch</span><span class="chip on">Hexagonal</span><span class="chip">SOLID</span><span class="chip">DDD</span></div>
+        <div class="sk-group"><h4>Tools</h4><span class="chip on">Git/GitHub</span><span class="chip">VS Code</span><span class="chip">Postman</span></div>
+      </div>
+
+      <div class="panel">
+        <div class="list2">
+          <div class="li"><span class="l">Vị trí</span><span class="v">Hà Nội</span></div>
+          <div class="li"><span class="l">Điện thoại</span><span class="v">0389 439 976</span></div>
+          <div class="li"><span class="l">GitHub</span><span class="v"><a href="https://github.com/DinhTrongPhuc" target="_blank">DinhTrongPhuc</a></span></div>
+          <div class="li"><span class="l">Trạng thái</span><span class="v">● Sẵn sàng</span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="wrap">
+    <section id="contact">
+      <div class="panel contact">
+        <div class="banner">
+          <b>Tìm người cầm chắc vận hành 24/7?</b>
+          <p>Phản hồi trong 24h. Gửi email hoặc nhìn thấy tôi trên GitHub.</p>
+          <div class="row">
+            <a class="btn btn-p" href="mailto:dnhtrongphuc210104@gmail.com">Gửi email</a>
+            <a class="btn btn-quiet" href="https://github.com/DinhTrongPhuc" target="_blank">GitHub</a>
+          </div>
+        </div>
+        <div class="line">
+          <span>dnhtrongphuc210104@gmail.com</span><span>·</span><span>0389 439 976</span><span>·</span><span>Đống Đa, Hà Nội</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>© 2026 Đinh Trọng Phúc · Adobe Spectrum — flat & professional, theo UI/UX Pro Max</footer>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = new IntersectionObserver(es => es.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }), {threshold:.06});
+  document.querySelectorAll('.reveal').forEach(el => { if(reduce){el.classList.add('in');} else {io.observe(el);} });
+</script>
+</body>
+</html>

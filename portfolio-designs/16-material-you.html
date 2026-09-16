@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phúc — Backend Developer · Material You</title>
+<style>
+  :root{
+    --primary:#6750A4; --on-primary:#FFFFFF; --primary-container:#EADDFF; --on-primary-container:#21005D;
+    --secondary:#625B71; --secondary-container:#E8DEF8;
+    --tertiary:#7D5260; --tertiary-container:#FFD8E4;
+    --surface:#FEF7FF; --surface-variant:#E7E0EC; --on-surface:#1D1B20; --on-surface-variant:#49454F;
+    --outline:#79747E; --error:#B3261E; --scrim:rgba(0,0,0,.4);
+    --shape-sm:12px; --shape-md:16px; --shape-lg:28px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--surface);color:var(--on-surface);font-family:'Roboto','Segoe UI',system-ui,sans-serif;line-height:1.65;}
+  ::selection{background:var(--primary);color:var(--on-primary);}
+  a{color:var(--primary);text-decoration:none;font-weight:500;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px;}
+
+  .appbar{position:sticky;top:0;z-index:40;background:var(--surface);color:var(--on-surface);display:flex;align-items:center;height:64px;padding:0 16px;box-shadow:0 2px 8px rgba(0,0,0,.08);gap:20px;}
+  .appbar .title{font-size:1.1rem;font-weight:500;letter-spacing:.2px;}
+  .appbar .title b{color:var(--primary);}
+  .navrow{display:flex;gap:6px;margin-left:auto;}
+  .nlink{font-size:.88rem;font-weight:500;color:var(--on-surface-variant);padding:10px 14px;border-radius:999px;}
+  .nlink:hover{background:var(--secondary-container);}
+
+  /* M3 hero */
+  .hero{padding:56px 0 40px;}
+  .hero .title{font-size:clamp(2rem,5vw,3.2rem);font-weight:400;letter-spacing:.2px;line-height:1.12;}
+  .hero .title b{font-weight:500;color:var(--primary);}
+  .hero .subtitle{color:var(--on-surface-variant);max-width:520px;margin:14px 0 26px;font-size:1.05rem;}
+  .m3-btns{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{display:inline-block;border-radius:999px;font-size:.94rem;font-weight:600;letter-spacing:.3px;text-align:center;padding:13px 28px;transition:box-shadow .2s,transform .1s;}
+  .btn:active{transform:scale(.97);}
+  .btn-filled{background:var(--primary);color:var(--on-primary);box-shadow:0 4px 14px rgba(103,80,164,.4);}
+  .btn-filled:hover{box-shadow:0 6px 20px rgba(103,80,164,.5);}
+  .btn-filled:active{box-shadow:0 2px 8px rgba(103,80,164,.4);}
+  .btn-tonal{background:var(--secondary-container);color:var(--on-primary-container);}
+  .btn-outlined{background:transparent;border:1.5px solid var(--outline);color:var(--primary);}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px;}
+  .chip{font-size:.84rem;padding:9px 16px;border-radius:999px;background:var(--surface-variant);color:var(--on-surface-variant);border:1px solid transparent;}
+  .chip.on{background:var(--secondary-container);color:var(--on-primary-container);}
+
+  section{padding:52px 0;}
+  .sec-h{font-size:1.5rem;font-weight:500;letter-spacing:.1px;margin-bottom:22px;}
+  .sec-h::after{content:'';display:block;width:0;}
+
+  .card{background:var(--surface);border-radius:var(--shape-md);box-shadow:0 1px 3px rgba(0,0,0,.12),0 4px 12px rgba(0,0,0,.08);padding:24px;color:var(--on-surface);}
+  .card h3{font-size:1.05rem;font-weight:500;letter-spacing:.2px;margin-bottom:10px;}
+  .card p{color:var(--on-surface-variant);font-size:.96rem;}
+
+  .about2{display:grid;grid-template-columns:2fr 1fr;gap:16px;}
+  .list-item{display:flex;justify-content:space-between;align-items:center;padding:12px 4px;border-radius:var(--shape-sm);}
+  .list-item:hover{background:var(--surface-variant);}
+  .list-item .lbl{color:var(--on-surface-variant);font-size:.9rem;}
+  .list-item .val{font-weight:500;}
+
+  .sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+  .sku{background:var(--primary-container);border-radius:var(--shape-md);padding:20px;}
+  .sku h4{color:var(--on-primary-container);font-weight:500;margin-bottom:12px;font-size:.98rem;}
+  .pill{display:inline-block;background:var(--surface);color:var(--on-surface);border-radius:999px;padding:7px 14px;font-size:.84rem;margin:0 6px 8px 0;box-shadow:0 1px 2px rgba(0,0,0,.1);}
+  .pill.on{background:var(--primary);color:var(--on-primary);}
+
+  .xp{display:grid;gap:16px;}
+  .x .head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:baseline;}
+  .x h3{font-weight:500;}
+  .x .co{color:var(--tertiary);font-weight:500;}
+  .date{font-size:.82rem;color:var(--on-surface-variant);border:1px solid var(--outline);padding:3px 12px;border-radius:999px;}
+  .x ul{margin-top:12px;padding-left:20px;color:var(--on-surface-variant);font-size:.95rem;display:grid;gap:6px;}
+
+  .pj{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;}
+  .p .tag{font-size:.78rem;color:var(--tertiary);font-weight:500;text-transform:uppercase;letter-spacing:.4px;}
+  .p .tech{color:var(--on-surface-variant);font-size:.86rem;margin-bottom:8px;}
+
+  .cnt{background:var(--primary-container);border-radius:var(--shape-lg);padding:44px;text-align:center;}
+  .cnt h3{color:var(--on-primary-container);font-weight:500;}
+  .cnt p{color:var(--on-primary-container);opacity:.8;margin:8px 0 22px;}
+
+  .fab{position:fixed;right:28px;bottom:28px;width:56px;height:56px;border-radius:var(--shape-md);background:var(--primary);color:var(--on-primary);border:none;font-size:1.4rem;font-weight:600;box-shadow:0 4px 12px rgba(103,80,164,.5);cursor:pointer;z-index:50;display:flex;align-items:center;justify-content:center;transition:transform .15s;font-family:inherit;}
+  .fab:hover{transform:scale(1.05);}
+  .fab:active{transform:scale(.95);}
+
+  footer{padding:26px 0;text-align:center;color:var(--on-surface-variant);font-size:.84rem;}
+  @media(max-width:760px){.navrow{display:none;}.about2{grid-template-columns:1fr;}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1!important;transform:none!important;}}
+</style>
+</head>
+<body>
+
+<div class="appbar">
+  <div class="title">Phúc <b>·</b> Backend Dev</div>
+  <div class="navrow"><a class="nlink" href="#about">Giới thiệu</a><a class="nlink" href="#skills">Kỹ năng</a><a class="nlink" href="#experience">Kinh nghiệm</a><a class="nlink" href="#projects">Dự án</a></div>
+</div>
+
+<header class="wrap hero">
+  <div class="title">Xin chào, tôi là <b>Đinh Trọng Phúc</b><br>Backend Developer</div>
+  <div class="subtitle">Material You — giao diện màu theo cá nhân, giống cách tôi làm code: tôn trọng từng người dùng, từng điều kiện.</div>
+  <div class="m3-btns">
+    <a class="btn btn-filled" href="mailto:dnhtrongphuc210104@gmail.com">Liên hệ</a>
+    <a class="btn btn-tonal" href="#projects">Xem dự án</a>
+    <a class="btn btn-outlined" href="https://github.com/DinhTrongPhuc" target="_blank">GitHub</a>
+  </div>
+  <div class="chips">
+    <span class="chip">Node.js</span><span class="chip on">TypeScript</span><span class="chip">PostgreSQL</span><span class="chip on">Redis</span><span class="chip">Docker</span><span class="chip">Kubernetes</span>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2 class="sec-h">Giới thiệu</h2>
+    <div class="about2">
+      <div class="card"><h3>Về tôi</h3>
+        <p>Operating / Software Engineering tại <b>MINDX Technology School</b>: giám sát production, xử lý incident, viết internal tools, tối ưu quy trình. Trước đó <b>Unity Developer</b> (2D/3D/VR/AR) phát hành app ra Meta Store, SideQuest, Google Play, App Store.</p>
+        <p style="margin-top:12px;">Cử nhân CNTT — ĐH Mở Hà Nội. Mục tiêu: kỹ sư phần mềm năng lực cao.</p></div>
+      <div class="card"><h3>Thông tin</h3>
+        <div class="list-item"><span class="lbl">Vị trí</span><span class="val">Hà Nội</span></div>
+        <div class="list-item"><span class="lbl">Điện thoại</span><span class="val">0389 439 976</span></div>
+        <div class="list-item"><span class="lbl">Email</span><span class="val">...@gmail.com</span></div>
+        <div class="list-item"><span class="lbl">GitHub</span><span class="val">DinhTrongPhuc</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2 class="sec-h">Kỹ năng</h2>
+    <div class="sk">
+      <div class="sku"><h4>Ngôn ngữ</h4><span class="pill on">TypeScript</span><span class="pill on">JavaScript</span><span class="pill">Python</span><span class="pill">SQL</span></div>
+      <div class="sku"><h4>Backend</h4><span class="pill on">Node.js</span><span class="pill on">RESTful API</span><span class="pill">GraphQL</span><span class="pill">Microservices</span></div>
+      <div class="sku"><h4>Database</h4><span class="pill on">PostgreSQL</span><span class="pill">MongoDB</span><span class="pill">SQL Server</span><span class="pill on">Redis</span></div>
+      <div class="sku"><h4>DevOps & Ops</h4><span class="pill on">Docker</span><span class="pill on">CI/CD</span><span class="pill">Kubernetes</span><span class="pill">Kafka</span><span class="pill on">Monitoring</span><span class="pill">Incident</span></div>
+      <div class="sku"><h4>Kiến trúc</h4><span class="pill">OOP</span><span class="pill on">Clean Arch</span><span class="pill on">Hexagonal</span><span class="pill">SOLID</span><span class="pill">DDD</span></div>
+      <div class="sku"><h4>Tools</h4><span class="pill on">Git/GitHub</span><span class="pill">VS Code</span><span class="pill">Postman</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2 class="sec-h">Kinh nghiệm</h2>
+    <div class="xp">
+      <div class="card x"><div class="head"><h3>Operating / Software Engineering</h3><span class="date">02/2026 → nay</span></div>
+        <div class="co">MINDX TECHNOLOGY SCHOOL</div>
+        <ul><li>Giám sát & duy trì production systems.</li><li>Xử lý incident & lỗi hệ thống kịp thời.</li><li>Internal tools + automation scripts.</li><li>Phối hợp dev/infra team, tối ưu quy trình.</li></ul></div>
+      <div class="card x"><div class="head"><h3>Unity Developer (2D/3D/VR/AR)</h3><span class="date">06/2024 → 04/2025</span></div>
+        <div class="co">THE OPEN NETWORK NEW GENERATION</div>
+        <ul><li>Phát triển & tối ưu ứng dụng Unity đa nền tảng.</li><li>Gameplay systems & performance tuning.</li><li>Code review — mã nguồn sạch.</li><li>Release: Meta Store, SideQuest, Google Play, App Store.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2 class="sec-h">Dự án tiêu biểu</h2>
+    <div class="pj">
+      <div class="card p"><div class="tag">Đồ án tốt nghiệp</div><h3>JoinTogether_SocialNetwork</h3>
+        <div class="tech">Node.js (TS) · Express · PostgreSQL · Socket.IO · React</div>
+        <p>Mạng xã hội kết nối người cùng sở thích, tìm hoạt động theo vị trí.</p>
+        <a href="https://join-together-social-network.vercel.app/" target="_blank">Xem live →</a></div>
+      <div class="card p"><div class="tag">Open-source · NPM</div><h3>vn-payment</h3>
+        <div class="tech">Node.js · TypeScript</div>
+        <p>Unified API cho MoMo, VNPay, ZaloPay — đã publish lên NPM.</p>
+        <a href="https://github.com/DinhTrongPhuc/vn-payment" target="_blank">GitHub →</a></div>
+      <div class="card p"><div class="tag">Full-stack · AI</div><h3>Solution-Center-for-IT-Helpdesk</h3>
+        <div class="tech">React · Tailwind · Node.js TS · Express · MongoDB</div>
+        <p>Quản lý giải pháp tích hợp AI — RESTful API + Hexagonal Architecture.</p>
+        <a href="https://github.com/DinhTrongPhuc/Solution-Center-for-IT-Helpdesk" target="_blank">GitHub →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cnt">
+      <h3>Sẵn sàng cho vị trí Backend / Node.js Developer</h3>
+      <p>Giao diện tùy biến từng người — hồ sơ của bạn cũng nên vậy. Phản hồi trong 24h.</p>
+      <a class="btn btn-filled" href="mailto:dnhtrongphuc210104@gmail.com">Gửi email</a>
+    </div>
+  </div>
+</section>
+
+<button class="fab" id="fab" aria-label="Cuộn lên đầu">↑</button>
+
+<footer><div class="wrap">© 2026 Đinh Trọng Phúc · Material You / MD3 — thiết kế theo hệ design system của UI/UX Pro Max</div></footer>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('fab').addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
+  const io = new IntersectionObserver(es => es.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }), {threshold:.06});
+  document.querySelectorAll('.reveal').forEach(el => { if(reduce){el.classList.add('in');} else {io.observe(el);} });
+</script>
+</body>
+</html>

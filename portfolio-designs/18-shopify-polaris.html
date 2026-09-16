@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phúc — Backend Developer · Polaris</title>
+<style>
+  :root{
+    --bg:#F6F6F7; --surface:#FFFFFF; --text:#202223; --muted:#6E7179; --border:#C9CCD1;
+    --primary:#008060; --primary-hover:#00694B; --link:#2C6ECB; --highlight:#008060;
+    --focus:#005BD3; --info-bg:#E8F3FF; --info-bd:#D0E8FF; --danger:#D82C0D;
+    --shadow:0 0 0 1px rgba(63,63,68,.05),0 1px 0 rgba(63,63,68,.05),0 1px 3px rgba(63,63,68,.2);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.55;font-size:.93rem;}
+  ::selection{background:var(--primary);color:#fff;}
+  a{color:var(--link);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:2px;}
+
+  /* TopBar */
+  .topbar{position:sticky;top:0;z-index:40;background:#202223;color:#fff;display:flex;align-items:center;gap:18px;padding:0 18px;height:48px;}
+  .brand{font-weight:600;font-size:.92rem;letter-spacing:.2px;}
+  .brand b{color:#00C48C;}
+  .tb-search{margin-left:auto;background:#3A3B3B;border-radius:6px;padding:7px 14px;color:#B5B6B6;font-size:.82rem;display:none;}
+  .tb-actions{display:flex;gap:8px;}
+  .icon-btn{width:30px;height:30px;border-radius:50%;background:#3A3B3B;display:flex;align-items:center;justify-content:center;font-size:.8rem;}
+
+  .page{max-width:960px;margin:0 auto;padding:22px 18px 60px;}
+  .page h1{font-size:1.35rem;font-weight:600;}
+  .crumb{color:var(--muted);font-size:.82rem;margin-bottom:6px;}
+
+  /* banner */
+  .banner{display:flex;gap:12px;background:var(--info-bg);border:1px solid var(--info-bd);border-radius:6px;padding:12px 16px;margin:14px 0;align-items:flex-start;}
+  .banner .ic{color:var(--focus);font-weight:700;}
+  .banner p{color:#10304F;font-size:.9rem;}
+  .banner b{color:#083A75;}
+
+  .banner.warn{background:#FFF5E6;border-color:#FFD9A1;}
+  .banner.warn .ic{color:#B98900;}
+
+  /* layout */
+  .grid2{display:grid;grid-template-columns:2fr 1fr;gap:16px;align-items:start;}
+  .col{display:grid;gap:16px;}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr;}}
+
+  /* card */
+  .card{background:var(--surface);border-radius:8px;box-shadow:var(--shadow);overflow:hidden;}
+  .card .h{padding:13px 16px;border-bottom:1px solid var(--border);background:#FAFAFA;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+  .card .bd{padding:14px 16px;}
+  .card .ft{padding:11px 16px;border-top:1px solid var(--border);background:#FAFAFA;display:flex;justify-content:flex-end;gap:8px;}
+  .card h3{font-size:1rem;font-weight:600;margin-bottom:8px;}
+  .card p{color:var(--muted);}
+
+  .btn{display:inline-block;padding:9px 16px;border-radius:6px;font-weight:600;font-size:.86rem;border:1px solid transparent;cursor:pointer;}
+  .btn-p{background:var(--primary);color:#fff;}
+  .btn-p:hover{background:var(--primary-hover);text-decoration:none;}
+  .btn-outline{border-color:var(--border);color:var(--text);background:var(--surface);}
+  .btn-outline:hover{background:#FAFAFA;text-decoration:none;}
+  .btn-plain{color:var(--link);background:none;font-weight:500;padding:8px 10px;}
+  .btn-plain:hover{text-decoration:underline;background:none;}
+
+  /* data-table style for skills */
+  .row{display:flex;justify-content:space-between;align-items:center;padding:9px 2px;border-bottom:1px solid var(--border);}
+  .row:last-of-type{border:none;}
+  .row .lbl{font-weight:500;}
+  .row .g0{color:var(--muted);font-size:.86rem;}
+  .tag{display:inline-block;background:#EDEFF1;color:#202223;border-radius:999px;padding:3px 10px;font-size:.78rem;margin:0 5px 6px 0;}
+  .tag.hot{background:#E6FBF6;color:#007A5F;font-weight:600;}
+
+  .bullets{list-style:none;}
+  .bullets li{padding-left:22px;position:relative;margin-bottom:8px;color:#4A4B4D;}
+  .bullets li::before{content:'✓';position:absolute;left:0;color:var(--primary);font-weight:700;}
+  .bullets b{color:var(--text);}
+
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;}
+  .proj .meta{font-size:.8rem;color:var(--muted);margin:2px 0 10px;}
+  .banner.cta{background:#E5F5FF;border-color:#B6E3FF;margin-bottom:0;}
+  .banner.cta .ic{color:#1D6FBE;}
+  .banner.cta h3{color:#07548A;font-size:1rem;margin-bottom:4px;}
+
+  footer{text-align:center;color:var(--muted);font-size:.82rem;padding:0 0 26px;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.reveal{opacity:1!important;transform:none!important;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Phúc <b>·</b> Backend Portfolio <span style="font-weight:400;color:#B5B6B6;">— Polaris app</span></div>
+  <div class="tb-search">⌕ Tìm kiếm...</div>
+  <div class="tb-actions"><span class="icon-btn">🗣</span><span class="icon-btn">⚙</span></div>
+</div>
+
+<div class="page">
+  <div class="crumb">Trang chủ / Hồ sơ / Backend Developer</div>
+  <h1>Đinh Trọng Phúc — Backend Developer</h1>
+
+  <div class="banner" role="status">
+    <span class="ic">ℹ</span>
+    <p><b>Một hồ sơ vận hành như một admin app.</b> Giao diện theo Shopify Polaris. Tôi là Operating / Software Engineer tại MINDX — giữ production ổn định, xử lý incident, viết tool nội bộ.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="col">
+
+      <div class="card">
+        <div class="h">Giới thiệu</div>
+        <div class="bd">
+          <p style="color:#4A4B4D;"><b>Operating / Software Engineering — MINDX Technology School</b> (02/2026 → nay): giám sát production systems, xử lý incidents, internal tools + automation, phối hợp dev/infra.</p>
+          <p style="color:#4A4B4D;margin-top:10px;">Trước đó <b>Unity Developer (2D/3D/VR/AR)</b> tại The Open Network — phát hành app ra Meta Store, SideQuest, Google Play, App Store. Học Cử nhân CNTT tại ĐH Mở Hà Nội.</p>
+          <div style="margin-top:12px;">
+            <span class="tag hot">Node.js</span><span class="tag hot">TypeScript</span><span class="tag hot">PostgreSQL</span><span class="tag hot">Redis</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">CI/CD</span><span class="tag">Monitoring</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="h">Kinh nghiệm</div>
+        <div class="bd">
+          <div class="bullets">
+            <b>MINDX TECHNOLOGY SCHOOL — Operating / Software Engineering</b>
+            <li>Giám sát & duy trì production systems (uptime, stability, performance).</li>
+            <li>Xử lý incident & lỗi hệ thống kịp thời.</li>
+            <li>Internal tools + automation scripts — giảm thao tác thủ công.</li>
+            <li>Phối hợp dev/infra team, tối ưu quy trình vận hành.</li>
+            <div style="height:10px;"></div>
+            <b>THE OPEN NETWORK NEW GENERATION — Unity Developer (06/2024 → 04/2025)</b>
+            <li>Phát triển & tối ưu ứng dụng Unity đa nền tảng; gameplay systems.</li>
+            <li>Performance tuning; code review.</li>
+            <li>Release: Meta Store, SideQuest, Google Play, App Store.</li>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="h">Dự án tiêu biểu</div>
+        <div class="bd">
+          <div class="proj-grid">
+            <div class="proj"><h3>JoinTogether_SocialNetwork</h3><div class="meta">Đồ án tốt nghiệp · Node.js (TS) · Express · PostgreSQL · Socket.IO · React</div>
+              <ul class="bullets"><li>Mạng xã hội kết nối người cùng sở thích, tìm hoạt động theo vị trí.</li></ul>
+              <div class="banner cta" style="margin-top:10px;"><span class="ic">→</span><p><a href="https://join-together-social-network.vercel.app/" target="_blank">Xem live</a></p></div></div>
+            <div class="proj"><h3>vn-payment</h3><div class="meta">Open-source · NPM · Node.js · TypeScript</div>
+              <ul class="bullets"><li>Unified API cho MoMo, VNPay, ZaloPay — đã publish lên NPM.</li></ul>
+              <div class="banner cta" style="margin-top:10px;"><span class="ic">→</span><p><a href="https://github.com/DinhTrongPhuc/vn-payment" target="_blank">Xem trên GitHub</a></p></div></div>
+            <div class="proj"><h3>Solution-Center-for-IT-Helpdesk</h3><div class="meta">Full-stack · AI · React · Tailwind · Node.js · Express · MongoDB</div>
+              <ul class="bullets"><li>Quản lý giải pháp tích hợp AI — Hexagonal Architecture.</li></ul>
+              <div class="banner cta" style="margin-top:10px;"><span class="ic">→</span><p><a href="https://github.com/DinhTrongPhuc/Solution-Center-for-IT-Helpdesk" target="_blank">Xem trên GitHub</a></p></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col">
+
+      <div class="card">
+        <div class="h">Kỹ năng</div>
+        <div class="bd">
+          <div class="row"><span class="lbl">Ngôn ngữ</span> <span class="g0">TypeScript · JS · Python · SQL</span></div>
+          <div class="row"><span class="lbl">Backend</span> <span class="g0">Node.js · REST · GraphQL · Microservices</span></div>
+          <div class="row"><span class="lbl">Database</span> <span class="g0">PostgreSQL · MongoDB · SQL Server · Redis</span></div>
+          <div class="row"><span class="lbl">DevOps</span> <span class="g0">Docker · CI/CD · K8s · Kafka</span></div>
+          <div class="row"><span class="lbl">Ops</span> <span class="g0">Monitoring · Incident Mgmt</span></div>
+          <div class="row"><span class="lbl">Kiến trúc</span> <span class="g0">Clean · Hexagonal · SOLID · DDD</span></div>
+          <div class="row"><span class="lbl">Tools</span> <span class="g0">Git/GitHub · VS Code · Postman</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="h">Thông tin liên hệ</div>
+        <div class="bd">
+          <div class="row"><span class="lbl">Vị trí</span> <span class="g0">Đống Đa, Hà Nội</span></div>
+          <div class="row"><span class="lbl">Điện thoại</span> <span class="g0">0389 439 976</span></div>
+          <div class="row"><span class="lbl">Email</span> <span class="g0">dnhtrongphuc210104@gmail.com</span></div>
+          <div class="row"><span class="lbl">GitHub</span> <span class="g0">DinhTrongPhuc</span></div>
+          <div class="row"><span class="lbl">Trạng thái</span> <span class="tag hot">● Đang mở nhận việc</span></div>
+        </div>
+        <div class="ft">
+          <a class="btn btn-p" href="mailto:dnhtrongphuc210104@gmail.com">Gửi email cho Phúc</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="h">Ghi chú</div>
+        <div class="bd">
+          <div class="banner warn"><span class="ic">!</span><p>Giao diện mô phỏng Shopify Polaris để minh hoạ khả năng bám sát design system của nhà tuyển dụng. Nội dung hồ sơ là thật 100%.</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 Đinh Trọng Phúc · Shopify Polaris — theo UI/UX Pro Max design system</footer>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = new IntersectionObserver(es => es.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }), {threshold:.06});
+  document.querySelectorAll('.reveal').forEach(el => { if(reduce){el.classList.add('in');} else {io.observe(el);} });
+</script>
+</body>
+</html>

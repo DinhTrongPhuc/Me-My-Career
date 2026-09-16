@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phuc — Backend Developer (cursor-powered)</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0C0E12;--card:#15181E;--text:#EFF2F7;--muted:#8A93A3;--line:#232936;
+    --green:#4ADE80;--cyan:#22D3EE;--pink:#F472B6;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;line-height:1.7;}
+  ::selection{background:var(--green);color:#000;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px;}
+
+  @media (hover:hover) and (pointer:fine){
+    body{cursor:none;}
+    a,.btn,.cursor-target{cursor:none;}
+  }
+  #cur{position:fixed;left:0;top:0;z-index:9999;pointer-events:none;mix-blend-mode:difference;display:none;}
+  #cur .dot{position:absolute;width:8px;height:8px;background:#fff;border-radius:50%;margin:-4px 0 0 -4px;}
+  #cur .ring{position:absolute;width:34px;height:34px;border:1.5px solid #fff;border-radius:50%;margin:-17px 0 0 -17px;transition:width .25s,height .25s,margin .25s,background .25s,border-color .25s;}
+  #cur.on .ring{width:56px;height:56px;margin:-28px 0 0 -28px;background:rgba(74,222,128,.14);border-color:var(--green);}
+  #cur.see .label{opacity:1;}
+  #cur .label{position:absolute;opacity:0;top:-34px;left:50%;transform:translateX(-50%);font-family:'Space Grotesk';font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);white-space:nowrap;transition:opacity .2s;}
+
+  /* magnetic buttons */
+  .mag{display:inline-block;will-change:transform;}
+
+  .glow{position:fixed;width:420px;height:420px;border-radius:50%;filter:blur(120px);opacity:.22;pointer-events:none;z-index:0;transition:transform .4s;}
+  .glow.g1{background:var(--cyan);top:-120px;left:-120px;}
+  .glow.g2{background:var(--pink);bottom:-140px;right:-100px;}
+
+  nav{position:sticky;top:0;z-index:40;}
+  .nav-in{display:flex;justify-content:space-between;align-items:center;height:62px;font-size:.92rem;}
+  .logo{font-weight:700;letter-spacing:-.01em;}
+  .logo i{font-style:normal;color:var(--green);}
+  .menu{display:flex;gap:24px;color:var(--muted);}
+  .menu a:hover{color:var(--text);}
+  .go{padding:9px 18px;border:1px solid var(--line);border-radius:999px;color:var(--text);}
+  .go:hover{background:var(--green);color:#000;border-color:var(--green);}
+
+  .hero{padding:130px 0 60px;position:relative;}
+  .hero .kick{color:var(--green);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;}
+  .hero h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.08;letter-spacing:-.02em;margin:18px 0 14px;}
+  .hero h1 em{font-style:normal;color:var(--cyan);}
+  .hero p{color:var(--muted);max-width:560px;font-size:1.1rem;margin-bottom:34px;}
+  .btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:15px 28px;border-radius:999px;font-weight:600;background:var(--card);border:1px solid var(--line);}
+  .btn-p{background:var(--green);color:#000;border-color:var(--green);}
+  .hero .hint{position:absolute;right:0;top:40px;color:var(--muted);font-size:.8rem;letter-spacing:.05em;border:1px dashed var(--line);padding:8px 14px;border-radius:8px;max-width:210px;text-align:center;}
+
+  section{padding:76px 0;}
+  .sh{display:flex;align-items:center;gap:14px;margin-bottom:38px;}
+  .sh .no{font-size:.8rem;font-weight:700;color:var(--green);letter-spacing:.14em;border:1px solid var(--green);border-radius:999px;padding:4px 12px;}
+  .sh h2{font-size:1.7rem;letter-spacing:-.01em;}
+
+  .about{max-width:760px;color:var(--muted);font-size:1.05rem;}
+  .about b{color:var(--text);}
+
+  .sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;}
+  .skg{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;transform:perspective(900px);}
+  .skg h3{font-size:1rem;margin-bottom:14px;}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.84rem;margin:0 6px 8px 0;color:var(--muted);}
+  .pill.h{background:rgba(34,211,238,.12);border-color:rgba(34,211,238,.5);color:var(--cyan);font-weight:600;}
+
+  .xp{display:grid;gap:16px;}
+  .x{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;}
+  .x .top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:baseline;}
+  .x h3{font-size:1.2rem;}
+  .x .co{color:var(--cyan);font-weight:600;}
+  .x ul{margin-top:14px;list-style:none;columns:2;column-gap:26px;}
+  @media(max-width:720px){.x ul{columns:1;}}
+  .x li{padding-left:20px;position:relative;color:var(--muted);font-size:.94rem;margin-bottom:8px;}
+  .x li::before{content:'›';position:absolute;left:0;color:var(--green);font-weight:700;}
+
+  .pj{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+  .p{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;transform:perspective(900px);}
+  .p .tag{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);font-weight:600;}
+  .p h3{font-size:1.15rem;margin:6px 0;}
+  .p .tech{color:var(--muted);font-size:.84rem;}
+  .p p{color:var(--muted);font-size:.92rem;margin:10px 0 14px;}
+  .p a{color:var(--green);font-weight:600;}
+
+  .cnt{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:48px;text-align:center;}
+  .cnt h2{font-size:1.8rem;margin-bottom:10px;}
+  .cnt p{color:var(--muted);margin-bottom:26px;}
+  .cnt .row{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:.9rem;margin-top:26px;}
+
+  footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);}
+  footer code{color:var(--green);}
+  @media(max-width:720px){.menu{display:none;} .hero .hint{display:none;}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}#cur{display:none!important;}}
+</style>
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<div id="cur"><span class="dot"></span><span class="ring"></span><span class="label" id="label">mở</span></div>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="#">Phúc<i>.</i>cursor</a>
+    <div class="menu"><a href="#about">Về tôi</a><a href="#skills">Kỹ năng</a><a href="#experience">Kinh nghiệm</a><a href="#projects">Dự án</a></div>
+    <a class="go" href="#contact">Liên hệ</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="glow g1" style="position:absolute;top:auto;bottom:40px;left:-160px;background:var(--green);width:300px;height:300px;"></div>
+  <div class="wrap">
+    <span class="kick">Di chuyển chuột & cảm nhận ✦</span>
+    <h1>Backend Developer<br>điều khiển bằng <em>con trỏ</em></h1>
+    <p>Đinh Trọng Phúc — con trỏ này là phần giao diện duy nhất bạn cần. Còn lại: Node.js, TypeScript, PostgreSQL, và hệ thống ổn định.</p>
+    <div class="hint">✦ Dời con trỏ lên nút/link để xem hiệu ứng magnetic & đổi nhãn</div>
+    <div class="btns">
+      <a class="btn btn-p mag" href="#projects">Xem dự án ✦</a>
+      <a class="btn mag" href="#contact">Liên hệ ngay</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sh"><span class="no">01</span><h2>Về tôi</h2></div>
+    <div class="about">
+      <p><b>Tóm tắt:</b> Operating / Software Engineer tại <b>MINDX Technology School</b> (giám sát production, xử lý incident, internal tools). Cực kỳ chuộng <b>Clean & Hexagonal Architecture</b>, SOLID, DDD.</p>
+      <p style="margin-top:12px;">Trước đó <b>Unity Developer</b> (2D/3D/VR/AR) — phát hành app ra Meta Store, SideQuest, Google Play, App Store. Học Cử nhân CNTT tại <b>ĐH Mở Hà Nội</b>. Mục tiêu: trở thành kỹ sư phần mềm năng lực cao.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sh"><span class="no">02</span><h2>Kỹ năng</h2></div>
+    <div class="sk">
+      <div class="skg"><h3>Ngôn ngữ</h3><span class="pill h">TypeScript</span><span class="pill h">JavaScript</span><span class="pill">Python</span><span class="pill">SQL</span></div>
+      <div class="skg"><h3>Backend</h3><span class="pill h">Node.js</span><span class="pill h">RESTful</span><span class="pill">GraphQL</span><span class="pill">Microservices</span></div>
+      <div class="skg"><h3>Database</h3><span class="pill h">PostgreSQL</span><span class="pill">MongoDB</span><span class="pill">SQL Server</span><span class="pill h">Redis</span></div>
+      <div class="skg"><h3>DevOps & Ops</h3><span class="pill h">Docker</span><span class="pill h">CI/CD</span><span class="pill">Kubernetes</span><span class="pill">Kafka</span><span class="pill h">Monitoring</span><span class="pill">Incident</span></div>
+      <div class="skg"><h3>Kiến trúc</h3><span class="pill">OOP</span><span class="pill h">Clean Arch</span><span class="pill h">Hexagonal</span><span class="pill">SOLID</span><span class="pill">DDD</span></div>
+      <div class="skg"><h3>Tools</h3><span class="pill h">Git/GitHub</span><span class="pill">VS Code</span><span class="pill">Postman</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sh"><span class="no">03</span><h2>Kinh nghiệm</h2></div>
+    <div class="xp">
+      <div class="x">
+        <div class="top"><h3>Operating / Software Engineering</h3><span style="color:var(--muted);font-size:.84rem;">02/2026 — nay</span></div>
+        <div class="co">MINDX TECHNOLOGY SCHOOL</div>
+        <ul><li>Giám sát & duy trì production systems</li><li>Xử lý incident & lỗi hệ thống</li><li>Internal tools + automation scripts</li><li>Phối hợp dev/infra team</li><li>Tối ưu quy trình vận hành</li></ul>
+      </div>
+      <div class="x">
+        <div class="top"><h3>Unity Developer (2D/3D/VR/AR)</h3><span style="color:var(--muted);font-size:.84rem;">06/2024 — 04/2025</span></div>
+        <div class="co">THE OPEN NETWORK NEW GENERATION</div>
+        <ul><li>Phát triển & tối ưu app Unity đa nền tảng</li><li>Gameplay systems & performance</li><li>Code review — mã sạch, mở rộng được</li><li>Release: Meta Store, SideQuest, GP, App Store</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sh"><span class="no">04</span><h2>Dự án</h2></div>
+    <div class="pj">
+      <div class="p"><div class="tag">Đồ án tốt nghiệp</div><h3>JoinTogether_SocialNetwork</h3>
+        <div class="tech">Node.js (TS) · Express · PostgreSQL · Socket.IO · React</div>
+        <p>Mạng xã hội kết nối người cùng sở thích, tìm hoạt động theo vị trí, quản lý nhóm.</p>
+        <a href="https://join-together-social-network.vercel.app/" target="_blank">Xem live →</a></div>
+      <div class="p"><div class="tag">Open-source · NPM</div><h3>vn-payment</h3>
+        <div class="tech">Node.js · TypeScript · NPM</div>
+        <p>Unified API cho MoMo, VNPay, ZaloPay — một interface, ba cổng thanh toán.</p>
+        <a href="https://github.com/DinhTrongPhuc/vn-payment" target="_blank">GitHub →</a></div>
+      <div class="p"><div class="tag">Full-stack · AI</div><h3>Solution-Center-for-IT-Helpdesk</h3>
+        <div class="tech">React · Tailwind · Node.js TS · Express · MongoDB</div>
+        <p>Hệ thống quản lý giải pháp tích hợp AI — RESTful API + Hexagonal Architecture.</p>
+        <a href="https://github.com/DinhTrongPhuc/Solution-Center-for-IT-Helpdesk" target="_blank">GitHub →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cnt">
+      <h2>Đưa con trỏ đến đây 👉</h2>
+      <p>Bạn cần người giữ hệ thống ổn định — tôi đang ở chế độ online.</p>
+      <div class="btns" style="justify-content:center;">
+        <a class="btn btn-p mag" href="mailto:dnhtrongphuc210104@gmail.com">Gửi email</a>
+        <a class="btn mag" href="https://github.com/DinhTrongPhuc" target="_blank">GitHub</a>
+      </div>
+      <div class="row"><span>dnhtrongphuc210104@gmail.com</span><span>0389 439 976</span><span>Đống Đa, Hà Nội</span></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">© 2026 Đinh Trọng Phúc · <code>cursor: none</code> — Interactive Cursor by UI/UX Pro Max</div></footer>
+
+<script>
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cur = document.getElementById('cur');
+  const label = document.getElementById('label');
+  if (fine && !reduce) {
+    cur.style.display = 'block';
+    let mx = innerWidth/2, my = innerHeight/2, rx = mx, ry = my, raf;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    (function loop(){ rx += (mx-rx)*.22; ry += (my-ry)*.22; cur.style.transform = 'translate('+rx+'px,'+ry+'px)'; raf = requestAnimationFrame(loop); })();
+    const interact = 'a, .btn, .mag, .pill, .p, .skg';
+    document.querySelectorAll(interact).forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cur.classList.add('on');
+        label.textContent = (el.closest('a') ? 'mở' : 'chạm');
+        label.style.opacity = 1;
+      });
+      el.addEventListener('mouseleave', () => { cur.classList.remove('on'); label.style.opacity = 0; });
+    });
+    document.querySelectorAll('.mag').forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect();
+        el.style.transform = 'translate(' + ((e.clientX-r.left-r.width/2)*.18) + 'px,' + ((e.clientY-r.top-r.height/2)*.18) + 'px)';
+      });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+    });
+    document.querySelectorAll('.skg, .p').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX-r.left)/r.width - .5, y = (e.clientY-r.top)/r.height - .5;
+        card.style.transform = 'perspective(900px) rotateY(' + (x*7) + 'deg) rotateX(' + (-y*7) + 'deg)';
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(900px)'; });
+    });
+  }
+</script>
+</body>
+</html>
