@@ -1,163 +1,514 @@
-<!DOCTYPE html>
+�<!doctype html>
 <html lang="vi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phúc — Backend Developer · Parallax Story</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-<style>
-  :root{--bg:#FBF7F0;--ink:#1D1B18;--mut:#7A746A;--clay:#B8652C;--leaf:#3E6B4F;--gold:#C99A3C;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;overflow-x:hidden;}
-  .wrap{max-width:960px;margin:0 auto;padding:0 22px;}
-  ::selection{background:var(--clay);color:#fff;}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phúc � Backend Developer · Parallax Story</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Inter:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #fbf7f0;
+        --ink: #1d1b18;
+        --mut: #7a746a;
+        --clay: #b8652c;
+        --leaf: #3e6b4f;
+        --gold: #c99a3c;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+      .wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 22px;
+      }
+      ::selection {
+        background: var(--clay);
+        color: #fff;
+      }
 
-  .layer{position:absolute;will-change:transform;pointer-events:none;}
-  .scene{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
-  .scene.mid{min-height:80vh;}
-  .sky{position:absolute;inset:0;z-index:0;}
-  .s1{background:linear-gradient(180deg,#E8F0E9,var(--bg));}
-  .s2{background:linear-gradient(180deg,#F1E8DC,var(--bg));}
-  .s3{background:linear-gradient(180deg,#E9E4D8,var(--bg));}
-  .s4{background:linear-gradient(180deg,#E6EEE7,var(--bg));}
+      .layer {
+        position: absolute;
+        pointer-events: none;
+      }
+      .scene {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+      .scene.mid {
+        min-height: 80vh;
+      }
+      .sky {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+      .s1 {
+        background: linear-gradient(180deg, #e8f0e9, var(--bg));
+      }
+      .s2 {
+        background: linear-gradient(180deg, #f1e8dc, var(--bg));
+      }
+      .s3 {
+        background: linear-gradient(180deg, #e9e4d8, var(--bg));
+      }
+      .s4 {
+        background: linear-gradient(180deg, #e6eee7, var(--bg));
+      }
 
-  .sun{width:120px;height:120px;background:radial-gradient(circle at 35% 35%,#FFE9A8,var(--gold));border-radius:50%;z-index:1;top:12%;right:12%;box-shadow:0 0 80px rgba(201,154,60,.5);}
-  .hill{width:60%;height:260px;border-radius:50% 50% 0 0;background:#8FA98B;bottom:-60px;left:-5%;z-index:2;}
-  .hill.h2{width:75%;height:320px;background:#6E8B6F;bottom:-90px;right:-10%;left:auto;z-index:3;}
-  .bx{width:70px;height:56px;background:var(--clay);border-radius:6px;z-index:4;box-shadow:0 24px 40px rgba(0,0,0,.22);}
-  .tree{width:0;height:0;border-left:34px solid transparent;border-right:34px solid transparent;border-bottom:120px solid #4F7A55;z-index:4;filter:drop-shadow(6px 10px 6px rgba(0,0,0,.18));}
-  .dot{width:26px;height:26px;border-radius:50%;background:var(--gold);z-index:4;}
-  .fl{position:absolute;font-size:2.6rem;z-index:5;}
-  .rail{position:absolute;width:200%;height:24px;background:#C9C2B4;border-radius:12px;z-index:1;box-shadow:0 40px 0 -8px #C9C2B4;}
-  .bin{width:56px;height:64px;background:#4A5B49;border-radius:4px 4px 10px 10px;z-index:2;border:3px solid #2E3A2D;}
-  .bin::after{content:'';position:absolute;left:-3px;right:-3px;top:-9px;height:8px;background:#2E3A2D;border-radius:3px;}
+      .sun {
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(circle at 35% 35%, #ffe9a8, var(--gold));
+        border-radius: 50%;
+        z-index: 1;
+        top: 12%;
+        right: 12%;
+        box-shadow: 0 0 80px rgba(201, 154, 60, 0.5);
+      }
+      .hill {
+        width: 60%;
+        height: 260px;
+        border-radius: 50% 50% 0 0;
+        background: #8fa98b;
+        bottom: -60px;
+        left: -5%;
+        z-index: 2;
+      }
+      .hill.h2 {
+        width: 75%;
+        height: 320px;
+        background: #6e8b6f;
+        bottom: -90px;
+        right: -10%;
+        left: auto;
+        z-index: 3;
+      }
+      .bx {
+        width: 70px;
+        height: 56px;
+        background: var(--clay);
+        border-radius: 6px;
+        z-index: 4;
+        box-shadow: 0 24px 40px rgba(0, 0, 0, 0.22);
+      }
+      .tree {
+        width: 0;
+        height: 0;
+        border-left: 34px solid transparent;
+        border-right: 34px solid transparent;
+        border-bottom: 120px solid #4f7a55;
+        z-index: 4;
+        filter: drop-shadow(6px 10px 6px rgba(0, 0, 0, 0.18));
+      }
+      .dot {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--gold);
+        z-index: 4;
+      }
+      .fl {
+        position: absolute;
+        font-size: 2.6rem;
+        z-index: 5;
+      }
+      .rail {
+        position: absolute;
+        width: 200%;
+        height: 24px;
+        background: #c9c2b4;
+        border-radius: 12px;
+        z-index: 1;
+        box-shadow: 0 40px 0 -8px #c9c2b4;
+      }
+      .bin {
+        width: 56px;
+        height: 64px;
+        background: #4a5b49;
+        border-radius: 4px 4px 10px 10px;
+        z-index: 2;
+        border: 3px solid #2e3a2d;
+      }
+      .bin::after {
+        content: "";
+        position: absolute;
+        left: -3px;
+        right: -3px;
+        top: -9px;
+        height: 8px;
+        background: #2e3a2d;
+        border-radius: 3px;
+      }
 
-  .star{position:absolute;width:6px;height:6px;background:var(--clay);transform:rotate(45deg);opacity:.55;}
-  .book{position:absolute;font-size:5rem;z-index:4;transform:rotate(-14deg);}
+      .star {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: var(--clay);
+        transform: rotate(45deg);
+        opacity: 0.55;
+      }
+      .book {
+        position: absolute;
+        font-size: 5rem;
+        z-index: 4;
+        transform: rotate(-14deg);
+      }
 
-  .scene .pos{position:relative;z-index:6;max-width:540px;padding:30px;}
-  .scene .ey{font-family:'Fraunces',serif;font-size:.82rem;letter-spacing:.26em;text-transform:uppercase;color:var(--clay);font-weight:700;}
-  .scene h2{font-family:'Fraunces',serif;font-size:clamp(2rem,5.5vw,3.4rem);line-height:1.05;font-weight:900;margin:14px 0 16px;}
-  .scene p{color:var(--mut);font-size:1.05rem;line-height:1.7;}
-  .scene a{color:var(--clay);font-weight:700;}
-  .scene.left .pos{margin-right:auto;}
-  .scene.right .pos{margin-left:auto;text-align:right;}
-  .scene.right p{margin-left:auto;}
+      .scene .pos {
+        position: relative;
+        z-index: 6;
+        max-width: 540px;
+        padding: 30px;
+      }
+      .scene .ey {
+        font-family: "Fraunces", serif;
+        font-size: 0.82rem;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--clay);
+        font-weight: 700;
+      }
+      .scene h2 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(2rem, 5.5vw, 3.4rem);
+        line-height: 1.05;
+        font-weight: 900;
+        margin: 14px 0 16px;
+      }
+      .scene p {
+        color: var(--mut);
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+      .scene a {
+        color: var(--clay);
+        font-weight: 700;
+      }
+      .scene.left .pos {
+        margin-right: auto;
+      }
+      .scene.right .pos {
+        margin-left: auto;
+        text-align: right;
+      }
+      .scene.right p {
+        margin-left: auto;
+      }
 
-  .prog{position:fixed;top:0;left:0;height:4px;background:var(--clay);z-index:100;width:0;}
-  nav{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:rgba(29,27,24,.9);color:#fff;border-radius:999px;padding:12px 20px;z-index:90;display:flex;gap:18px;font-size:.82rem;backdrop-filter:blur(8px);}
-  nav a{color:#D8D2C6;}
-  nav a:hover{color:#fff;}
+      .prog {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4px;
+        background: var(--clay);
+        z-index: 100;
+        width: 0;
+      }
+      nav {
+        position: fixed;
+        bottom: 26px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #1d1b18;
+        color: #fff;
+        border-radius: 999px;
+        padding: 12px 20px;
+        z-index: 90;
+        display: flex;
+        gap: 18px;
+        font-size: 0.82rem;
+      }
+      nav a {
+        color: #d8d2c6;
+      }
+      nav a:hover {
+        color: #fff;
+      }
 
-  .cap{font-family:'Inter',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);position:absolute;bottom:22px;right:26px;z-index:20;}
-  .stepper{position:absolute;bottom:6%;left:50%;transform:translateX(-50%);z-index:8;display:flex;gap:8px;align-items:center;color:var(--mut);font-size:.72rem;letter-spacing:.2em;}
-  @media(prefers-reduced-motion:reduce){.scene{min-height:auto;padding:60px 0;}.layer{display:none;}}
-</style>
-</head>
-<body>
-<div class="prog" id="prog"></div>
+      .cap {
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--mut);
+        position: absolute;
+        bottom: 22px;
+        right: 26px;
+        z-index: 20;
+      }
+      .stepper {
+        position: absolute;
+        bottom: 6%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 8;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        color: var(--mut);
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .scene {
+          min-height: auto;
+          padding: 60px 0;
+        }
+        .layer {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="prog" id="prog"></div>
 
-<header id="intro" class="scene right sky s1">
-  <div class="sun layer" data-sp="0.06"></div>
-  <div class="hill layer" data-sp="0.1"></div>
-  <div class="hill h2 layer" data-sp="0.22"></div>
-  <div class="tree layer" data-sp="0.3" style="left:8%;top:48%;"></div>
-  <div class="tree layer" data-sp="0.5" style="left:22%;top:56%;"></div>
-  <div class="bx layer" data-sp="0.42" style="left:42%;top:60%;"></div>
-  <div class="dot layer" data-sp="0.3" style="left:66%;top:38%;"></div>
-  <div class="fl layer" data-sp="0.55" style="left:28%;top:22%;">🚀</div>
-  <div class="fl layer" data-sp="0.75" style="right:16%;top:36%;">🛰️</div>
-  <div class="pos">
-    <div class="ey">Chương mở đầu</div>
-    <h2>Một cậu sinh viên<br>mơ làm backend<br>đáng tin cậy</h2>
-    <p>Đinh Trọng Phúc · Quê ở Đống Đa, Hà Nội. Câu chuyện bắt đầu từ những dòng code Unity… rồi rẽ sang hậu trường của production. Cuộn xuống để theo dõi nhé.</p>
-  </div>
-  <div class="cap">01 · Introduction</div>
-  <div class="stepper">S C R O L L</div>
-</header>
+    <header id="intro" class="scene right s1">
+      <div class="sun layer" data-sp="0.06"></div>
+      <div class="hill layer" data-sp="0.1"></div>
+      <div class="hill h2 layer" data-sp="0.22"></div>
+      <div class="tree layer" data-sp="0.3" style="left: 8%; top: 48%"></div>
+      <div class="tree layer" data-sp="0.5" style="left: 22%; top: 56%"></div>
+      <div class="bx layer" data-sp="0.42" style="left: 42%; top: 60%"></div>
+      <div class="dot layer" data-sp="0.3" style="left: 66%; top: 38%"></div>
+      <div class="fl layer" data-sp="0.55" style="left: 28%; top: 22%">
+        �xa�
+      </div>
+      <div class="fl layer" data-sp="0.75" style="right: 16%; top: 36%">
+        �x:�️
+      </div>
+      <div class="pos">
+        <div class="ey">Chương m�x �ầu</div>
+        <h2>M�"t cậu sinh viên<br />mơ làm backend<br />�áng tin cậy</h2>
+        <p>
+          Đinh Trọng Phúc · Quê �x Đ�ng Đa, Hà N�"i. Câu chuy�!n bắt �ầu từ
+          những dòng code Unity⬦ r�i rẽ sang hậu trường của production. Cu�"n
+          xu�ng �Ồ theo dõi nhé.
+        </p>
+      </div>
+      <div class="cap">01 · Introduction</div>
+      <div class="stepper">S C R O L L</div>
+    </header>
 
-<section id="xp" class="scene mid left sky s2">
-  <div class="rail layer" data-sp="0.2" style="bottom:30%;left:-40%;"></div>
-  <div class="bin layer" data-sp="0.35" style="right:10%;bottom:26%;"></div>
-  <div class="dot layer" data-sp="0.5" style="left:14%;top:30%;"></div>
-  <div class="star layer" data-sp="0.25" style="left:70%;top:26%;"></div>
-  <div class="star layer" data-sp="0.4" style="left:78%;top:48%;"></div>
-  <div class="star layer" data-sp="0.5" style="left:60%;top:64%;"></div>
-  <div class="pos">
-    <div class="ey">Chương 1 · Kinh nghiệm</div>
-    <h2>Từ game developer<br>đến vận hành<br>hệ thống</h2>
-    <p><b style="font-weight:900;">02/2026 — nay · Operating / Software Engineering</b> tại <b>MINDX</b>: giám sát production, xử lý incident, automation.<br><br><b style="font-weight:900;">06/2024 → 04/2025 · Unity Developer</b> (2D/3D/VR/AR) tại The Open Network: tối ưu performance và release đa nền tảng.</p>
-  </div>
-  <div class="cap">02 · Experience</div>
-</section>
+    <section id="xp" class="scene mid left s2">
+      <div
+        class="rail layer"
+        data-sp="0.2"
+        style="bottom: 30%; left: -40%"
+      ></div>
+      <div
+        class="bin layer"
+        data-sp="0.35"
+        style="right: 10%; bottom: 26%"
+      ></div>
+      <div class="dot layer" data-sp="0.5" style="left: 14%; top: 30%"></div>
+      <div class="star layer" data-sp="0.25" style="left: 70%; top: 26%"></div>
+      <div class="star layer" data-sp="0.4" style="left: 78%; top: 48%"></div>
+      <div class="star layer" data-sp="0.5" style="left: 60%; top: 64%"></div>
+      <div class="pos">
+        <div class="ey">Chương 1 · Kinh nghi�!m</div>
+        <h2>Từ game developer<br />�ến vận hành<br />h�! th�ng</h2>
+        <p>
+          <b style="font-weight: 900"
+            >02/2026 � nay · Operating / Software Engineering</b
+          >
+          tại <b>MINDX</b>: giám sát production, xử lý incident, automation.<br /><br /><b
+            style="font-weight: 900"
+            >06/2024 �  04/2025 · Unity Developer</b
+          >
+          (2D/3D/VR/AR) tại The Open Network: t�i ưu performance và release �a
+          nền tảng.
+        </p>
+      </div>
+      <div class="cap">02 · Experience</div>
+    </section>
 
-<section id="skills" class="scene mid right sky s3">
-  <div class="book layer" data-sp="0.3" style="left:8%;top:24%;">📚</div>
-  <div class="dot layer" data-sp="0.45" style="left:30%;top:60%;"></div>
-  <div class="star layer" data-sp="0.35" style="left:20%;top:44%;"></div>
-  <div class="star layer" data-sp="0.55" style="left:42%;top:30%;"></div>
-  <div class="dot layer" data-sp="0.6" style="right:16%;top:26%;"></div>
-  <div class="pos">
-    <div class="ey">Chương 2 · Công cụ</div>
-    <h2>Vũ khí trong<br>tay áo</h2>
-    <p><b style="font-weight:900;">Backend:</b> Node.js · TypeScript · RESTful · GraphQL · Microservices.<br><b style="font-weight:900;">Data:</b> PostgreSQL · Redis · MongoDB · SQL Server.<br><b style="font-weight:900;">Ops:</b> Docker · Kubernetes · CI/CD · Kafka · Monitoring.<br><b style="font-weight:900;">Tư duy:</b> Clean Architecture · SOLID · DDD.</p>
-  </div>
-  <div class="cap">03 · Skills</div>
-</section>
+    <section id="skills" class="scene mid right s3">
+      <div class="book layer" data-sp="0.3" style="left: 8%; top: 24%">�xa</div>
+      <div class="dot layer" data-sp="0.45" style="left: 30%; top: 60%"></div>
+      <div class="star layer" data-sp="0.35" style="left: 20%; top: 44%"></div>
+      <div class="star layer" data-sp="0.55" style="left: 42%; top: 30%"></div>
+      <div class="dot layer" data-sp="0.6" style="right: 16%; top: 26%"></div>
+      <div class="pos">
+        <div class="ey">Chương 2 · Công cụ</div>
+        <h2>Vũ khí trong<br />tay áo</h2>
+        <p>
+          <b style="font-weight: 900">Backend:</b> Node.js · TypeScript ·
+          RESTful · GraphQL · Microservices.<br /><b style="font-weight: 900"
+            >Data:</b
+          >
+          PostgreSQL · Redis · MongoDB · SQL Server.<br /><b
+            style="font-weight: 900"
+            >Ops:</b
+          >
+          Docker · Kubernetes · CI/CD · Kafka · Monitoring.<br /><b
+            style="font-weight: 900"
+            >Tư duy:</b
+          >
+          Clean Architecture · SOLID · DDD.
+        </p>
+      </div>
+      <div class="cap">03 · Skills</div>
+    </section>
 
-<section id="pj" class="scene mid left sky s4">
-  <div class="dot layer" data-sp="0.3" style="right:14%;top:22%;"></div>
-  <div class="bx layer" data-sp="0.45" style="right:30%;top:56%;"></div>
-  <div class="tree layer" data-sp="0.55" style="left:8%;top:40%;"></div>
-  <div class="tree layer" data-sp="0.7" style="left:20%;top:55%;"></div>
-  <div class="star layer" data-sp="0.3" style="left:64%;top:34%;"></div>
-  <div class="star layer" data-sp="0.42" style="left:72%;top:52%;"></div>
-  <div class="pos">
-    <div class="ey">Chương 3 · Tác phẩm</div>
-    <h2>Ba công trình<br>để tựa vào</h2>
-    <p style="margin-bottom:8px;">🌐 <a href="https://join-together-social-network.vercel.app/" target="_blank">JoinTogether — Social Network</a> · Node.js · PostgreSQL · Socket.IO</p>
-    <p style="margin-bottom:8px;">💳 <a href="https://github.com/DinhTrongPhuc/vn-payment" target="_blank">vn-payment</a> · gateway MoMo / VNPay / ZaloPay trên NPM</p>
-    <p>🧠 <a href="https://github.com/DinhTrongPhuc/Solution-Center-for-IT-Helpdesk" target="_blank">Solution Center AI Helpdesk</a> · React · Express · MongoDB</p>
-  </div>
-  <div class="cap">04 · Projects</div>
-</section>
+    <section id="pj" class="scene mid left s4">
+      <div class="dot layer" data-sp="0.3" style="right: 14%; top: 22%"></div>
+      <div class="bx layer" data-sp="0.45" style="right: 30%; top: 56%"></div>
+      <div class="tree layer" data-sp="0.55" style="left: 8%; top: 40%"></div>
+      <div class="tree layer" data-sp="0.7" style="left: 20%; top: 55%"></div>
+      <div class="star layer" data-sp="0.3" style="left: 64%; top: 34%"></div>
+      <div class="star layer" data-sp="0.42" style="left: 72%; top: 52%"></div>
+      <div class="pos">
+        <div class="ey">Chương 3 · Tác phẩm</div>
+        <h2>Ba công trình<br />�Ồ tựa vào</h2>
+        <p style="margin-bottom: 8px">
+          �xR�
+          <a
+            href="https://join-together-social-network.vercel.app/"
+            target="_blank"
+            >JoinTogether � Social Network</a
+          >
+          · Node.js · PostgreSQL · Socket.IO
+        </p>
+        <p style="margin-bottom: 8px">
+          �x�
+          <a href="https://github.com/DinhTrongPhuc/vn-payment" target="_blank"
+            >vn-payment</a
+          >
+          · gateway MoMo / VNPay / ZaloPay trên NPM
+        </p>
+        <p>
+          �x��
+          <a
+            href="https://github.com/DinhTrongPhuc/Solution-Center-for-IT-Helpdesk"
+            target="_blank"
+            >Solution Center AI Helpdesk</a
+          >
+          · React · Express · MongoDB
+        </p>
+      </div>
+      <div class="cap">04 · Projects</div>
+    </section>
 
-<section id="ct" class="scene sky s1">
-  <div class="sun layer" data-sp="0.08" style="top:20%;right:20%;width:90px;height:90px;"></div>
-  <div class="dot layer" data-sp="0.3" style="left:8%;top:34%;"></div>
-  <div class="tree layer" data-sp="0.35" style="left:14%;top:48%;"></div>
-  <div class="tree layer" data-sp="0.55" style="right:10%;top:52%;"></div>
-  <div class="fl layer" data-sp="0.6" style="left:40%;top:30%;">📬</div>
-  <div class="pos" style="max-width:600px;">
-    <div class="ey">Chương kết</div>
-    <h2>Kết thúc mở<br>— cùng bạn</h2>
-    <p>Sẵn sàng nhận lời mời backend / software engineer. Trả lời trong 24h.</p>
-    <p style="margin-top:22px;">
-      <a href="mailto:dnhtrongphuc210104@gmail.com" style="background:var(--clay);color:#fff;padding:14px 24px;border-radius:12px;display:inline-block;">dnhtrongphuc210104@gmail.com</a>
-      &nbsp; <a href="https://github.com/DinhTrongPhuc" target="_blank">GitHub</a> · <span style="color:var(--mut);">0389 439 976</span>
-    </p>
-  </div>
-  <div class="cap">05 · Contact</div>
-</section>
+    <section id="ct" class="scene s1">
+      <div
+        class="sun layer"
+        data-sp="0.08"
+        style="top: 20%; right: 20%; width: 90px; height: 90px"
+      ></div>
+      <div class="dot layer" data-sp="0.3" style="left: 8%; top: 34%"></div>
+      <div class="tree layer" data-sp="0.35" style="left: 14%; top: 48%"></div>
+      <div class="tree layer" data-sp="0.55" style="right: 10%; top: 52%"></div>
+      <div class="fl layer" data-sp="0.6" style="left: 40%; top: 30%">�x�</div>
+      <div class="pos" style="max-width: 600px">
+        <div class="ey">Chương kết</div>
+        <h2>Kết thúc m�x<br />� cùng bạn</h2>
+        <p>
+          Sẵn sàng nhận lời mời backend / software engineer. Trả lời trong 24h.
+        </p>
+        <p style="margin-top: 22px">
+          <a
+            href="mailto:dnhtrongphuc210104@gmail.com"
+            style="
+              background: var(--clay);
+              color: #fff;
+              padding: 14px 24px;
+              border-radius: 12px;
+              display: inline-block;
+            "
+            >dnhtrongphuc210104@gmail.com</a
+          >
+          &nbsp;
+          <a href="https://github.com/DinhTrongPhuc" target="_blank">GitHub</a>
+          · <span style="color: var(--mut)">0389 439 976</span>
+        </p>
+      </div>
+      <div class="cap">05 · Contact</div>
+    </section>
 
-<nav><a href="#intro">Giới thiệu</a><a href="#xp">Kinh nghiệm</a><a href="#skills">Kỹ năng</a><a href="#pj">Dự án</a><a href="#ct">Liên hệ</a></nav>
+    <nav>
+      <a href="#intro">Gi�:i thi�!u</a><a href="#xp">Kinh nghi�!m</a
+      ><a href="#skills">Kỹ nĒng</a><a href="#pj">Dự án</a
+      ><a href="#ct">Liên h�!</a>
+    </nav>
 
-<script>
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const layers = document.querySelectorAll('.layer');
-  const prog = document.getElementById('prog');
-  let ticking=false;
-  function onScroll(){
-    const y = window.scrollY;
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    prog.style.width = (h>0 ? y/h*100 : 0)+'%';
-    if(!reduce){
-      layers.forEach(el=>{ const sp=+el.dataset.sp||.2; const r=el.getBoundingClientRect(); const mid=window.innerHeight/2; const off=(mid-(r.top+r.height/2))*sp; el.style.transform=`translateY(${off}px)`; });
-    }
-    ticking=false;
-  }
-  window.addEventListener('scroll',()=>{ if(!ticking){ requestAnimationFrame(onScroll); ticking=true; } });
-  onScroll();
-</script>
-</body>
+    <script>
+      try {
+        const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const layers = Array.prototype.slice.call(
+          document.querySelectorAll(".layer"),
+        );
+        const prog = document.getElementById("prog");
+
+        // cache v�9 trí dọc tuy�!t ��i của từng layer khi load + khi resize
+        // (�ỡ phải �o getBoundingClientRect m�i frame trong lúc cu�"n)
+        const infos = layers.map((el) => ({
+          el,
+          sp: +el.dataset.sp || 0.2,
+          abs: 0,
+          h: 0,
+        }));
+        const measure = () => {
+          const sy = window.scrollY || 0;
+          layers.forEach((el, i) => {
+            const r = el.getBoundingClientRect();
+            infos[i].abs = r.top + sy;
+            infos[i].h = r.height || 40;
+          });
+        };
+        measure();
+        addEventListener("resize", measure);
+
+        let ticking = false;
+        function onScroll() {
+          const y = window.scrollY || 0;
+          const h = document.documentElement.scrollHeight - window.innerHeight;
+          prog.style.width = (h > 0 ? (y / h) * 100 : 0) + "%";
+          if (!reduce) {
+            const mid = window.innerHeight / 2;
+            for (let i = 0; i < infos.length; i++) {
+              const it = infos[i];
+              const center = it.abs - y + it.h / 2; // trung tâm layer so v�:i top viewport
+              const off = (mid - center) * it.sp;
+              it.el.style.transform = "translate3d(0," + off + "px,0)";
+            }
+          }
+          ticking = false;
+        }
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (!ticking) {
+              requestAnimationFrame(onScroll);
+              ticking = true;
+            }
+          },
+          { passive: true },
+        );
+        window.addEventListener("resize", () => {
+          if (!ticking) {
+            onScroll();
+          }
+        });
+        onScroll();
+      } catch (e) {}
+    </script>
+  </body>
 </html>
