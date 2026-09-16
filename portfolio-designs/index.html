@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio Phuc — Chọn thiết kế</title>
+    <title>Portfolio Phuc — 30 thiết kế theo nhóm</title>
     <style>
       :root {
         --bg: #0b0b10;
@@ -28,7 +28,7 @@
         padding: 48px 20px;
       }
       h1 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: #22c55e;
@@ -36,16 +36,51 @@
       }
       p.sub {
         color: var(--muted);
-        margin-bottom: 32px;
+        margin-bottom: 40px;
         font-size: 0.85rem;
         text-align: center;
+        max-width: 620px;
+        line-height: 1.6;
+      }
+      .group {
+        max-width: 1100px;
+        width: 100%;
+        margin-bottom: 34px;
+      }
+      .g-head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      .g-head .no {
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        color: #0b0b10;
+        background: #22c55e;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+      .g-head .nm {
+        font-size: 1rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--text);
+      }
+      .g-head .cnt {
+        color: var(--muted);
+        font-size: 0.75rem;
+      }
+      .g-head .ln {
+        flex: 1;
+        height: 1px;
+        background: var(--line);
       }
       .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-        max-width: 1100px;
-        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 18px;
       }
       a.card {
         display: block;
@@ -54,14 +89,27 @@
         background: var(--card);
         border: 1px solid var(--line);
         border-radius: 14px;
-        padding: 24px;
+        padding: 22px;
         transition:
           transform 0.2s,
           border-color 0.2s;
+        position: relative;
       }
       a.card:hover {
         transform: translateY(-4px);
         border-color: #3b82f6;
+      }
+      .new {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+        background: #f59e0b;
+        color: #0b0b10;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: bold;
       }
       .tag {
         display: inline-block;
@@ -70,7 +118,7 @@
         text-transform: uppercase;
         padding: 3px 10px;
         border-radius: 20px;
-        margin-bottom: 14px;
+        margin-bottom: 12px;
       }
       .t-a {
         background: #0f172a;
@@ -172,8 +220,58 @@
         color: #e2231a;
         border: 1px solid #111111;
       }
+      .t-21 {
+        background: #f4f1ec;
+        color: #7c3aed;
+        border: 1px solid #7c3aed;
+      }
+      .t-22 {
+        background: #f7f7f5;
+        color: #ff5a2e;
+        border: 1px solid #ff5a2e;
+      }
+      .t-23 {
+        background: #0a0a0f;
+        color: #ffe156;
+        border: 1px solid #ff5cb8;
+      }
+      .t-24 {
+        background: #fbf7f0;
+        color: #b8652c;
+        border: 1px solid #3e6b4f;
+      }
+      .t-25 {
+        background: #f6c8b4;
+        color: #845ec2;
+        border: 2px solid #222;
+      }
+      .t-26 {
+        background: #222437;
+        color: #ffd23f;
+        border: 1px solid #ffd23f;
+      }
+      .t-27 {
+        background: #fff3d6;
+        color: #ff4d6d;
+        border: 2px solid #000;
+      }
+      .t-28 {
+        background: #ffffff;
+        color: #444;
+        border: 1px dashed #888;
+      }
+      .t-29 {
+        background: #eceff4;
+        color: #3d7bff;
+        border: 1px solid #b44aff;
+      }
+      .t-30 {
+        background: #f4efe3;
+        color: #7a5230;
+        border: 1px solid #7a5230;
+      }
       a.card h2 {
-        font-size: 1rem;
+        font-size: 0.98rem;
         margin-bottom: 8px;
       }
       a.card p {
@@ -186,170 +284,319 @@
   <body>
     <h1>Đinh Trọng Phúc — Backend Developer</h1>
     <p class="sub">
-      20 bản thiết kế portfolio được thiết kế từ UI/UX Pro Max design system. Mở
-      từng file để xem rồi chọn.
+      30 bản thiết kế portfolio được thiết kế từ UI/UX Pro Max design system,
+      phân theo 4 nhóm để dễ so sánh. Thẻ màu tím sẵn ít là bản
+      <b>mới</b> (21–30). Mở từng file để xem rồi chọn bản ưng nhất.
     </p>
-    <div class="grid">
-      <a class="card" href="01-dark-terminal.html">
-        <span class="tag t-a">A · Dark Terminal</span>
-        <h2>$ whoami --backend</h2>
-        <p>
-          Dark OLED + JetBrains Mono, accent xanh lá "run". Vibe code editor /
-          CLI, typing effect, terminal hero.
-        </p>
-      </a>
-      <a class="card" href="02-minimal-modern.html">
-        <span class="tag t-b">B · Minimal Modern</span>
-        <h2>Backend Developer</h2>
-        <p>
-          Glassmorphism light, xanh blue #2563EB + CTA cam, Poppins/Open Sans.
-          Chuyên nghiệp, dễ đọc cho recruiter.
-        </p>
-      </a>
-      <a class="card" href="03-neon-tech.html">
-        <span class="tag t-c">C · Neon Sci-Fi</span>
-        <h2>/// BACKEND.NODE [ONLINE]</h2>
-        <p>
-          HUD / Sci-Fi FUI, grid + scanline + corner brackets, Share Tech
-          Mono/Fira Code. Nổi bật, kén người xem.
-        </p>
-      </a>
-      <a class="card" href="04-elegant-premium.html">
-        <span class="tag t-d">D · Elegant Premium</span>
-        <h2>Execution is Everything</h2>
-        <p>
-          Liquid Glass + vàng gold #A16207, Cormorant/Montserrat. Kể chuyện sang
-          trọng, scroll storytelling.
-        </p>
-      </a>
-      <a class="card" href="05-aurora-gradient.html">
-        <span class="tag t-e">E · Aurora Gradient</span>
-        <h2>Backend code đẹp như cực quang</h2>
-        <p>
-          Aurora UI — mesh gradient xanh/hồng/cyan chuyển động trên nền tối,
-          Plus Jakarta Sans. Mềm mại, hiện đại.
-        </p>
-      </a>
-      <a class="card" href="06-brutalism.html">
-        <span class="tag t-f">F · Brutalism</span>
-        <h2>PHUC//DEV — NO BS</h2>
-        <p>
-          Raw brutalism: phẳng góc, viền đen dày, box-shadow cứng 8px,
-          vàng/đỏ/xanh neon. Space Mono. Cá tính mạnh.
-        </p>
-      </a>
-      <a class="card" href="07-bento-grid.html">
-        <span class="tag t-g">G · Bento Grid</span>
-        <h2>Phuc.</h2>
-        <p>
-          Apple-style bento, nền #F5F5F7, card trắng bo tròn, accent #0071E3.
-          Gọn gàng, sạch sẽ, hiện đại.
-        </p>
-      </a>
-      <a class="card" href="08-retro-synthwave.html">
-        <span class="tag t-h">H · Retro Synthwave</span>
-        <h2>PHUC//1984</h2>
-        <p>
-          Retro-futurism: neon hồng/xanh, CRT scanlines, grid 3D, Share Tech
-          Mono. Y2K/synthwave cho người mê hoài cổ.
-        </p>
-      </a>
-      <a class="card" href="09-vibrant-blocks.html">
-        <span class="tag t-i">I · Vibrant Blocks</span>
-        <h2>BACKEND CODE BỀN NHƯ ĐÊ</h2>
-        <p>
-          Neon green/purple/pink trên nền đen, typography Outfit khổng lồ, các
-          block skew + ticker chạy ngang. Quẩy lên.
-        </p>
-      </a>
-      <a class="card" href="10-claymorphism.html">
-        <span class="tag t-j">J · Claymorphism</span>
-        <h2>Xin chào, tôi là Phúc 🧑‍💻</h2>
-        <p>
-          Clay: pastel peach/blue/mint, bo tròn mập, shadow nhún 3D,
-          Fredoka/Nunito. Vui vẻ, dễ gần.
-        </p>
-      </a>
-      <a class="card" href="11-accessible-ethical.html">
-        <span class="tag t-k">K · Accessible &amp; Ethical</span>
-        <h2>Web cho tất cả mọi người</h2>
-        <p>
-          WCAG 2.1 AA: contrast ≥4.5:1, skip-link, focus-visible, hỗ trợ bàn
-          phím đầy đủ. Có trách nhiệm.
-        </p>
-      </a>
-      <a class="card" href="12-zero-interface.html">
-        <span class="tag t-l">L · Zero Interface</span>
-        <h2>README — chỉ có nội dung</h2>
-        <p>
-          Bỏ toàn bộ UI: không nav, không card, không ảnh. Một document mảnh.
-          Cực chất cho reader tối giản.
-        </p>
-      </a>
-      <a class="card" href="13-interactive-cursor.html">
-        <span class="tag t-m">M · Interactive Cursor</span>
-        <h2>Điều khiển bằng con trỏ</h2>
-        <p>
-          Con trỏ riêng (dot + ring + nhãn hover), nút magnetic, card nghiêng
-          theo chuột. Vanilla JS, mix-blend-mode.
-        </p>
-      </a>
-      <a class="card" href="14-voice-first.html">
-        <span class="tag t-n">N · Voice-First Multimodal</span>
-        <h2>Nói là chạy 🔊</h2>
-        <p>
-          Web Speech API: bấm mic, nói "kỹ năng / dự án / cuộn xuống..." — trang
-          tự điều hướng. Cần Chrome/Edge.
-        </p>
-      </a>
-      <a class="card" href="15-3d-product.html">
-        <span class="tag t-o">O · 3D Product Preview</span>
-        <h2>Cảnh 3D bằng Three.js</h2>
-        <p>
-          Icosahedron wireframe xoay theo chuột + starfield, Three.js r128 CDN.
-          Drag để xoay object.
-        </p>
-      </a>
-      <a class="card" href="16-material-you.html">
-        <span class="tag t-p">P · Material You / MD3</span>
-        <h2>Giao diện theo Google M3</h2>
-        <p>
-          Seed purple #6750A4, FAB, tonal surface, shape 12–28px, dynamic color.
-          100% mobile-first chuẩn Android.
-        </p>
-      </a>
-      <a class="card" href="17-fluent-2.html">
-        <span class="tag t-q">Q · Fluent 2 (Win11)</span>
-        <h2>Cửa sổ Windows 11</h2>
-        <p>
-          Khung kính acrylic + elevation, pill nav kiểu Win11, Segoe UI, accent
-          purple #7C84F0. Sang và thân thuộc.
-        </p>
-      </a>
-      <a class="card" href="18-shopify-polaris.html">
-        <span class="tag t-r">R · Shopify Polaris</span>
-        <h2>Admin-app cho store</h2>
-        <p>
-          TopBar đen + card shadow + Banner + nút xanh #008060. Kiểu app quản
-          trị dầy đặc, dành cho nhà tuyển dụng thích UI system.
-        </p>
-      </a>
-      <a class="card" href="19-adobe-spectrum.html">
-        <span class="tag t-s">S · Adobe Spectrum</span>
-        <h2>Flat &amp; professional</h2>
-        <p>
-          Sạch, phẳng, outline button 2px, accent blue #2680EB, tab nav. Kiểu
-          đúng chuẩn, focus ring rõ.
-        </p>
-      </a>
-      <a class="card" href="20-minimal-swiss.html">
-        <span class="tag t-t">T · Minimal / Swiss</span>
-        <h2>BACKEND INGINEER PHÚC</h2>
-        <p>
-          Monochrome + đỏ #E2231A, grid 12 cột, typography khổng lồ, lưới ô
-          Swiss. Ít mà mạnh.
-        </p>
-      </a>
-    </div>
+
+    <!-- Nhóm 1 -->
+    <section class="group">
+      <div class="g-head">
+        <span class="no">01</span>
+        <span class="nm">Nhẹ nhàng · Chuyên nghiệp</span>
+        <span class="cnt">8 bản</span>
+        <span class="ln"></span>
+      </div>
+      <div class="grid">
+        <a class="card" href="02-minimal-modern.html">
+          <span class="tag t-b">B · Minimal Modern</span>
+          <h2>Backend Developer</h2>
+          <p>
+            Glassmorphism light, xanh blue #2563EB, Poppins/Open Sans. Dễ đọc
+            cho recruiter.
+          </p>
+        </a>
+        <a class="card" href="07-bento-grid.html">
+          <span class="tag t-g">G · Bento Grid</span>
+          <h2>Phuc.</h2>
+          <p>
+            Apple-style bento, nền #F5F5F7, accent #0071E3. Gọn, sạch, hiện đại.
+          </p>
+        </a>
+        <a class="card" href="11-accessible-ethical.html">
+          <span class="tag t-k">K · Accessible &amp; Ethical</span>
+          <h2>Web cho tất cả mọi người</h2>
+          <p>
+            WCAG 2.1 AA: contrast ≥4.5:1, skip-link, focus-visible, hỗ trợ bàn
+            phím.
+          </p>
+        </a>
+        <a class="card" href="16-material-you.html">
+          <span class="tag t-p">P · Material You / MD3</span>
+          <h2>Giao diện theo Google M3</h2>
+          <p>
+            Seed purple #6750A4, FAB, tonal surface, dynamic color,
+            mobile-first.
+          </p>
+        </a>
+        <a class="card" href="17-fluent-2.html">
+          <span class="tag t-q">Q · Fluent 2 (Win11)</span>
+          <h2>Cửa sổ Windows 11</h2>
+          <p>
+            Kính acrylic + elevation, pill nav Win11, Segoe UI, accent #7C84F0.
+          </p>
+        </a>
+        <a class="card" href="18-shopify-polaris.html">
+          <span class="tag t-r">R · Shopify Polaris</span>
+          <h2>Admin-app cho store</h2>
+          <p>
+            TopBar đen + card shadow + Banner + nút xanh #008060. Chuẩn UI
+            system.
+          </p>
+        </a>
+        <a class="card" href="19-adobe-spectrum.html">
+          <span class="tag t-s">S · Adobe Spectrum</span>
+          <h2>Flat &amp; professional</h2>
+          <p>Phẳng, outline button 2px, accent #2680EB, focus ring rõ.</p>
+        </a>
+        <a class="card" href="20-minimal-swiss.html">
+          <span class="tag t-t">T · Minimal / Swiss</span>
+          <h2>BACKEND ENGINEER PHÚC</h2>
+          <p>
+            Monochrome + đỏ #E2231A, grid 12 cột, typography khổng lồ. Ít mà
+            mạnh.
+          </p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Nhóm 2 -->
+    <section class="group">
+      <div class="g-head">
+        <span class="no">02</span>
+        <span class="nm">Tối · Neon · 3D</span>
+        <span class="cnt">9 bản</span>
+        <span class="ln"></span>
+      </div>
+      <div class="grid">
+        <a class="card" href="01-dark-terminal.html">
+          <span class="tag t-a">A · Dark Terminal</span>
+          <h2>$ whoami --backend</h2>
+          <p>
+            Dark OLED + JetBrains Mono, typing effect, vibe code editor / CLI.
+          </p>
+        </a>
+        <a class="card" href="03-neon-tech.html">
+          <span class="tag t-c">C · Neon Sci-Fi</span>
+          <h2>/// BACKEND.NODE [ONLINE]</h2>
+          <p>
+            HUD / Sci-Fi FUI: grid + scanline + corner brackets, Share Tech
+            Mono.
+          </p>
+        </a>
+        <a class="card" href="04-elegant-premium.html">
+          <span class="tag t-d">D · Elegant Premium</span>
+          <h2>Execution is Everything</h2>
+          <p>
+            Liquid Glass + vàng gold #A16207, Cormorant/Montserrat, scroll
+            storytelling.
+          </p>
+        </a>
+        <a class="card" href="05-aurora-gradient.html">
+          <span class="tag t-e">E · Aurora Gradient</span>
+          <h2>Backend code đẹp như cực quang</h2>
+          <p>
+            Aurora UI: mesh gradient xanh/hồng/cyan chuyển động, Plus Jakarta
+            Sans.
+          </p>
+        </a>
+        <a class="card" href="08-retro-synthwave.html">
+          <span class="tag t-h">H · Retro Synthwave</span>
+          <h2>PHUC//1984</h2>
+          <p>
+            Neon hồng/xanh, CRT scanlines, grid 3D, Share Tech Mono. Hoài cổ
+            chất.
+          </p>
+        </a>
+        <a class="card" href="09-vibrant-blocks.html">
+          <span class="tag t-i">I · Vibrant Blocks</span>
+          <h2>BACKEND CODE BỀN NHƯ ĐÊ</h2>
+          <p>
+            Neon green/purple/pink trên nền đen, typography Outfit khổng lồ,
+            block skew + ticker.
+          </p>
+        </a>
+        <a class="card" href="13-interactive-cursor.html">
+          <span class="tag t-m">M · Interactive Cursor</span>
+          <h2>Điều khiển bằng con trỏ</h2>
+          <p>
+            Con trỏ dot + ring, nút magnetic, card nghiêng theo chuột. Cần máy
+            có mouse.
+          </p>
+        </a>
+        <a class="card" href="15-3d-product.html">
+          <span class="tag t-o">O · 3D Product Preview</span>
+          <h2>Cảnh 3D bằng Three.js</h2>
+          <p>
+            Icosahedron wireframe xoay theo chuột + starfield. Drag để xoay
+            object.
+          </p>
+        </a>
+        <a class="card" href="29-3d-hyperrealism.html">
+          <span class="tag t-29"
+            >29 · 3D &amp; Hyperrealism<span class="new">MỚI</span></span
+          >
+          <h2>Code sâu như bóng đổ</h2>
+          <p>
+            CSS 3D cube + glass + gradient ambient + tilt card. Chiều sâu thật
+            sự.
+          </p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Nhóm 3 -->
+    <section class="group">
+      <div class="g-head">
+        <span class="no">03</span>
+        <span class="nm">Chuyển động · Trải nghiệm</span>
+        <span class="cnt">5 bản</span>
+        <span class="ln"></span>
+      </div>
+      <div class="grid">
+        <a class="card" href="21-motion-driven.html">
+          <span class="tag t-21"
+            >21 · Motion-Driven<span class="new">MỚI</span></span
+          >
+          <h2>Mọi pixel đều có chủ đích</h2>
+          <p>
+            WAAPI + keyframes: orb lung linh, hero split-word, card slide. Cực
+            động.
+          </p>
+        </a>
+        <a class="card" href="22-micro-interactions.html">
+          <span class="tag t-22"
+            >22 · Micro-interactions<span class="new">MỚI</span></span
+          >
+          <h2>Chi tiết 200ms làm nên "pro"</h2>
+          <p>
+            Ripple, toggle có lò xo, nút press 3D, magnetic, underline trượt.
+            Chơi thử nè.
+          </p>
+        </a>
+        <a class="card" href="23-kinetic-typography.html">
+          <span class="tag t-23"
+            >23 · Kinetic Typography<span class="new">MỚI</span></span
+          >
+          <h2>Chữ không đứng yên</h2>
+          <p>
+            Split-char hero, title scramble, marquee, counter, skill bar.
+            Typography sống động.
+          </p>
+        </a>
+        <a class="card" href="24-parallax-storytelling.html">
+          <span class="tag t-24"
+            >24 · Parallax Storytelling<span class="new">MỚI</span></span
+          >
+          <h2>Cuộn để nghe chuyện đời</h2>
+          <p>
+            Layers parallax theo scroll + scenes "chương sách" về hành trình
+            nghề.
+          </p>
+        </a>
+        <a class="card" href="14-voice-first.html">
+          <span class="tag t-n">N · Voice-First Multimodal</span>
+          <h2>Nói là chạy 🔊</h2>
+          <p>
+            Web Speech API: bấm mic, nói "kỹ năng / dự án / cuộn xuống..." — tự
+            điều hướng. Chrome/Edge.
+          </p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Nhóm 4 -->
+    <section class="group">
+      <div class="g-head">
+        <span class="no">04</span>
+        <span class="nm">Nghệ thuật · Thử nghiệm · Đặc biệt</span>
+        <span class="cnt">8 bản</span>
+        <span class="ln"></span>
+      </div>
+      <div class="grid">
+        <a class="card" href="06-brutalism.html">
+          <span class="tag t-f">F · Brutalism</span>
+          <h2>PHUC//DEV — NO BS</h2>
+          <p>
+            Phẳng góc, viền đen dày, box-shadow cứng 8px, vàng/đỏ/xanh neon.
+          </p>
+        </a>
+        <a class="card" href="10-claymorphism.html">
+          <span class="tag t-j">J · Claymorphism</span>
+          <h2>Xin chào, tôi là Phúc 🧑‍💻</h2>
+          <p>
+            Pastel peach/blue/mint, bo tròn mập, shadow nhún 3D. Vui vẻ, dễ gần.
+          </p>
+        </a>
+        <a class="card" href="12-zero-interface.html">
+          <span class="tag t-l">L · Zero Interface</span>
+          <h2>README — chỉ có nội dung</h2>
+          <p>
+            Bỏ toàn bộ UI: không nav, không card, không ảnh. Một document mảnh.
+          </p>
+        </a>
+        <a class="card" href="25-memphis-design.html">
+          <span class="tag t-25"
+            >25 · Memphis Design<span class="new">MỚI</span></span
+          >
+          <h2>Bố chơi màu thập niên 80</h2>
+          <p>
+            Chấm bi + squiggle + block màu, border đen dày, shadow góc cứng.
+          </p>
+        </a>
+        <a class="card" href="26-pixel-art.html">
+          <span class="tag t-26"
+            >26 · Pixel Art<span class="new">MỚI</span></span
+          >
+          <h2>PRESS START ▶</h2>
+          <p>
+            Press Start 2P + VT323, skill bar kiểu game, quest log, border
+            pixel.
+          </p>
+        </a>
+        <a class="card" href="27-gen-z-chaos.html">
+          <span class="tag t-27"
+            >27 · Gen Z Chaos<span class="new">MỚI</span></span
+          >
+          <h2>100% no cap 🚀</h2>
+          <p>
+            Sticker bomb, nhiều font trộn (Bangers + Comic + Caveat), emoji,
+            xoay xoay.
+          </p>
+        </a>
+        <a class="card" href="28-anti-polish.html">
+          <span class="tag t-28"
+            >28 · Anti-Polish / Raw<span class="new">MỚI</span></span
+          >
+          <h2>Load 47ms, không cần CDN</h2>
+          <p>
+            HTML thô, underline hệ thống, Times serif, marquee + blink. Cực chất
+            low-tech.
+          </p>
+        </a>
+        <a class="card" href="30-e-ink.html">
+          <span class="tag t-30"
+            >30 · E-Ink / Paper<span class="new">MỚI</span></span
+          >
+          <h2>Hồ sơ trên trang sách</h2>
+          <p>
+            Giấy #F4EFE3, serif EB Garamond, chương sách, chỉ hai màu giấy +
+            mực.
+          </p>
+        </a>
+      </div>
+    </section>
+
+    <style>
+      .tag .new {
+        margin-left: 6px;
+        background: #f59e0b;
+        color: #0b0b10;
+        padding: 2px 6px;
+        border-radius: 4px;
+        position: static;
+        font-size: 0.6rem;
+      }
+    </style>
   </body>
 </html>

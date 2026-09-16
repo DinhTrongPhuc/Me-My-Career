@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phúc — Backend Developer · Memphis</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#F6C8B4;--pink:#FF6B9D;--yellow:#FFD23F;--teal:#2BB3B3;--purple:#845EC2;--ink:#222;--card:#FFF8ED;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--ink);font-family:'Baloo 2',cursive;overflow-x:hidden;}
+  a{color:inherit;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
+
+  .dec{position:fixed;z-index:0;pointer-events:none;}
+  .de1{top:60px;left:4%;width:90px;height:90px;border-radius:50%;background:var(--pink);opacity:.85;}
+  .de2{top:22%;right:3%;width:120px;height:120px;background:var(--purple);border-radius:6px 24px 12px 40px;}
+  .de3{bottom:12%;left:3%;width:70px;height:70px;background:var(--yellow);transform:rotate(14deg);}
+  .de4{top:46%;left:1%;width:60px;height:60px;border-radius:50%;background:var(--teal);}
+  .sq{position:fixed;color:var(--ink);font-size:2.2rem;z-index:0;opacity:.75;user-select:none;pointer-events:none;}
+  .sq1{top:12%;right:22%;}
+  .sq2{bottom:26%;right:8%;}
+  .sq3{top:70%;left:5%;font-size:3rem;}
+
+  .sticky{position:sticky;top:0;z-index:60;background:var(--yellow);border-bottom:6px solid var(--ink);}
+  .nav-in{display:flex;justify-content:space-between;align-items:center;height:60px;}
+  .nav-in .brand{background:var(--ink);color:var(--yellow);padding:6px 16px;transform:rotate(-2deg);font-weight:800;}
+  .menu{display:flex;gap:14px;font-weight:700;font-size:1.05rem;}
+  .menu a:hover{background:var(--ink);color:#fff;}
+
+  .hero{position:relative;z-index:5;padding:90px 0 70px;text-align:center;}
+  .hero .ey{display:inline-block;background:#fff;border:3px solid var(--ink);border-radius:999px;padding:8px 22px;font-weight:700;font-size:.95rem;box-shadow:6px 6px 0 var(--ink);transform:rotate(-3deg);}
+  .hero h1{font-size:clamp(2.3rem,7vw,4.2rem);line-height:1.02;font-weight:800;margin:30px 0 18px;letter-spacing:-.01em;}
+  .hero h1 .hl{background:var(--yellow);padding:0 10px;border-radius:6px;transform:rotate(-2deg);display:inline-block;box-shadow:5px 5px 0 var(--ink);}
+  .hero p{max-width:520px;margin:0 auto;font-size:1.1rem;font-weight:500;}
+  .hero .btnrow{margin-top:34px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:14px 26px;border:4px solid var(--ink);font-weight:800;font-size:1.05rem;border-radius:14px;box-shadow:6px 6px 0 var(--ink);transition:transform .15s,box-shadow .15s;}
+  .btn:hover{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--ink);}
+  .btn-orange{background:var(--pink);} .btn-white{background:#fff;}
+
+  .sticks{position:relative;z-index:5;text-align:center;margin-bottom:50px;}
+  .sticks img{filter:drop-shadow(4px 4px 0 rgba(0,0,0,.35));}
+
+  section{position:relative;z-index:5;padding:30px 0 60px;}
+  .sh{display:flex;align-items:center;gap:14px;margin-bottom:26px;}
+  .sh .blk{background:var(--teal);border:4px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:10px 18px;font-weight:800;font-size:1.2rem;transform:rotate(-2deg);}
+  .sh .ln{flex:1;height:5px;background:var(--ink);border-radius:99px;}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;}
+  .cd{background:var(--card);border:4px solid var(--ink);border-radius:16px;padding:24px;box-shadow:8px 8px 0 var(--ink);position:relative;}
+  .cd::before{content:'';position:absolute;top:-14px;left:18px;width:48px;height:16px;background:rgba(255,255,255,.9);border:3px solid var(--ink);border-radius:99px;transform:rotate(-6deg);}
+  .cd.rot{transform:rotate(1.4deg);} .cd.rotl{transform:rotate(-1.2deg);}
+  .cd .ic{width:54px;height:54px;border:4px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;background:var(--yellow);}
+  .cd.p2 .ic{background:var(--pink);} .cd.p3 .ic{background:var(--teal);}
+  .cd h3{font-size:1.35rem;font-weight:800;margin:14px 0 6px;}
+  .cd p{font-weight:500;opacity:.82;font-size:.98rem;}
+
+  .sk-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+  .skbox{border:4px solid var(--ink);border-radius:14px;background:var(--card);padding:20px;box-shadow:6px 6px 0 var(--ink);}
+  .skbox.cy{background:var(--yellow);} .skbox.pk{background:var(--pink);} .skbox.te{background:var(--teal);}
+  .skbox h3{font-weight:800;font-size:1.15rem;margin-bottom:12px;}
+  .chip{display:inline-block;background:#fff;border:3px solid var(--ink);border-radius:999px;padding:5px 13px;margin:0 6px 8px 0;font-weight:700;font-size:.9rem;}
+  .chip.hot{background:var(--ink);color:#fff;}
+
+  .xp{display:grid;gap:20px;}
+  .x{border:4px solid var(--ink);border-radius:16px;background:var(--card);padding:24px;box-shadow:7px 7px 0 var(--ink);}
+  .x:hover{transform:translateX(6px);}
+  .x .when{display:inline-block;background:var(--yellow);border:3px solid var(--ink);padding:4px 14px;border-radius:999px;font-weight:800;font-size:.9rem;}
+  .x h3{font-size:1.4rem;font-weight:800;margin:12px 0 2px;}
+  .x .co{color:var(--purple);font-weight:800;}
+  .x ul{list-style:none;margin-top:10px;font-weight:500;}
+  .x li::before{content:'✦ ';color:var(--pink);}
+
+  .pj{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;}
+  .p{background:var(--purple);border:4px solid var(--ink);border-radius:14px;color:#fff;padding:22px;box-shadow:8px 8px 0 var(--ink);transform:rotate(-1deg);}
+  .p:nth-child(2){background:var(--teal);transform:rotate(1deg);}
+  .p:nth-child(3){background:var(--pink);transform:rotate(-.5deg);}
+  .p .lbl{display:inline-block;background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:999px;padding:4px 12px;font-weight:800;font-size:.8rem;}
+  .p h3{font-size:1.25rem;font-weight:800;margin:12px 0 8px;}
+  .p p{opacity:.92;font-weight:500;font-size:.95rem;}
+  .p a{color:#fff;font-weight:800;text-decoration:underline;}
+
+  .cta{background:var(--pink);border:6px solid var(--ink);border-radius:22px;padding:44px;position:relative;box-shadow:10px 10px 0 var(--ink);text-align:center;}
+  .cta::before,.cta::after{content:'';position:absolute;border-radius:50%;border:4px solid var(--ink);background:#fff;}
+  .cta::before{width:34px;height:34px;top:-18px;left:8%;}
+  .cta::after{width:22px;height:22px;bottom:-12px;right:14%;}
+  .cta h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;}
+  .cta p{margin:10px 0 22px;font-weight:700;}
+  .cta .btn{background:var(--yellow);}
+
+  footer{position:relative;z-index:5;padding:24px;text-align:center;font-weight:700;font-size:.92rem;border-top:5px solid var(--ink);}
+  @media(max-width:760px){.menu{display:none;}.de1{display:none;}.de2{display:none;}.de4{display:none;}}
+</style>
+</head>
+<body>
+<div class="dec de1"></div><div class="dec de2"></div><div class="dec de3"></div><div class="dec de4"></div>
+<div class="sq sq1">◐</div><div class="sq sq2">▲</div><div class="sq sq3">✿</div>
+
+<div class="sticky">
+  <div class="wrap nav-in">
+    <a class="brand" href="#">PHÚC·MEMPHIS</a>
+    <div class="menu"><a href="#about">✚ Về tôi</a><a href="#skills">✚ Kỹ năng</a><a href="#xp">✚ Kinh nghiệm</a><a href="#pj">✚ Dự án</a></div>
+  </div>
+</div>
+
+<header class="hero wrap">
+  <span class="ey">Memphis Design · Bố chơi màu không giống ai</span>
+  <h1>Backend thật ngầu<br>như một bức<br><span class="hl">tranh thập niên 80</span></h1>
+  <p>Đinh Trọng Phúc — chấm bi, sóng lượn và block màu tưởng chơi vui, nhưng hạ tầng đều y chang: vững, rõ ràng, đúng màu.</p>
+  <div class="btnrow">
+    <a class="btn btn-orange" href="#pj">👀 Xem dự án</a>
+    <a class="btn btn-white" href="#ct">📮 Liên hệ</a>
+  </div>
+</header>
+
+<div class="sticks wrap">🌀 ✦ 🔶 🌀 ✦ 🔷</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sh"><span class="blk">1 · VỀ TÔI</span><span class="ln"></span></div>
+    <div class="cards">
+      <div class="cd"><div class="ic">🛠️</div><h3>Đang làm</h3><p>Operating / Software Engineering tại <b>MINDX</b>. Người giữ lửa cho production chạy êm.</p></div>
+      <div class="cd rot"><div class="ic">🎮</div><h3>Đã làm</h3><p>Unity Developer (2D/3D/VR/AR) tại The Open Network. Chơi cả 4 nền tảng release luôn.</p></div>
+      <div class="cd rotl"><div class="ic">🎓</div><h3>Đang học</h3><p>CNTT — ĐH Mở Hà Nội. Hoài bão: kỹ sư phần mềm cao cấp.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sh"><span class="blk">2 · KỸ NĂNG</span><span class="ln"></span></div>
+    <div class="sk-wrap">
+      <div class="skbox cy"><h3>Backend</h3><span class="chip hot">Node.js</span><span class="chip hot">TypeScript</span><span class="chip">RESTful</span><span class="chip">GraphQL</span><span class="chip">Microservices</span></div>
+      <div class="skbox"><h3>Database</h3><span class="chip hot">PostgreSQL</span><span class="chip hot">Redis</span><span class="chip">MongoDB</span><span class="chip">SQL Server</span></div>
+      <div class="skbox pk"><h3>DevOps</h3><span class="chip hot">Docker</span><span class="chip hot">CI/CD</span><span class="chip">Kubernetes</span><span class="chip">Kafka</span><span class="chip">Monitoring</span></div>
+      <div class="skbox te"><h3>Kiến trúc & Tư duy</h3><span class="chip hot">Clean Arch</span><span class="chip">Hexagonal</span><span class="chip">SOLID</span><span class="chip">DDD</span><span class="chip">OOP</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="xp">
+  <div class="wrap">
+    <div class="sh"><span class="blk">3 · KINH NGHIỆM</span><span class="ln"></span></div>
+    <div class="xp">
+      <div class="x"><span class="when">02/2026 → NAY</span><h3>Operating / Software Engineering</h3><div class="co">MINDX TECHNOLOGY SCHOOL</div><ul><li>Giám sát & bảo trì production systems</li><li>Xử lý incident, viết automation & internal tools</li><li>Tối ưu quy trình vận hành cho cả đội</li></ul></div>
+      <div class="x"><span class="when">06/2024 → 04/2025</span><h3>Unity Developer (2D · 3D · VR · AR)</h3><div class="co">THE OPEN NETWORK — NEW GENERATION</div><ul><li>Phát triển & tối ưu hiệu năng app Unity</li><li>Gameplay systems & code review</li><li>Release: Meta Store · SideQuest · Google Play · App Store</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="pj">
+  <div class="wrap">
+    <div class="sh"><span class="blk">4 · DỰ ÁN</span><span class="ln"></span></div>
+    <div class="pj">
+      <div class="p"><span class="lbl">ĐỀ TÀI TN</span><h3>JoinTogether_SocialNetwork</h3><p>Social network theo sở thích: Node.js · TS · Express · PostgreSQL · Socket.IO.</p><a href="https://join-together-social-network.vercel.app/" target="_blank">Chơi thử →</a></div>
+      <div class="p"><span class="lbl">OPEN SOURCE</span><h3>vn-payment</h3><p>Gateway 3 cổng: MoMo · VNPay · ZaloPay. NPM package bằng TypeScript.</p><a href="https://github.com/DinhTrongPhuc/vn-payment" target="_blank">GitHub →</a></div>
+      <div class="p"><span class="lbl">FULL-STACK AI</span><h3>Solution Center Helpdesk</h3><p>Trung tâm giải pháp IT tích hợp AI: React · Tailwind · Express · MongoDB.</p><a href="https://github.com/DinhTrongPhuc/Solution-Center-for-IT-Helpdesk" target="_blank">GitHub →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="ct">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Màu nào cũng hợp với nhau<br>khi biết phối 🎨</h2>
+      <p>dnhtrongphuc210104@gmail.com · 0389 439 976 · Đống Đa, Hà Nội</p>
+      <a class="btn" href="mailto:dnhtrongphuc210104@gmail.com">📮 Gửi email liền</a>
+      <a class="btn" style="background:#fff;margin-left:14px;" href="https://github.com/DinhTrongPhuc" target="_blank">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Đinh Trọng Phúc · Memphis Design (UI/UX Pro Max) — nghệ thuật trừu tượng, code rất cụ thể.</footer>
+</body>
+</html>

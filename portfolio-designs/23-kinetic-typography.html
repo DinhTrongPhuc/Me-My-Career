@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phúc — Backend Developer · Kinetic Type</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0A0A0F;--ink:#F4F1EA;--mut:#8A8A99;--yel:#FFE156;--pink:#FF5CB8;--cyan:#3AE0FF;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',sans-serif;overflow-x:hidden;}
+  ::selection{background:var(--yel);color:#000;}
+  .wrap{max-width:940px;margin:0 auto;padding:0 22px;}
+
+  .mar{overflow:hidden;border-top:1px solid #222230;border-bottom:1px solid #222230;padding:14px 0;white-space:nowrap;display:flex;}
+  .mar>div{display:inline-flex;gap:2.4em;padding-right:2.4em;animation:marq 22s linear infinite;font-family:'Archivo Black',sans-serif;font-size:1.5rem;letter-spacing:.04em;white-space:nowrap;}
+  .mar span{color:var(--inel);}
+  .mar .st{color:var(--cyan);} .mar .sp{color:var(--pink);} .mar .sy{color:var(--yel);}
+  .mar.rev>div{animation-direction:reverse;animation-duration:28s;}
+  @keyframes marq{to{transform:translateX(-100%);}}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(10,10,15,.75);backdrop-filter:blur(12px);border-bottom:1px solid #1D1D29;}
+  .nav-in{display:flex;justify-content:space-between;align-items:center;height:58px;font-size:.9rem;}
+  .nav-in .brand{font-family:'Archivo Black',sans-serif;font-size:1.05rem;}
+  .nav-in .l a{color:var(--mut);margin-left:20px;}
+  .nav-in .l a:hover{color:var(--ink);}
+
+  .hero{padding:110px 0 60px;text-align:left;}
+  .kin{font-family:'Archivo Black',sans-serif;letter-spacing:-.01em;text-transform:uppercase;}
+  .hero .title{font-size:clamp(2.4rem,8vw,5.2rem);line-height:.98;}
+  .hero .title .ch{display:inline-block;animation:jump 0s both;}
+  @keyframes jump{0%{opacity:0;transform:translateY(.8em) rotate(12deg) scaleY(.6);}60%{opacity:1;}100%{opacity:1;transform:none;}}
+  .hero .rot{height:1.05em;overflow:hidden;margin:26px 0 18px;font-family:'Archivo Black',sans-serif;font-size:clamp(1.2rem,4vw,2.4rem);}
+  .hero .rot .it{display:inline-block;animation:roll 8s infinite;}
+  .hero .rot .it span{display:block;}
+  @keyframes roll{0%,20%{transform:translateY(0);}25%,45%{transform:translateY(-1em);}50%,70%{transform:translateY(-2em);}75%,95%{transform:translateY(-3em);}100%{transform:translateY(-4em);}}
+  .hero p{color:var(--mut);max-width:460px;font-size:1.02rem;}
+  .hero .tag{display:inline-block;color:var(--cyan);border:1px solid #2A2A3C;border-radius:999px;padding:7px 16px;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:22px;}
+
+  .k-head{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:clamp(1.8rem,5vw,3rem);margin:10px 0 30px;line-height:1.05;}
+  .k-head .scramble span{opacity:.05;transition:opacity .06s;}
+  .znum{display:inline-block;}
+  .grad{background:linear-gradient(90deg,var(--yel),var(--pink),var(--cyan),var(--yel));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .tgrad{background-position:var(--gx,0%) 0;}
+
+  section{padding:70px 0;position:relative;}
+  .ab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+  .a{border:1px solid #222230;border-radius:18px;padding:24px;background:#0E0E16;}
+  .a h3{font-family:'Archivo Black',sans-serif;font-size:1.15rem;text-transform:uppercase;margin-bottom:10px;}
+  .a p{color:var(--mut);font-size:.96rem;}
+  .a .num{font-family:'Archivo Black',sans-serif;font-size:2.4rem;color:var(--yel);display:block;margin-bottom:6px;}
+  .a .num::after{content:'+';color:var(--pink);}
+
+  .sk{display:flex;flex-wrap:wrap;gap:10px;}
+  .chp{border:1px solid #2A2A3C;color:var(--mut);border-radius:10px;padding:9px 15px;font-weight:500;transition:color .5s,letter-spacing .5s;}
+  .chp.on{color:var(--ink);border-color:#5a5a78;}
+
+  .xp{border-left:2px solid #222230;padding-left:26px;display:grid;gap:26px;}
+  .x h3{font-family:'Archivo Black',sans-serif;font-size:clamp(1.2rem,3vw,1.7rem);text-transform:uppercase;}
+  .x .co{color:var(--pink);font-weight:700;}
+  .x .date{color:var(--mut);font-size:.86rem;display:inline-block;margin-left:10px;}
+  .x p{color:var(--mut);margin-top:8px;max-width:560px;}
+
+  .pj{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+  .p{border:1px solid #222230;border-radius:16px;padding:22px;background:#0E0E16;}
+  .p .w1{color:var(--cyan);font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:.78rem;letter-spacing:.12em;}
+  .p h3{margin:10px 0;font-size:1.2rem;}
+  .p a{color:var(--yel);font-weight:700;}
+  .p p{color:var(--mut);font-size:.92rem;margin-bottom:10px;}
+
+  footer{border-top:1px solid #1D1D29;padding:26px 0;text-align:center;color:var(--mut);font-size:.85rem;}
+  @media(prefers-reduced-motion:reduce){
+    .mar>div{animation:none;} .hero .title .ch,.hero .rot .it{animation:none;opacity:1;transform:none;}
+    .scramble span{opacity:1!important;transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="mar"><div><span class="st">BACKEND</span> <span class="sp">ENGINEER</span> <span class="sy">NODE.JS</span> <span class="st">TYPESCRIPT</span> <span class="sp">POSTGRESQL</span> <span class="sy">DOCKER</span> <span class="st">REDIS</span> <span class="sp">CI/CD</span> <span class="sy">MINDX</span> <span class="st">HOU</span></div></div>
+
+<nav>
+  <div class="wrap nav-in">
+    <span class="brand">P.<span style="color:var(--pink)">kinetic</span></span>
+    <div class="l"><a href="#about">1</a><a href="#skills">2</a><a href="#xp">3</a><a href="#proj">4</a></div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <span class="tag">Kinetic Typography · Typography in motion</span>
+  <h1 class="kin title" data-split>Backend mà vẫn biết chạy show</h1>
+  <div class="rot"><div class="it" id="roller" style="animation:roll 8s infinite;">
+    <span class="kin" style="color:var(--cyan)">Backend Developer</span>
+    <span class="kin" style="color:var(--pink)">Software Engineer</span>
+    <span class="kin" style="color:var(--yel)">Operating Engineer</span>
+    <span class="kin" style="color:var(--cyan)">Unity Developer</span>
+    <span class="kin" style="color:var(--pink)">Đinh Trọng Phúc</span>
+  </div></div>
+  <p>Chữ ở đây không đứng yên một chỗ — và hệ thống tôi xây cũng tự động xoay vòng khối lượng công việc mà không ai phải nhắc. 😉</p>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <h2 class="k-head scramble" data-scramble>Về tôi</h2>
+    <div class="ab-grid">
+      <div class="a"><span class="num" data-count="2">0</span><h3>Năm kinh nghiệm</h3><p>Từ Unity game developer cho đến Operating Engineer — đủ lông đủ cánh bước ra production thực tế.</p></div>
+      <div class="a"><span class="num" data-count="5">0</span><h3>Nền tảng release</h3><p>Meta Store · SideQuest · Google Play · App Store · Web — quen việc release an toàn đúng hẹn.</p></div>
+      <div class="a"><span class="num" data-count="3">0</span><h3>Dự án nổi bật</h3><p>Social network, payment gateway, AI helpdesk — đủ bộ kỹ năng backend → full-stack.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2 class="k-head scramble" data-scramble>Kỹ năng</h2>
+    <div class="sk" id="chips">
+      <span class="chp">TypeScript</span><span class="chp">Node.js</span><span class="chp">PostgreSQL</span><span class="chp">Redis</span><span class="chp">Docker</span><span class="chp">Kubernetes</span><span class="chp">CI/CD</span><span class="chp">RESTful</span><span class="chp">GraphQL</span><span class="chp">Microservices</span><span class="chp">Python</span><span class="chp">SQL</span><span class="chp">Clean Arch</span><span class="chp">SOLID</span><span class="chp">Git</span><span class="chp">Monitoring</span><span class="chp">MongoDB</span><span class="chp">Kafka</span>
+    </div>
+  </div>
+</section>
+
+<section id="xp">
+  <div class="wrap">
+    <h2 class="k-head scramble" data-scramble>Kinh nghiệm</h2>
+    <div class="xp">
+      <div class="x"><h3>Operating / Software Engineering</h3><span class="co">MINDX Technology School</span><span class="date">02/2026 → nay</span><p>Giám sát production, xử lý incident, internal automation tools, tối ưu quy trình vận hành cho đội product.</p></div>
+      <div class="x"><h3>Unity Developer (2D / 3D / VR / AR)</h3><span class="co">The Open Network — New Generation</span><span class="date">06/2024 → 04/2025</span><p>Phát triển & phát hành app Unity đa nền tảng; tối ưu performance, gameplay systems, code review, release sang Meta Store / SideQuest / Google Play / App Store.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="proj">
+  <div class="wrap">
+    <h2 class="k-head scramble" data-scramble>Dự án</h2>
+    <div class="pj">
+      <div class="p"><span class="w1">Thesis</span><h3>JoinTogether_SocialNetwork</h3><p>Social network theo sở thích — Node.js · TS · Express · PostgreSQL · Socket.IO · React.</p><a href="https://join-together-social-network.vercel.app/" target="_blank">Live →</a></div>
+      <div class="p"><span class="w1">Open-source</span><h3>vn-payment</h3><p>Unified payment gateway: MoMo · VNPay · ZaloPay. Node.js · TypeScript.</p><a href="https://github.com/DinhTrongPhuc/vn-payment" target="_blank">npm →</a></div>
+      <div class="p"><span class="w1">Full-stack AI</span><h3>Solution-Center-for-IT-Helpdesk</h3><p>Trung tâm giải pháp IT tích hợp AI — React · Tailwind · Express · MongoDB.</p><a href="https://github.com/DinhTrongPhuc/Solution-Center-for-IT-Helpdesk" target="_blank">GitHub →</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Đinh Trọng Phúc · Kinetic Typography · dnhtrongphuc210104@gmail.com · 0389 439 976</footer>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // hero: split into chars with stagger
+  const h1 = document.querySelector('[data-split]');
+  if(!reduce){
+    const t = h1.textContent; h1.innerHTML='';
+    [...t].forEach((ch,i)=>{ const s=document.createElement('span'); s.className='ch'; s.textContent=ch===' '?'\u00A0':ch; s.style.animationName='jump'; s.style.animationDuration='.6s'; s.style.animationDelay=(.1+i*.04)+'s'; s.style.animationFillMode='both'; h1.appendChild(s); });
+  }
+
+  // scramble reveal for headings
+  const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#*+@%&=';
+  const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ scramble(en.target); io.unobserve(en.target);} }),{threshold:.4});
+  document.querySelectorAll('[data-scramble]').forEach(h=>io.observe(h));
+  function scramble(el){
+    if(reduce){ el.style.opacity=1; return; }
+    const orig=el.textContent; const L=orig.length; let iter=0;
+    const timer=setInterval(()=>{
+      iter++;
+      let out='';
+      for(let i=0;i<L;i++){
+        const done = iter > 4 + i*1.1;
+        out += orig[i]===' ' ? ' ' : (done ? orig[i] : chars[Math.random()*chars.length|0]);
+      }
+      el.textContent=out;
+      if(iter>4+L*1.1){ clearInterval(timer); el.textContent=orig; }
+    },34);
+  }
+
+  // count-up numbers
+  const ic=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ const e=en.target; const target=+e.dataset.count; let n=0; const t=setInterval(()=>{ n++; e.textContent=n; if(n>=target) clearInterval(t); },200); ic.unobserve(e);} }),{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(e=>ic.observe(e));
+
+  // skills amberize when section visible
+  const so=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ const ch=document.querySelectorAll('#chips .chp'); ch.forEach((c,i)=>setTimeout(()=>c.classList.add('on'),i*60)); so.disconnect(); } }),{threshold:.5});
+  so.observe(document.getElementById('chips'));
+</script>
+</body>
+</html>

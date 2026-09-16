@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phúc — Backend Developer · Hyperreal 3D</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#ECEFF4;--ink:#16181D;--mut:#6B7280;--glass:rgba(255,255,255,.42);--line:rgba(255,255,255,.6);--deep:#C9D2DE;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--ink);font-family:'Outfit',sans-serif;overflow-x:hidden;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px;}
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:#16181D;color:#fff;}
+
+  .ambient{position:fixed;inset:-20%;z-index:-3;background:
+    radial-gradient(40% 45% at 75% 20%,rgba(90,140,255,.18),transparent 60%),
+    radial-gradient(35% 40% at 20% 70%,rgba(255,120,160,.14),transparent 60%),
+    linear-gradient(160deg,#F4F6FA 0%,#E3E8EF 55%,#D4DCE7 100%);}
+  .grain{position:fixed;inset:0;z-index:-2;opacity:.5;background:repeating-conic-gradient(#0000 0% 25%,#00000008 0% 50%);background-size:3px 3px;}
+
+  .glass{background:var(--glass);backdrop-filter:blur(14px) saturate(1.4);border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 60px -20px rgba(22,24,29,.25),inset 0 1px 0 rgba(255,255,255,.7);}
+
+  nav{position:sticky;top:18px;z-index:100;margin:18px 14px 0;}
+  .nav-in{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;}
+  .brand{font-weight:800;letter-spacing:.02em;}
+  .brand em{font-style:normal;background:#16181D;color:#fff;padding:3px 10px;border-radius:8px;}
+  .menu{display:flex;gap:22px;font-weight:600;color:var(--mut);font-size:.95rem;}
+  .menu a:hover{color:var(--ink);}
+  .menu .cta{background:#16181D;color:#fff;padding:9px 18px;border-radius:999px;}
+  .menu .cta:hover{color:#fff;}
+
+  .hero{min-height:88vh;display:flex;align-items:center;position:relative;perspective:1200px;}
+  .hero .col{position:relative;z-index:5;}
+  .stage{position:absolute;right:4vw;top:50%;transform:translateY(-50%);width:420px;height:420px;z-index:2;}
+  .cube{width:100%;height:100%;position:absolute;transform-style:preserve-3d;animation:csp 26s linear infinite;}
+  @keyframes csp{from{transform:rotateX(-20deg) rotateY(0);}to{transform:rotateX(-20deg) rotateY(360deg);}}
+  .cube div{position:absolute;inset:0;border:2px solid rgba(22,24,29,.25);background:rgba(255,255,255,.18);backdrop-filter:blur(2px);border-radius:18px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.3rem;color:rgba(22,24,29,.55);}
+  .cube .f1{transform:translateZ(200px);} .cube .f2{transform:rotateY(90deg) translateZ(200px);}
+  .cube .f3{transform:rotateY(180deg) translateZ(200px);} .cube .f4{transform:rotateY(-90deg) translateZ(200px);}
+  .cube .f5{transform:rotateX(90deg) translateZ(200px);} .cube .f6{transform:rotateX(-90deg) translateZ(200px);}
+  .shadow{position:absolute;width:520px;height:80px;border-radius:50%;background:radial-gradient(closest-side,rgba(22,24,29,.22),transparent);bottom:6vh;right:6vw;filter:blur(10px);z-index:1;}
+
+  .ey{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);padding:8px 16px;border-radius:999px;}
+  .hero h1{font-size:clamp(2.4rem,6vw,4.3rem);line-height:1.03;font-weight:800;letter-spacing:-.03em;margin:22px 0 18px;max-width:520px;}
+  .hero h1 .thin{font-weight:300;}
+  .hero h1 .hi{background:linear-gradient(120deg,#3D7BFF,#B44AFF);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p{color:var(--mut);max-width:430px;font-size:1.06rem;}
+  .hero .btns{display:flex;gap:16px;margin-top:30px;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:15px 26px;border-radius:14px;font-weight:700;transition:transform .18s,box-shadow .18s;}
+  .btn-dark{background:#16181D;color:#fff;box-shadow:0 20px 40px -12px rgba(22,24,29,.5);}
+  .btn-dark:hover{transform:translateY(-3px);}
+  .btn-gh{background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(10px);}
+  .btn-gh:hover{transform:translateY(-3px);}
+  .float-chip{position:fixed;z-index:0;color:rgba(22,24,29,.14);font-weight:800;font-size:2rem;pointer-events:none;}
+
+  section{padding:80px 0;}
+  .sec-h{display:flex;align-items:center;gap:14px;margin-bottom:34px;}
+  .sec-h .n{width:52px;height:52px;border-radius:16px;background:#16181D;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;box-shadow:0 16px 30px -10px rgba(22,24,29,.5);}
+  .sec-h h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-.02em;}
+
+  .tiltrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;}
+  .tilt{transform-style:preserve-3d;padding:26px;border-radius:22px;}
+  .tilt .inner{transform:translateZ(30px);}
+  .tilt .ic{width:52px;height:52px;border-radius:14px;background:#16181D;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px;box-shadow:0 18px 30px -10px rgba(22,24,29,.55);}
+  .tilt h3{font-size:1.25rem;font-weight:800;margin-bottom:8px;}
+  .tilt p{color:var(--mut);font-size:.97rem;}
+  .tilt:hover{}
+
+  .levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;}
+  .lev{padding:24px;border-radius:20px;position:relative;}
+  .lev .orb{position:absolute;right:18px;top:18px;width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#FFF,#AFC4E8);box-shadow:inset -8px -8px 14px rgba(0,0,0,.22),0 16px 26px -8px rgba(0,0,0,.3);}
+  .lev h3{font-weight:800;font-size:1.15rem;margin-bottom:12px;}
+  .sk{display:flex;flex-wrap:wrap;gap:8px;}
+  .sk span{background:#fff;border-radius:999px;padding:7px 14px;font-size:.86rem;font-weight:600;box-shadow:0 8px 18px -8px rgba(0,0,0,.18);border:1px solid rgba(22,24,29,.06);}
+
+  .flow{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .job{padding:24px;border-radius:20px;}
+  .job .when{font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);}
+  .job h3{font-size:1.3rem;font-weight:800;margin:6px 0;}
+  .job ul{list-style:none;margin-top:12px;color:var(--mut);font-size:.95rem;}
+  .job li{padding:5px 0 5px 22px;position:relative;}
+  .job li::before{content:'';position:absolute;left:2px;top:12px;width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#3D7BFF,#B44AFF);}
+
+  .cardrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+  .proj{padding:24px;border-radius:20px;}
+  .proj:hover{transform:translateY(-6px);transition:transform .2s;}
+  .proj .label{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);}
+  .proj h3{font-size:1.3rem;font-weight:800;margin:8px 0;}
+  .proj p{color:var(--mut);font-size:.95rem;}
+  .proj a{display:inline-block;margin-top:12px;font-weight:700;font-size:.95rem;border-bottom:2px solid #16181D;padding-bottom:2px;}
+
+  .cta-row{background:linear-gradient(120deg,#2B3A67,#3D2B67);color:#fff;border-radius:28px;padding:56px;text-align:center;box-shadow:0 50px 90px -30px rgba(22,24,29,.5);position:relative;overflow:hidden;}
+  .cta-row::before{content:'';position:absolute;inset:0;background:radial-gradient(60% 80% at 90% 0%,rgba(255,255,255,.18),transparent);}
+  .cta-row h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;}
+  .cta-row p{opacity:.85;margin:12px auto 28px;max-width:460px;}
+  .cta-row .btn-dark{background:#fff;color:#16181D;}
+  .cta-row .meta{margin-top:26px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;font-size:.9rem;color:#CFD6E6;}
+  footer{padding:34px;text-align:center;color:var(--mut);font-size:.88rem;}
+  .x3d{perspective:1000px;}
+  @media(max-width:900px){.stage,.shadow{display:none;}.hero{text-align:center;} .hero p{margin:0 auto;} .hero h1{margin-inline:auto;} .hero .btns{justify-content:center;} .float-chip{display:none;}}
+  @media(prefers-reduced-motion:reduce){.cube{animation-duration:120s;}}
+</style>
+</head>
+<body>
+<div class="ambient"></div><div class="grain"></div>
+<span class="float-chip" style="top:26%;left:6%;font-size:3rem;">●</span>
+<span class="float-chip" style="top:60%;right:5%;">◆</span>
+<span class="float-chip" style="bottom:12%;left:14%;">✺</span>
+
+<nav>
+  <div class="nav-in glass">
+    <a class="brand" href="#">Phúc<em>3D</em></a>
+    <div class="menu"><a href="#about">Về tôi</a><a href="#skills">Kỹ năng</a><a href="#exp">Kinh nghiệm</a><a href="#projects">Dự án</a><a class="cta" href="#contact">Liên hệ</a></div>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <div class="col">
+    <span class="ey glass">● 3D &amp; Hyperreal</span>
+    <h1>Code sâu như <span class="thin">bóng đổ,</span><br>đẹp như <span class="hi">pixel vừa in ấn</span></h1>
+    <p>Đinh Trọng Phúc — backend engineer tin vào chiều sâu: architecture có chiều sâu, performance có chiều sâu, và trang này có một khối lập phương 3D chiều sâu.</p>
+    <div class="btns">
+      <a class="btn btn-dark" href="#projects">Khám phá dự án</a>
+      <a class="btn btn-gh" href="#contact">Nói chuyện với tôi</a>
+    </div>
+  </div>
+  <div class="stage"><div class="cube">
+    <div class="f1">TS</div><div class="f2">NODE</div><div class="f3">SQL</div><div class="f4">DEV</div><div class="f5">OPS</div><div class="f6">GO</div>
+  </div></div>
+  <div class="shadow"></div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-h"><div class="n">0</div><h2>Bề mặt quá đẹp, chiều sâu quá rõ</h2></div>
+    <div class="tiltrow x3d">
+      <div class="tilt glass"><div class="inner"><div class="ic">🛠️</div><h3>Operating Engineer</h3><p>MINDX — giữ production đứng vững như khối lập phương: chịu lực 6 chiều.</p></div></div>
+      <div class="tilt glass"><div class="inner"><div class="ic">🎮</div><h3>Unity Alumnus</h3><p>The Open Network — chế gameplay, đè performance, release 4 nền tảng.</p></div></div>
+      <div class="tilt glass"><div class="inner"><div class="ic">🎓</div><h3>HOU</h3><p>Cử nhân CNTT, ĐH Mở Hà Nội — render kiến thức mỗi học kỳ.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-h"><div class="n">1</div><h2>Kỹ năng — các lớp năng lực</h2></div>
+    <div class="levels">
+      <div class="lev glass"><div class="orb"></div><h3>Core Backend</h3><div class="sk"><span>Node.js</span><span>TypeScript</span><span>RESTful</span><span>GraphQL</span><span>Microservices</span></div></div>
+      <div class="lev glass"><div class="orb" style="background:radial-gradient(circle at 30% 30%,#FFF,#9FE3C8);"></div><h3>Data Layer</h3><div class="sk"><span>PostgreSQL</span><span>Redis</span><span>MongoDB</span><span>SQL Server</span></div></div>
+      <div class="lev glass"><div class="orb" style="background:radial-gradient(circle at 30% 30%,#FFF,#F7C6A6);"></div><h3>Ops &amp; Infra</h3><div class="sk"><span>Docker</span><span>CI/CD</span><span>Kubernetes</span><span>Kafka</span><span>Monitoring</span></div></div>
+      <div class="lev glass"><div class="orb" style="background:radial-gradient(circle at 30% 30%,#FFF,#C7B9F5);"></div><h3>Arch &amp; Mind</h3><div class="sk"><span>Clean Arch</span><span>Hexagonal</span><span>SOLID</span><span>DDD</span><span>OOP</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="exp">
+  <div class="wrap">
+    <div class="sec-h"><div class="n">2</div><h2>Kinh nghiệm</h2></div>
+    <div class="flow">
+      <div class="job glass"><div class="when">02/2026 → NAY</div><h3>Operating / Software Engineering</h3><div style="font-weight:700;color:var(--mut);margin-bottom:6px;">MINDX TECHNOLOGY SCHOOL</div><ul><li>Giám sát và bảo trì production systems</li><li>Incident response + automation + internal tools</li><li>Tối ưu quy trình vận hành của cả đội</li></ul></div>
+      <div class="job glass"><div class="when">06/2024 → 04/2025</div><h3>Unity Developer (2D · 3D · VR · AR)</h3><div style="font-weight:700;color:var(--mut);margin-bottom:6px;">THE OPEN NETWORK</div><ul><li>Phát triển và tối ưu hiệu năng app Unity</li><li>Gameplay systems, performance, code review</li><li>Release Meta Store · SideQuest · Google Play · App Store</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-h"><div class="n">3</div><h2>Bộ sưu tập dự án</h2></div>
+    <div class="cardrow">
+      <div class="proj glass"><div class="label">Thesis</div><h3>JoinTogether</h3><p>Social network theo sở thích — Node · TS · Express · PostgreSQL · Socket.IO · React.</p><a href="https://join-together-social-network.vercel.app/" target="_blank">Xem live</a></div>
+      <div class="proj glass"><div class="label">Open-source</div><h3>vn-payment</h3><p>Gateway thanh toán VN gộp một API: MoMo · VNPay · ZaloPay. NPM/TS.</p><a href="https://github.com/DinhTrongPhuc/vn-payment" target="_blank">Mở GitHub</a></div>
+      <div class="proj glass"><div class="label">Full-stack AI</div><h3>Solution Center Helpdesk</h3><p>Trung tâm giải pháp IT tích hợp AI — React · Tailwind · Express · MongoDB.</p><a href="https://github.com/DinhTrongPhuc/Solution-Center-for-IT-Helpdesk" target="_blank">Mở GitHub</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-row">
+      <h2>Cùng nhau tạo chiều sâu cho sản phẩm</h2>
+      <p>Sẵn sàng cho vai trò Backend / Software Engineer. Phản hồi trong vòng 24 giờ.</p>
+      <a class="btn btn-dark" href="mailto:dnhtrongphuc210104@gmail.com">dnhtrongphuc210104@gmail.com</a>
+      <div class="meta"><span>☎ 0389 439 976</span><span>·</span><span>Hà Nội</span><span>·</span><a href="https://github.com/DinhTrongPhuc" target="_blank" style="color:#fff;text-decoration:underline;">github.com/DinhTrongPhuc</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Đinh Trọng Phúc · 3D &amp; Hyperrealism (UI/UX Pro Max) — đổ bóng đẹp, đổ lỗi không bao giờ.</footer>
+
+<script>
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce){
+    document.querySelectorAll('.x3d .tilt').forEach(card=>{
+      card.addEventListener('mousemove',e=>{
+        const r=card.getBoundingClientRect();
+        const x=(e.clientX-r.left)/r.width-.5;
+        const y=(e.clientY-r.top)/r.height-.5;
+        card.style.transform=`rotateY(${x*10}deg) rotateX(${y*-10}deg) translateY(-6px)`;
+      });
+      card.addEventListener('mouseleave',()=>{ card.style.transform=''; });
+    });
+    // parallax float chips
+    let tick=false;
+    window.addEventListener('scroll',()=>{
+      if(!tick){ requestAnimationFrame(()=>{
+        document.querySelectorAll('.float-chip').forEach((el,i)=>{ const y=window.scrollY; el.style.top=`calc(${(22+i*15)}px + ${y*(0.02+ (i%3)*0.02)}px)`; });
+        tick=false; }); tick=true; }
+    });
+  }
+</script>
+</body>
+</html>

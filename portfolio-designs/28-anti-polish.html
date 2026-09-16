@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phúc — Backend Developer (RAW HTML)</title>
+<style>
+  /* Anti-polish: tối thiểu CSS nhất có thể. Không font tuỳ biến, không rounded, không shadow kiểu cách.
+     Màu = màu hệ thống. Underline = underline trình duyệt. Bố cục = mặc định. */
+  body{max-width:760px;margin:0 auto;padding:24px;font-family:Times,serif;line-height:1.5;}
+  img{max-width:100%;}
+  table{border-collapse:collapse;width:100%;}
+  td,th{border:1px solid #999;padding:6px 10px;}
+  .raw-comment{font-family:monospace;color:green;margin:30px 0;}
+  .blink{animation:blink 1.2s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  hr{border:1px dashed #888;}
+  marquee{border:1px solid #ccc;padding:4px;display:block;}
+</style>
+</head>
+<body>
+<noscript><p>Bật JavaScript đi — hay không cũng được, trang này vẫn đọc tốt. Đó gọi là graceful degradation.</p></noscript>
+
+<!-- server log: GET /cv 200 OK (47ms) -->
+<div class="raw-comment">&gt; $ curl -s https://dinh-trong-phuc.dev/ | head -n 200<br>&lt; 200 OK · served with ❤️ and zero design system</div>
+<marquee>WELCOME TO MY LOW-TECH PAGE · BEST VIEWED WITH ARES CLEAVER? KHÔNG, VIEW ĐƯỢC HẾT · NO BUTTONS WERE HARMED IN THIS HTML ·</marquee>
+
+<h1>Đinh Trọng Phúc</h1>
+<p><b>Backend Developer / Software Engineer</b> — Đống Đa, Hà Nội · sinh 21/01/2004</p>
+<p>Email: <a href="mailto:dnhtrongphuc210104@gmail.com">dnhtrongphuc210104@gmail.com</a><br>
+Điện thoại: 0389 439 976<br>
+GitHub: <a href="https://github.com/DinhTrongPhuc" target="_blank">github.com/DinhTrongPhuc</a></p>
+
+<h2>1. Giới thiệu</h2>
+<p>Trang này có chủ đích trông ... "thô". Không màu sắc chiều lòng, không JS nặng ký, không framework. Có thể không đẹp, nhưng load <b>47ms</b>, SEO sạch, ai cũng đọc được — kể cả đọc bằng <i>lynx</i>.</p>
+<p>Nguyên tắc của tôi ở backend cũng vậy: chạy được trước, đẹp sau; ít phụ thuộc nhất có thể; dễ đọc hơn là dễ gây ấn tượng.</p>
+
+<div class="raw-comment">&gt; <!-- TODO: thêm CSS cho đẹp hơn. Có làm không? Không. --></div>
+
+<h2>2. Kinh nghiệm</h2>
+<table>
+  <tr><th>Thời gian</th><th>Vị trí</th><th>Nơi làm việc</th></tr>
+  <tr><td>02/2026 → nay</td><td>Operating / Software Engineering</td><td>MINDX Technology School</td></tr>
+  <tr><td>06/2024 → 04/2025</td><td>Unity Developer (2D/3D/VR/AR)</td><td>The Open Network — New Generation</td></tr>
+  <tr><td>2022 → nay</td><td>Cử nhân CNTT</td><td>Đại học Mở Hà Nội</td></tr>
+</table>
+
+<h3>MINDX — Operating / Software Engineering</h3>
+<ul>
+  <li>Giám sát &amp; duy trì production systems (uptime là thước đo duy nhất)</li>
+  <li>Xử lý incident; viết automation &amp; internal tools giảm thao tác thủ công</li>
+  <li>Phối hợp dev/infra, tối ưu quy trình vận hành hằng tuần</li>
+</ul>
+
+<h3>The Open Network — Unity Developer</h3>
+<ul>
+  <li>Phát triển &amp; tối ưu hiệu năng app Unity (2D/3D/VR/AR)</li>
+  <li>Gameplay systems, performance profiling, code review</li>
+  <li>Release sang Meta Store · SideQuest · Google Play · App Store</li>
+</ul>
+
+<div class="raw-comment">&gt; # mình chưa cần preview mấy cải thiện này</div>
+
+<h2>3. Kỹ năng</h2>
+<p><b>Ngôn ngữ:</b> TypeScript, JavaScript, Python, SQL</p>
+<p><b>Backend:</b> Node.js, RESTful API, GraphQL, Microservices, WebSocket</p>
+<p><b>Database:</b> PostgreSQL, MySQL/SQL Server, MongoDB, Redis</p>
+<p><b>DevOps:</b> Docker, CI/CD (GitHub Actions), Kubernetes(đang tăng cấp), Kafka(đang tăng cấp)</p>
+<p><b>Kiến trúc:</b> Clean Architecture, Hexagonal, SOLID, DDD, OOP</p>
+<p><b>Khác:</b> Git/GitHub, VS Code, Postman, Unity (qua thời)</p>
+
+<h2>4. Dự án</h2>
+<table>
+  <tr><th>Dự án</th><th>Mô tả</th><th>Link</th></tr>
+  <tr><td>JoinTogether_SocialNetwork</td><td>Social network theo sở thích — Node/TS · Express · PostgreSQL · Socket.IO · React</td><td><a href="https://join-together-social-network.vercel.app/" target="_blank">live</a></td></tr>
+  <tr><td>vn-payment</td><td>Unified payment gateway: MoMo · VNPay · ZaloPay (NPM package)</td><td><a href="https://github.com/DinhTrongPhuc/vn-payment" target="_blank">github</a></td></tr>
+  <tr><td>Solution-Center-for-IT-Helpdesk</td><td>Trung tâm giải pháp IT tích hợp AI — React · Tailwind · Express · MongoDB</td><td><a href="https://github.com/DinhTrongPhuc/Solution-Center-for-IT-Helpdesk" target="_blank">github</a></td></tr>
+</table>
+
+<div class="raw-comment">&gt; $ docker run --rm -it phuc:latest<br>&gt; Ấn [Enter] để vào team của bạn...</div>
+
+<h2>5. Liên hệ</h2>
+<p>Đừng ngại, email chat đơn giản nhất cũng được. Trang này không có form — nhưng bạn biết <code>mailto:</code> mà.</p>
+<p><a href="mailto:dnhtrongphuc210104@gmail.com" style="font-size:1.2em;">✉ gửi mail ngay →</a></p>
+
+<hr>
+<p style="font-family:monospace;font-size:.85em;">© 2026 Đinh Trọng Phúc · Không có gì "đẹp" ở đây: <span class="blink">▮</span> đang chạy mà chả cần CDN nào.</p>
+</body>
+</html>

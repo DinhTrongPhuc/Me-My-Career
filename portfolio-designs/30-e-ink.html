@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phúc — Hồ sơ trên giấy · E-Ink</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F4EFE3;--paper2:#FBF8F0;--ink2:#26241F;--mut:#6F6A5E;--acc:#7A5230;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--paper);color:var(--ink2);font-family:'EB Garamond',Georgia,serif;line-height:1.75;font-size:1.06rem;}
+  a{color:var(--acc);text-decoration:none;border-bottom:1px dotted var(--acc);}
+  a:hover{border-bottom-style:solid;}
+  .book{max-width:640px;margin:0 auto;padding:48px 30px 90px;position:relative;background:var(--paper2);box-shadow:0 0 60px rgba(87,74,50,.18);border-left:1px solid rgba(87,74,50,.18);border-right:1px solid rgba(87,74,50,.18);}
+
+  .chap{font-size:.82rem;letter-spacing:.32em;text-transform:uppercase;color:var(--mut);margin:34px 0 8px;border-top:1px solid #D8D0BC;padding-top:16px;}
+  .line{display:block;width:100%;height:1px;background:#D8D0BC;margin:20px 0;}
+
+  .cover{text-align:center;padding:70px 0 30px;}
+  .cover .kwa{font-style:italic;color:var(--mut);font-size:1.1rem;}
+  .cover h1{font-size:clamp(2.4rem,7vw,3.6rem);font-weight:600;letter-spacing:.01em;margin:16px 0 4px;}
+  .cover .role{font-size:1.5rem;font-style:italic;}
+  .cover .touch{display:inline-block;margin-top:26px;border:1px solid var(--ink2);padding:6px 18px;letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;border-radius:0;}
+
+  h2{font-size:1.6rem;font-weight:600;}
+  h3{font-size:1.2rem;font-weight:600;}
+  p{margin:12px 0;}
+  .drop::first-letter{font-size:3.1em;float:left;line-height:.8;padding:4px 10px 0 0;font-weight:600;color:var(--acc);}
+
+  .lead{font-size:1.15rem;}
+  .inline-mut{color:var(--mut);font-style:italic;}
+
+  .sect-list{list-style:none;}
+  .sect-list li{padding:14px 0;border-bottom:1px dashed #D8D0BC;}
+  .sect-list li:last-child{border-bottom:none;}
+  .when{display:inline-block;min-width:7.2em;color:var(--mut);font-size:.9rem;}
+  .org{font-style:italic;color:var(--acc);}
+
+  .proj li{margin-bottom:16px;}
+  .proj .nm{font-weight:600;font-size:1.07rem;}
+  .proj .desc{color:var(--ink2);}
+
+  .skills{column-count:2;column-gap:34px;list-style:none;}
+  .skills li{padding:6px 0;border-bottom:1px dotted #D8D0BC;break-inside:avoid;}
+  .skills li:before{content:'· ';color:var(--acc);}
+  @media(max-width:520px){.skills{column-count:1;}}
+
+  .sign{margin-top:44px;text-align:right;font-style:italic;color:var(--mut);}
+  .page-turn{bottom:24px;right:30px;position:absolute;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);}
+
+  .prog{position:fixed;top:0;left:0;height:3px;background:var(--acc);width:0;z-index:99;}
+  .nav{position:sticky;top:0;z-index:97;background:var(--paper2);opacity:.96;display:flex;gap:20px;justify-content:center;padding:14px;border-bottom:1px solid #D8D0BC;font-size:.9rem;max-width:640px;margin:0 auto;}
+  .nav a{border:none;color:var(--ink2);letter-spacing:.06em;}
+  .nav a:hover{color:var(--acc);}
+  @media(max-width:640px){.nav{overflow-x:auto;white-space:nowrap;justify-content:flex-start;}}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<div class="nav">
+  <a href="#c1">Chương 1</a><a href="#c2">Chương 2</a><a href="#c3">Chương 3</a><a href="#c4">Chương 4</a><a href="#c5">Chương 5</a>
+</div>
+
+<main class="book">
+  <div class="cover">
+    <div class="kwa">"Từng dòng code như từng dòng mực trên giấy — viết ra là phải đọc được, để lâu không phai."</div>
+    <h1>Đinh Trọng Phúc</h1>
+    <div class="role">Backend Developer<br>&amp; Software Engineer</div>
+    <div class="touch">Hồ sơ chỉ có hai màu: giấy và mực</div>
+  </div>
+
+  <section id="c1">
+    <div class="chap">Chương Một · Lời giới thiệu</div>
+    <p class="lead drop">Xin chào. Tôi là Phúc, sinh năm 2004 tại Hà Nội, hiện là sinh viên CNTT trường Đại học Mở Hà Nội và là một kỹ sư vận hành phần mềm thực chiến tại MINDX. Trang này được thiết kế như một trang sách điện tử mực — không hoa mỹ, không đèn nhấp nháy, chỉ có nội dung và độ đọc êm tương tự màn hình Kindle. Với tôi, engineer giỏi cũng giống trang sách tốt: gọn, rõ, ai cũng hiểu được.</p>
+    <p><a href="https://join-together-social-network.vercel.app/" target="_blank">Xem một sản phẩm tôi từng xây</a> · <a href="mailto:dnhtrongphuc210104@gmail.com">gửi lời nhắn cho tôi</a></p>
+  </section>
+
+  <section id="c2">
+    <div class="chap">Chương Hai · Hành trình</div>
+    <ul class="sect-list">
+      <li><span class="when">02/2026 → nay</span><h3>Operating / Software Engineering</h3><span class="org">MINDX Technology School</span><p>Giám sát và bảo trì production systems; xử lý sự cố; viết automation và internal tools giúp cả đội làm việc nhẹ gánh hơn.</p></li>
+      <li><span class="when">06/2024 → 04/2025</span><h3>Unity Developer — 2D / 3D / VR / AR</h3><span class="org">The Open Network · New Generation</span><p>Phát triển và tối ưu hiệu năng ứng dụng trên nền tảng Unity; phát hành thành công ra Meta Store, SideQuest, Google Play và App Store.</p></li>
+      <li><span class="when">2022 → nay</span><h3>Cử nhân Công nghệ thông tin</h3><span class="org">Đại học Mở Hà Nội</span><p>Nền tảng học thuật bổ trợ công việc thực chiến hằng ngày.</p></li>
+    </ul>
+  </section>
+
+  <section id="c3">
+    <div class="chap">Chương Ba · Vốn liếng</div>
+    <p class="lead">Những công cụ tôi tin dùng, viết gọn như mục lục:</p>
+    <ul class="skills">
+      <li>TypeScript</li><li>JavaScript</li><li>Node.js</li><li>RESTful API</li><li>GraphQL</li><li>WebSocket</li><li>PostgreSQL</li><li>Redis</li><li>MongoDB</li><li>SQL Server</li><li>Docker</li><li>Kubernetes</li><li>CI/CD</li><li>Kafka</li><li>Monitoring &amp; Incident</li><li>Clean Architecture</li><li>Hexagonal</li><li>SOLID</li><li>DDD</li><li>OOP</li><li>Python</li><li>Git / GitHub</li>
+    </ul>
+  </section>
+
+  <section id="c4">
+    <div class="chap">Chương Bốn · Tác phẩm</div>
+    <ul class="sect-list proj">
+      <li><span class="nm">JoinTogether — Social Network</span><div class="desc">Mạng xã hội theo sở thích: Node.js · Express · TypeScript · PostgreSQL · Socket.IO · React. <a href="https://join-together-social-network.vercel.app/" target="_blank">Bản live</a></div></li>
+      <li><span class="nm">vn-payment</span><div class="desc">Một API gom ba cổng thanh toán Việt Nam (MoMo, VNPay, ZaloPay) dạng thư viện NPM. <a href="https://github.com/DinhTrongPhuc/vn-payment" target="_blank">Mã nguồn</a></div></li>
+      <li><span class="nm">Solution Center — IT Helpdesk</span><div class="desc">Trung tâm giải pháp IT tích hợp AI: React · Tailwind · Node.js · Express · MongoDB. <a href="https://github.com/DinhTrongPhuc/Solution-Center-for-IT-Helpdesk" target="_blank">Mã nguồn</a></div></li>
+    </ul>
+  </section>
+
+  <section id="c5">
+    <div class="chap">Chương Năm · Lời ngỏ</div>
+    <p class="drop">Bất kỳ role Backend hay Software Engineering nào — từ bảo trì hệ thống cũ, xử lý sự cố nửa đêm, cho đến xây dựng từ đầu một dịch vụ mới — tôi đều sẵn sàng. Vì như trang sách này: chỉ cần thêm một chương nữa, câu chuyện chưa bao giờ là đã hết.</p>
+    <p style="line-height:2.1;">Thư mời, lời rủ, hay chỉ một tin nhắn trò chuyện:<br>
+      ✉ <a href="mailto:dnhtrongphuc210104@gmail.com">dnhtrongphuc210104@gmail.com</a><br>
+      ☎ 0389 439 976 · Đống Đa, Hà Nội<br>
+      ⌨ <a href="https://github.com/DinhTrongPhuc" target="_blank">github.com/DinhTrongPhuc</a></p>
+    <div class="sign">— trân trọng,<br>Đinh Trọng Phúc</div>
+  </section>
+</main>
+
+<script>
+  const prog=document.getElementById('prog');
+  addEventListener('scroll',()=>{
+    const h=document.documentElement.scrollHeight-innerHeight;
+    prog.style.width=(h>0?scrollY/h*100:0)+'%';
+  });
+</script>
+</body>
+</html>
