@@ -6,11 +6,12 @@
     <title>Portfolio Phuc — 30 thiết kế theo nhóm</title>
     <style>
       :root {
-        --bg: #0b0b10;
-        --card: #15151b;
-        --text: #f8fafc;
-        --muted: #94a3b8;
-        --line: #1e293b;
+        --bg: #eef1f5;
+        --card: #ffffff;
+        --text: #111827;
+        --muted: #4b5563;
+        --line: #cbd5e1;
+        --accent: #2563eb;
       }
       * {
         margin: 0;
@@ -31,7 +32,7 @@
         font-size: 1.3rem;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: #22c55e;
+        color: #15803d;
         margin-bottom: 8px;
       }
       p.sub {
@@ -39,7 +40,7 @@
         margin-bottom: 40px;
         font-size: 0.85rem;
         text-align: center;
-        max-width: 620px;
+        max-width: 660px;
         line-height: 1.6;
       }
       .group {
@@ -56,8 +57,8 @@
       .g-head .no {
         font-size: 0.72rem;
         letter-spacing: 0.14em;
-        color: #0b0b10;
-        background: #22c55e;
+        color: #ffffff;
+        background: #16a34a;
         padding: 4px 10px;
         border-radius: 4px;
         font-weight: bold;
@@ -90,14 +91,17 @@
         border: 1px solid var(--line);
         border-radius: 14px;
         padding: 22px;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
         transition:
           transform 0.2s,
-          border-color 0.2s;
+          border-color 0.2s,
+          box-shadow 0.2s;
         position: relative;
       }
       a.card:hover {
         transform: translateY(-4px);
-        border-color: #3b82f6;
+        border-color: var(--accent);
+        box-shadow: 0 10px 24px rgba(37, 99, 235, 0.16);
       }
       .new {
         position: absolute;
@@ -106,10 +110,11 @@
         font-size: 0.62rem;
         letter-spacing: 0.1em;
         background: #f59e0b;
-        color: #0b0b10;
+        color: #451a03;
         padding: 2px 8px;
         border-radius: 4px;
         font-weight: bold;
+        border: 1px solid #b45309;
       }
       .tag {
         display: inline-block;
@@ -119,155 +124,156 @@
         padding: 3px 10px;
         border-radius: 20px;
         margin-bottom: 12px;
+        font-weight: 700;
       }
       .t-a {
-        background: #0f172a;
-        color: #22c55e;
+        background: #22c55e;
+        color: #0f172a;
         border: 1px solid #22c55e;
       }
       .t-b {
-        background: #eff6ff;
-        color: #2563eb;
-        border: 1px solid #dbeafe;
+        background: #2563eb;
+        color: #ffffff;
+        border: 1px solid #2563eb;
       }
       .t-c {
-        background: #0b0b10;
-        color: #3b82f6;
-        border: 1px solid #3b82f6;
+        background: #22d3ee;
+        color: #083344;
+        border: 1px solid #22d3ee;
       }
       .t-d {
-        background: #fafaf9;
-        color: #a16207;
-        border: 1px solid #e7e5e4;
+        background: #a16207;
+        color: #ffffff;
+        border: 1px solid #a16207;
       }
       .t-e {
-        background: #0b1020;
-        color: #00e5ff;
-        border: 1px solid #ff1493;
+        background: #0080ff;
+        color: #ffffff;
+        border: 1px solid #0080ff;
       }
       .t-f {
-        background: #edede3;
-        color: #0055ff;
-        border: 1px solid #111;
+        background: #0055ff;
+        color: #ffffff;
+        border: 1px solid #0055ff;
       }
       .t-g {
-        background: #f5f5f7;
-        color: #0071e3;
-        border: 1px solid #e5e5ea;
+        background: #0071e3;
+        color: #ffffff;
+        border: 1px solid #0071e3;
       }
       .t-h {
-        background: #1a1a2e;
-        color: #ff006e;
-        border: 1px solid #00ffff;
+        background: #ff006e;
+        color: #ffffff;
+        border: 1px solid #ff006e;
       }
       .t-i {
-        background: #0a0a0a;
-        color: #39ff14;
-        border: 2px dashed #bf00ff;
+        background: #39ff14;
+        color: #062e0a;
+        border: 1px solid #39ff14;
       }
       .t-j {
-        background: #fbf3e4;
-        color: #e76f51;
-        border: 1px solid #2d2a32;
+        background: #e76f51;
+        color: #ffffff;
+        border: 1px solid #e76f51;
       }
       .t-k {
-        background: #ffffff;
-        color: #005a9e;
-        border: 1px solid #0b0d0e;
+        background: #005a9e;
+        color: #ffffff;
+        border: 1px solid #005a9e;
       }
       .t-l {
-        background: #fdfcf9;
-        color: #1a6b4e;
-        border: 1px solid #d8d4cb;
+        background: #1a6b4e;
+        color: #ffffff;
+        border: 1px solid #1a6b4e;
       }
       .t-m {
-        background: #0c0e12;
-        color: #4ade80;
+        background: #22d3ee;
+        color: #083344;
         border: 1px solid #22d3ee;
       }
       .t-n {
-        background: #12151a;
-        color: #f0abfc;
+        background: #7c3aed;
+        color: #ffffff;
         border: 1px solid #7c3aed;
       }
       .t-o {
-        background: #05060e;
-        color: #5b8cff;
-        border: 1px solid #ff4fd8;
+        background: #5b8cff;
+        color: #0b1d40;
+        border: 1px solid #5b8cff;
       }
       .t-p {
-        background: #fef7ff;
-        color: #6750a4;
-        border: 1px solid #eaddff;
+        background: #6750a4;
+        color: #ffffff;
+        border: 1px solid #6750a4;
       }
       .t-q {
-        background: #1c2030;
-        color: #7c84f0;
-        border: 1px solid #4cc2ff;
+        background: #7c84f0;
+        color: #1a1f3d;
+        border: 1px solid #7c84f0;
       }
       .t-r {
-        background: #f6f6f7;
-        color: #008060;
-        border: 1px solid #c9ccd1;
+        background: #008060;
+        color: #ffffff;
+        border: 1px solid #008060;
       }
       .t-s {
-        background: #f5f5f5;
-        color: #2680eb;
-        border: 1px solid #8e8e8e;
+        background: #2680eb;
+        color: #ffffff;
+        border: 1px solid #2680eb;
       }
       .t-t {
-        background: #ffffff;
-        color: #e2231a;
-        border: 1px solid #111111;
+        background: #e2231a;
+        color: #ffffff;
+        border: 1px solid #e2231a;
       }
       .t-21 {
-        background: #f4f1ec;
-        color: #7c3aed;
+        background: #7c3aed;
+        color: #ffffff;
         border: 1px solid #7c3aed;
       }
       .t-22 {
-        background: #f7f7f5;
-        color: #ff5a2e;
+        background: #ff5a2e;
+        color: #ffffff;
         border: 1px solid #ff5a2e;
       }
       .t-23 {
-        background: #0a0a0f;
-        color: #ffe156;
-        border: 1px solid #ff5cb8;
+        background: #ffe156;
+        color: #0a0a0f;
+        border: 1px solid #ffe156;
       }
       .t-24 {
-        background: #fbf7f0;
-        color: #b8652c;
-        border: 1px solid #3e6b4f;
+        background: #b8652c;
+        color: #ffffff;
+        border: 1px solid #b8652c;
       }
       .t-25 {
-        background: #f6c8b4;
-        color: #845ec2;
-        border: 2px solid #222;
+        background: #845ec2;
+        color: #ffffff;
+        border: 1px solid #845ec2;
       }
       .t-26 {
-        background: #222437;
-        color: #ffd23f;
+        background: #ffd23f;
+        color: #1c1a05;
         border: 1px solid #ffd23f;
       }
       .t-27 {
-        background: #fff3d6;
-        color: #ff4d6d;
-        border: 2px solid #000;
+        background: #ff4d6d;
+        color: #330a12;
+        border: 1px solid #ff4d6d;
       }
       .t-28 {
-        background: #ffffff;
-        color: #444;
-        border: 1px dashed #888;
+        background: #444444;
+        color: #ffffff;
+        border: 1px solid #444444;
       }
       .t-29 {
-        background: #eceff4;
-        color: #3d7bff;
-        border: 1px solid #b44aff;
+        background: #3d7bff;
+        color: #ffffff;
+        border: 1px solid #3d7bff;
       }
       .t-30 {
-        background: #f4efe3;
-        color: #7a5230;
+        background: #7a5230;
+        color: #ffffff;
         border: 1px solid #7a5230;
       }
       a.card h2 {
@@ -284,9 +290,11 @@
   <body>
     <h1>Đinh Trọng Phúc — Backend Developer</h1>
     <p class="sub">
-      30 bản thiết kế portfolio được thiết kế từ UI/UX Pro Max design system,
-      phân theo 4 nhóm để dễ so sánh. Thẻ màu tím sẵn ít là bản
-      <b>mới</b> (21–30). Mở từng file để xem rồi chọn bản ưng nhất.
+      Tổng hợp 30+ thiết kế landing page portfolio cho Backend Developer, phân
+      theo 4 nhóm để dễ so sánh ở nhiều điều kiện ánh sáng. Màu của nhãn trên mỗi
+      thẻ chính là màu chủ đạo (primary) của file thiết kế đó — nhìn màu là đoán
+      được phong cách. Thẻ gắn nhãn <b>MỚI</b> là bản 21–30. Mở từng file để xem
+      rồi chọn bản ưng nhất.
     </p>
 
     <!-- Nhóm 1 -->
@@ -591,11 +599,12 @@
       .tag .new {
         margin-left: 6px;
         background: #f59e0b;
-        color: #0b0b10;
+        color: #451a03;
         padding: 2px 6px;
         border-radius: 4px;
         position: static;
         font-size: 0.6rem;
+        border: 1px solid #b45309;
       }
     </style>
   </body>
